@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/form2', function(){
+    return view('form2');
+});
+Route::post('admin/back', "Admin\UserController@aaa");
