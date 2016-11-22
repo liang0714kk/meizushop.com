@@ -20,7 +20,7 @@ class CreateOrdersTable extends Migration
             $table->string('remark')  -> comment('配送说明');
             $table->integer('date') -> comment('订单日期');
             $table->integer('num') -> comment('订单编号');
-            $table->integer('total') -> comment('订单总金额');
+            $table->double('total') -> comment('订单总金额');
             $table->integer('uid') -> comment('会员编号');
             $table->integer('payid') -> comment('支付编号');
             $table->integer('deliverid') -> comment('配送编号');
