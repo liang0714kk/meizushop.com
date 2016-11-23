@@ -40,3 +40,5 @@ Route::get('/admin/user/oneDetail/{id}', "Admin\UserController@oneDetail");
 //后台登录
 Route::get('admin/login/login', "Admin\LoginController@login");
 Route::post('admin/login/signin', "Admin\LoginController@signin");
+//后台退出登录
+Route::get('admin/login/logout', "Admin\LoginController@logout");

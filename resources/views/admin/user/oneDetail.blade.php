@@ -22,7 +22,7 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">快速查看用户</h3>
+                        <h3 class="box-title">查看用户详情</h3>
                     </div><!-- /.box-header -->
                     <div class="box-body">
 
@@ -31,58 +31,17 @@
                         <p>{{ session('info')}}</p>
                     </div>
                     @endif
-
-                        <form action="{{ url('/admin/user/index') }}" method="get">
-                        <div class="row">
-                            <div class="col-md-2">
-                            <div class="form-group">
-                            <select name="num" class="form-control select2, col-md-2"">
-                                <option
-                                @if(!empty($request['num']) && $request['num'] == 10)
-                                    selected = "selected"
-                                @endif
-                                >10</option>
-                                <option
-                                @if(!empty($request['num']) && $request['num'] == 25)
-                                    selected = "selected"
-                                @endif
-                                >25</option>
-                                <option
-                                @if(!empty($request['num']) && $request['num'] == 50)
-                                    selected = "selected"
-                                @endif
-                                >50</option>
-                                <option
-                                @if(!empty($request['num']) && $request['num'] == 100)
-                                    selected = "selected"
-                                @endif
-                                >100</option>
-                            </select>
-                            </div><!-- /.form-group -->
-                            </div>
-                            <div class="col-md-3 col-md-offset-7">
-                            <div class="input-group input-group-sm">
-                                <input value="{{ $request['keywords'] or '' }}" name="keywords" type="text" class="form-control">
-                            <span class="input-group-btn">
-                                <button class="btn btn-info btn-flat">搜索</button>
-                            </span>
-                            </div><!-- /input-group -->
-                            </div>
-                        </div>
-                        </form>
                     <div class="box-body">
 
                         <table id="example2" class="table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>用户编号</th>
                                 <th>用户名</th>
-                                <th>昵称</th>
                                 <th>性别</th>
                                 <th>权限</th>
                                 <th>等级</th>
                                 <th>手机</th>
-                                <th>邮箱</th>
                                 <th>状态</th>
                                 <th>注册时间</th>
                                 <th>最后登录时间</th>
@@ -93,7 +52,6 @@
                             <tr>
                                 <td class="ids">{{ $data -> id }}</td>
                                 <td class="name">{{ $data -> name }}</td>
-                                <td class="nickname">{{ $data -> nickname }}</td>
                                 <td class="sex">
                                     @if(($data -> sex) == 1)
                                     男
@@ -122,7 +80,6 @@
                                     @endif
                                 </td>
                                 <td class="phone">{{ $data -> phone }}</td>
-                                <td class="email">{{ $data -> email }}</td>
                                 <td class="status">
                                 @if($data -> status == 0)
                                     禁用

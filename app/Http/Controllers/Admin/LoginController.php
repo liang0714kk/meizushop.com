@@ -27,6 +27,11 @@ class LoginController extends Controller
             $rpassword = $request -> password;
             if($rpassword == $password)
             {
+                $data = DB::table('user') -> where('name', $request -> name) -> first() -> updated_at;
+                $time = time();
+                $data = $time;
+                //修改登录时间
+                $res = DB::table('user') -> where('name', $request -> name) -> update(['updated_at' => $data]);
                 return redirect('admin/index/index');
             }
             else
@@ -38,6 +43,11 @@ class LoginController extends Controller
         {
             return back() -> with(['info' => '账户名与密码不匹配']);
         }
-        // dd($data);
+    }
+    //退出登录
+    public function logout(Request $request)
+    {
+        $res = $request->session()->flush();
+        return redirect('admin/login/login');
     }
 }

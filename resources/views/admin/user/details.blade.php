@@ -75,14 +75,12 @@
                         <table id="example2" class="table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>用户编号</th>
                                 <th>用户名</th>
-                                <th>昵称</th>
                                 <th>性别</th>
                                 <th>权限</th>
                                 <th>等级</th>
                                 <th>手机</th>
-                                <th>邮箱</th>
                                 <th>状态</th>
                                 <th>注册时间</th>
                                 <th>最后登录时间</th>
@@ -94,7 +92,6 @@
                             <tr>
                                 <td class="ids">{{ $v -> id}}</td>
                                 <td class="name">{{ $v -> name }}</td>
-                                <td class="nickname">{{ $v -> nickname }}</td>
                                 <td class="sex">
                                     @if(($v -> sex) == 1)
                                     男
@@ -123,7 +120,6 @@
                                     @endif
                                 </td>
                                 <td class="phone">{{ $v -> phone }}</td>
-                                <td class="email">{{ $v -> email }}</td>
                                 <td class="status">
                                 @if($v -> status == 0)
                                     禁用
