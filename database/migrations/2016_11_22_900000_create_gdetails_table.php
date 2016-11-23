@@ -31,7 +31,8 @@ class CreateGdetailsTable extends Migration
             $table->string('usb') -> comment('USB输出');
             $table->string('size') -> comment('尺寸');
             $table->string('mile') -> comment('里程');
-            $table->timestamps();
+            $table->integer('created_at') -> comment('创建时间');
+            $table->integer('updated_at') -> comment('更新时间');
         });
     }
 
