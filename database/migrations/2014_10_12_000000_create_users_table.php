@@ -25,7 +25,8 @@ class CreateUsersTable extends Migration
             $table->string('nickname')->comment('昵称');
             $table->integer('level')->comment('等级')->default(10);
             $table->rememberToken()->comment('令牌');
-            $table->timestamps();
+            $table->integer('created_at')->comment('创建时间');
+            $table->integer('updated_at')->comment('更新时间');
         });
     }
 

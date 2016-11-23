@@ -43,7 +43,7 @@
 
     <header class="main-header">
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="{{ url('/admin/index/index') }}" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>A</b>LT</span>
             <!-- logo for regular state and mobile devices -->
@@ -357,6 +357,12 @@
                     <a href="pages/widgets.html">
                         <i class="fa fa-th"></i> <span>商品详情</span>
                         <small class="label pull-right bg-green">规格参数</small>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="{{ url('/admin/config')}}">
+                        <i class="fa fa-files-o"></i>
+                        <span>网站配置</span>
                     </a>
                 </li>
 

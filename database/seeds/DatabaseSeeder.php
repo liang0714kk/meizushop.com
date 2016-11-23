@@ -21,8 +21,8 @@ class DatabaseSeeder extends Seeder
             $user['photo'] = 'default.jpg';
             $time = time();
             $user['remember_token'] = str_random(50);
-            $user['created_at'] = $time;
-            $user['updated_at'] = $time;
+            $user['created_at'] = rand(1000000000, 1400000000);
+            $user['updated_at'] = rand(1000000000, 1400000000);
             $tmp[] = $user;
         }
         DB::table('user') -> insert($tmp);

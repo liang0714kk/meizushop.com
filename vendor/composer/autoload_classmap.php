@@ -6,7 +6,18 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+    'CreateAddersTable' => $baseDir . '/database/migrations/2016_11_22_700000_create_adders_table.php',
+    'CreateCartsTable' => $baseDir . '/database/migrations/2016_11_22_600000_create_carts_table.php',
+    'CreateConfigsTable' => $baseDir . '/database/migrations/2016_11_22_7000000_create_configs_table.php',
+    'CreateGcolorsTable' => $baseDir . '/database/migrations/2016_11_22_2000000_create_gcolors_table.php',
+    'CreateGdetailsTable' => $baseDir . '/database/migrations/2016_11_22_900000_create_gdetails_table.php',
+    'CreateGoodsTable' => $baseDir . '/database/migrations/2016_11_22_800000_create_goods_table.php',
+    'CreateGparTable' => $baseDir . '/database/migrations/2016_11_22_4000000_create_gpar_table.php',
+    'CreateGphotosTable' => $baseDir . '/database/migrations/2016_11_22_3000000_create_gphotos_table.php',
+    'CreateGqaTable' => $baseDir . '/database/migrations/2016_11_22_5000000_create_gqa_table.php',
+    'CreateGsupportsTable' => $baseDir . '/database/migrations/2016_11_22_6000000_create_gsupports_table.php',
+    'CreateOrdersTable' => $baseDir . '/database/migrations/2016_11_22_500000_create_orders_table.php',
+    'CreatePhotosTable' => $baseDir . '/database/migrations/2016_11_22_1000000_create_photos_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
@@ -81,6 +92,7 @@ return array(
     'Hamcrest\\Util' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
     'Hamcrest\\Xml\\HasXPath' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
     'IlluminateQueueClosure' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
+    'OrdersTableSeeder' => $baseDir . '/database/seeds/OrdersTableSeeder.php',
     'PHPUnit_Exception' => $vendorDir . '/phpunit/phpunit/src/Exception.php',
     'PHPUnit_Extensions_GroupTestSuite' => $vendorDir . '/phpunit/phpunit/src/Extensions/GroupTestSuite.php',
     'PHPUnit_Extensions_PhptTestCase' => $vendorDir . '/phpunit/phpunit/src/Extensions/PhptTestCase.php',
@@ -514,5 +526,6 @@ return array(
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
-    'UserTableSeeder' => $baseDir . '/database/seeds/UserTableSeeder;.php',
+    'UserTableSeeder' => $baseDir . '/database/seeds/UserTableSeeder.php',
+    'cartsTableSeeder' => $baseDir . '/database/seeds/cartsTableSeeder.php',
 );
