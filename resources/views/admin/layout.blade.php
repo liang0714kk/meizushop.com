@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>魅族商城 - {{ config('app.name') }} - @yield('title')</title>
+    <title>{{ config('app.name') }}  @yield('title')</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -291,7 +291,7 @@
                                     <a href="#" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="{{ url('/admin/login/logout')}} " class="btn btn-default btn-flat">退出</a>
                                 </div>
                             </li>
                         </ul>
@@ -340,6 +340,7 @@
                     <ul class="treeview-menu">
                         <li class="active"><a href="{{ asset('/admin/user/add') }}"><i class="fa fa-circle-o"></i>添加用户</a></li>
                         <li><a href="{{ asset('/admin/user/index') }}"><i class="fa fa-circle-o"></i> 用户列表</a></li>
+                        <li><a href="{{ asset('/admin/user/details') }}"><i class="fa fa-circle-o"></i> 用户详情列表</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
