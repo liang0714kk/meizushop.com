@@ -14,7 +14,7 @@ class CreateGdetailsTable extends Migration
     {
         Schema::create('gdetails', function (Blueprint $table) {
             $table->increments('id') -> comment('编号');
-            $table->string('name') -> unique() -> comment('商品名称');
+            $table->string('name') -> comment('商品名称');
             $table->string('explain') -> comment('说明');
             $table->double('price') -> comment('商品价格');
             $table->string('color') -> comment('颜色');
@@ -31,8 +31,11 @@ class CreateGdetailsTable extends Migration
             $table->string('usb') -> comment('USB输出');
             $table->string('size') -> comment('尺寸');
             $table->string('mile') -> comment('里程');
-            $table->integer('created_at')->comment('创建时间');
-            $table->integer('updated_at')->comment('更新时间');
+
+            $table->integer('pid') -> comment('商品父id');
+            $table->integer('created_at') -> comment('创建时间');
+            $table->integer('updated_at') -> comment('更新时间');
+
         });
     }
 

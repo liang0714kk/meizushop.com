@@ -303,3 +303,6 @@ Route::post('admin/config/update', 'Admin\ConfigController@update');
 
 // 后台主页
 Route::get('admin/index/index', 'Admin\IndexController@index');
+
+// 后台订单处理
+Route::resource('admin/order/order', 'Admin\OrderController');

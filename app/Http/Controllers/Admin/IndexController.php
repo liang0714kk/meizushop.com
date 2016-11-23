@@ -34,15 +34,19 @@ class IndexController extends Controller
 
     	$sailes = DB::table('orders')
     				-> where('pay', '1')
-    				-> where('paytime', '>', $day_start)
+    				-> where('paytime', '>=', $day_start)
     	 			-> sum('total');
 
     	 //今日订单
     	 $newOrder = DB::table('orders')
     				-> where('pay', '1')
-    				-> where('paytime', '>', $day_start)
+                    -> where('paytime', '>=', $day_start)
+                    // -> LeftJoin('gdetails as g', 'g.id', '=', 'orders.gid')
+                    // -> select('orders.*', 'g.price', 'g.net', 'g.rom', 'g.color')
     	 			-> get();
     	 // 今日新品
-        return view('admin.index.index') -> with(['newMemember' => $newMemember, 'lastMemember' => $lastMemember, 'sailes' => $sailes, 'newOrder' => $newOrder]);
+         $newGood = DB::table('goods') -> where('created_at', '>=', $day_start) -> orderBy('created_at', 'desc')-> get(); 
+
+        return view('admin.index.index') -> with(['newMemember' => $newMemember, 'lastMemember' => $lastMemember, 'sailes' => $sailes, 'newOrder' => $newOrder, 'newGood' => $newGood]);
     }
 }

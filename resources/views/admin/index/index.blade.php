@@ -68,6 +68,7 @@
                                     <th>订单号</th>
                                     <th>商品名</th>
                                     <th>状态</th>
+                                    <th>收件人名称</th>
                                     <th>收件人地址</th>
                                     <th>收件人电话</th>
                                     <th>配送方式</th>
@@ -78,7 +79,7 @@
                             @foreach($newOrder as $v)
                                 <tr>
                                     <td><a href="pages/examples/invoice.html">{{ $v -> num}}</a></td>
-                                    <td>{{ $v -> name}}</td>
+                                    <td>商品名及属性组合需多表查询</td>
                                     <td>
                                     @if($v -> deliver == 1)<span class="label label-info">已发货</span>
                                     @elseif($v -> deliver == 0)
@@ -95,6 +96,7 @@
                                     <span class="label label-danger">未付款</span>
                                     @endif
                                     </td>
+                                    <td>{{ $v -> name}}</td>
                                     <td>{{ $v -> adder }}</td>
                                     <td>{{ $v -> phone }}</td>
                                     <td>{{ $v -> deliverid }}</td>
@@ -130,7 +132,7 @@
                         <ul class="users-list clearfix">
                         @foreach($lastMemember as $v)
                             <li>
-                                <img src="/uploads/avater/{{ $v -> photo }}"" alt="User Image">
+                                <img src="/uploads/avater/{{ $v -> photo }}" alt="User Image">
                                 <a class="users-list-name" href="#">{{ $v -> name }}</a>
                                 <span class="users-list-date">{{ $v -> created_at }}</span>
                             </li>
@@ -157,54 +159,20 @@
                     </div><!-- /.box-header -->
                     <div class="box-body">
                         <ul class="products-list product-list-in-box">
+                        @foreach($newGood as $v)
                             <li class="item">
                                 <div class="product-img">
-                                    <img src="{{ url('/ad/dist/img/default-50x50.gif') }}" alt="Product Image">
+                                    <img width="50px" src="/uploads/goods/{{ $v -> photo }}" alt="Product Image">
                                 </div>
                                 <div class="product-info">
-                                    <a href="javascript::;" class="product-title">Samsung TV <span
-                                            class="label label-warning pull-right">$1800</span></a>
+                                    <a href="javascript::;" class="product-title">{{ $v -> name }}<span
+                                            class="label label-warning pull-right">价格</span></a>
                     <span class="product-description">
-                      Samsung 32" 1080p 60Hz LED Smart HDTV.
+                      多表描述信息
                     </span>
                                 </div>
                             </li><!-- /.item -->
-                            <li class="item">
-                                <div class="product-img">
-                                    <img src="{{ url('/ad/dist/img/default-50x50.gif') }}" alt="Product Image">
-                                </div>
-                                <div class="product-info">
-                                    <a href="javascript::;" class="product-title">Bicycle <span
-                                            class="label label-info pull-right">$700</span></a>
-                    <span class="product-description">
-                      26" Mongoose Dolomite Men's 7-speed, Navy Blue.
-                    </span>
-                                </div>
-                            </li><!-- /.item -->
-                            <li class="item">
-                                <div class="product-img">
-                                    <img src="{{ url('/ad/dist/img/default-50x50.gif') }}" alt="Product Image">
-                                </div>
-                                <div class="product-info">
-                                    <a href="javascript::;" class="product-title">Xbox One <span
-                                            class="label label-danger pull-right">$350</span></a>
-                    <span class="product-description">
-                      Xbox One Console Bundle with Halo Master Chief Collection.
-                    </span>
-                                </div>
-                            </li><!-- /.item -->
-                            <li class="item">
-                                <div class="product-img">
-                                    <img src="{{ url('/ad/dist/img/default-50x50.gif') }}" alt="Product Image">
-                                </div>
-                                <div class="product-info">
-                                    <a href="javascript::;" class="product-title">PlayStation 4 <span
-                                            class="label label-success pull-right">$399</span></a>
-                    <span class="product-description">
-                      PlayStation 4 500GB Console (PS4)
-                    </span>
-                                </div>
-                            </li><!-- /.item -->
+                        @endforeach
                         </ul>
                     </div><!-- /.box-body -->
                     <div class="box-footer text-center">
