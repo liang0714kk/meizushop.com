@@ -7,12 +7,12 @@
     <section class="content-header">
         <h1>
             用户管理
-            <small>用户列表</small>
+            <small>用户详情</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>
             <li><a href="#">用户管理</a></li>
-            <li class="active">列表</li>
+            <li class="active">详情</li>
         </ol>
     </section>
 
@@ -22,7 +22,7 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">查看用户基本信息</h3>
+                        <h3 class="box-title">快速查看用户</h3>
                     </div><!-- /.box-header -->
                     <div class="box-body">
 
@@ -77,33 +77,66 @@
                             <tr>
                                 <th>ID</th>
                                 <th>用户名</th>
-                                <th>头像</th>
+                                <th>昵称</th>
+                                <th>性别</th>
+                                <th>权限</th>
+                                <th>等级</th>
+                                <th>手机</th>
                                 <th>邮箱</th>
                                 <th>状态</th>
+                                <th>注册时间</th>
+                                <th>最后登录时间</th>
                                 <th>操作</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($data as $v)
                             <tr>
-                                <td class="ids">{{ $v -> id }}</td>
-                                <td class="name">{{ $v -> name }}</td>
-                                <td><img width="60px" height="60px" src="/uploads/avater/{{ $v -> photo }}" /></td>
-                                <td>{{ $v -> email }}</td>
+                                <td class="ids">{{ $data -> id }}</td>
+                                <td class="name">{{ $data -> name }}</td>
+                                <td class="nickname">{{ $data -> nickname }}</td>
+                                <td class="sex">
+                                    @if(($data -> sex) == 1)
+                                    男
+                                    @elseif(($data -> sex) == 0)
+                                    女
+                                    @endif
+                                 </td>
+                                <td class="author">
+                                    @if(($data -> author) == 1)
+                                    超级管理员
+                                    @elseif(($data -> author) == 0)
+                                    普通用户
+                                    @endif
+                                </td>
+                                <td class="level">
+                                    @if(($data -> level) < 500)
+                                    青铜会员
+                                    @elseif(($data -> level) >= 500 & ($data -> level) < 1000)
+                                    白银会员
+                                    @elseif(($data -> level) >= 1000 & ($data -> level) < 2000)
+                                    黄金会员
+                                    @elseif(($data -> level) >= 2000 & ($data -> level) < 5000)
+                                    铂金会员
+                                    @elseif(($data -> level) >= 5000 & ($data -> level) < 10000)
+                                    荣耀会员
+                                    @endif
+                                </td>
+                                <td class="phone">{{ $data -> phone }}</td>
+                                <td class="email">{{ $data -> email }}</td>
                                 <td class="status">
-                                @if($v -> status == 0)
+                                @if($data -> status == 0)
                                     禁用
-                                @elseif($v -> status == 1)
+                                @elseif($data -> status == 1)
                                     启用
                                 @endif
                                 </td>
-                                <td><a href="{{ url('/admin/user/edit/') }}/{{ $v -> id}}">编辑</a> | <a href="{{ url('/admin/user/delete/') }}/{{ $v -> id}}">删除</a> | <a href="{{ url('/admin/user/oneDetail/') }}/{{ $v -> id}}">详情</a></td>
+                                <td class="created_at">{{ $data -> created_at }}</td>
+                                <td class="updated_at">{{ $data -> updated_at }}</td>
+
+                                <td><a href="{{ url('/admin/user/delete/') }}/{{ $data -> id}}">删除</a>
                             </tr>
-                            @endforeach
                             </tbody>
                         </table>
-                        <!-- {!! $data -> appends($request) ->  render() !!} -->
-                        {!! $data -> appends($request) -> render() !!}
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
 
@@ -128,38 +161,6 @@ window.onload = function()
                     'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
                 }
                  });
-        //双击事件
-        $('.status').on('dblclick', function()
-        {
-            //获取当前对象
-            var t = $(this);
-            //获取id
-            var id = $(this).parent().find('.ids').html();
-            $.ajax({
-                type:"POST",
-                url:"{{ url('/admin/user/ajaxStatus') }}",
-                data:{id:id},
-                success:function(data)
-                {
-                    if(data == 2)
-                    {
-                        alert('修改失败');
-                    }else if(data == 0)
-                    {
-                        t.html('禁用');
-                    }else if(data == 1)
-                    {
-                        t.html('启用');
-                    }
-                },
-                error:function()
-                {
-                    alert('数据异常');
-                }
-            });
-        });
-
         }
 </script>
-
 @endsection

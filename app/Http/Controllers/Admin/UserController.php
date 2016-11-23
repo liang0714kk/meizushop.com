@@ -45,8 +45,8 @@ class UserController extends Controller
             'author.required' => '请选择权限'
             ]);
 
-
        $data = $request -> except('_token','repassword');
+       // dd($data);
        //加密密码
        $data['password'] = Crypt::encrypt($data['password']);
        //哈希加密
@@ -57,8 +57,8 @@ class UserController extends Controller
        $data['remember_token'] = str_random(50);
        //处理时间
        $time = time();
-       echo $time;
        $data['created_at'] = $time;
+       // dd($data['created_at']);
        $data['updated_at'] = $time;
        //处理头像
        if($request -> hasFile('photo'))
@@ -140,5 +140,127 @@ class UserController extends Controller
         }
    }
 
+   //编辑 edit
+
+   public function edit($id)
+   {
+        $data = DB::table('user') -> where('id' , $id) -> first();
+
+        return view('admin.user.edit', ['title' => '编辑用户', 'data' => $data]);
+   }
+
+   //执行编辑
+   public function update(Request $request)
+   {
+
+    //处理字段
+        $this -> validate($request,[
+            'name' => 'required|min:6|max:18',
+            'nickname' => 'required',
+            'sex' => 'required',
+            'email' => 'required',
+            'phone' => 'required|min:11|max:11'
+            ],[
+            'name.required' => '用户名不能为空',
+            'nickname.required' => '昵称不能为空',
+            'sex.required' => '请选择性别',
+            'email.required' => '邮箱不能为空',
+            'author.required' => '请选择权限',
+            'phone.required' => '手机号不能为空',
+            'phone.min' => '请输入11位手机号',
+            'phone.max' => '请输入11位手机号',
+            'name.min' => '用户名不能少于6位',
+            'name.max' => '用户名不能多于18位',
+            'email.email' => '邮箱格式不正确'
+            ]);
+
+        $data = $request -> except('_token');
+        //获取原图片
+        $oldPhoto = DB::table('user') -> where('id', $request -> id) -> first() -> photo;
+        if($request -> hasFile('photo'))
+        {
+            if($request -> file('photo') -> isValid())
+            {
+                $type = $request -> file('photo') -> getClientOriginalExtension();-
+                $fileName = time().mt_rand(10000,9999999).'.'.$type;
+
+                //移动文件
+                $move = $request -> file('photo') -> move('./uploads/avater', $fileName);
+                if($move)
+                {
+                    $data['photo'] = $fileName;
+                    //删除旧图片
+                    if($oldPhoto != 'default.jpg')
+                    {
+                        unlink('./uploads/avater/'.$oldPhoto);
+                    }
+                }
+            }else
+            {
+                $request -> file('photo') -> move('./uploads/avater', 'default.jpg');
+            }
+        }
+        //执行
+        $res = DB::table('user') -> where('id', $request -> id) -> update($data);
+        if($res)
+        {
+            return redirect('admin/user/index') -> with(['info' => '修改成功']);
+        }else
+        {
+            return back() -> with(['info' => '修改失败']);
+        }
+
+   }
+
+   //删除
+   public function delete($id)
+   {
+        $data = DB::table('user') -> where('id', $id) -> first();
+        $res = DB::table('user') -> where('id' , $id) -> delete();
+        // 获取原图片
+        $oldPhoto = $data -> photo;
+        if(file_exists('./uploads/avater/'.$oldPhoto))
+        {
+            if($oldPhoto != 'default.jpg')
+            {
+                unlink('./uploads/avater/'.$oldPhoto);
+            }
+        }
+        if($res)
+        {
+            return redirect('admin/user/index') -> with(['info' => '删除成功']);
+        }else
+        {
+            return back() -> with(['info' => '删除失败']);
+        }
+   }
+
+   //详情
+   public function details(Request $request)
+   {
+    //时间格式转换
+    $tdata = DB::table('user') -> get();
+    $time  = $tdata[0] -> updated_at;
+    $ctime = $tdata[0] -> created_at;
+    $time  = date('Y-m-d H:i:s',$time);
+    $ctime = date('Y-m-d H:i:s',$ctime);
+    //搜索分页查询
+    $data = DB::table('user') -> where('name','like','%'.$request -> input('keywords').'%') -> paginate($request -> input('num', 10));
+    return view('admin.user.details', ['data' => $data, 'request' => $request -> all(), 'time' => $time, 'ctime' => $ctime]);
+   }
+   //单个用户详情
+   public function oneDetail($id)
+   {
+    $data = DB::table('user') -> where('id',$id) -> first();
+    //时间格式转换
+    $time  = $data -> created_at;
+    $utime = $data -> updated_at;
+    $time  = date('Y-m-d H:i:s',$time);
+    $utime = date('Y-m-d H:i:s',$utime);
+    $data -> created_at = $time;
+    $data -> updated_at = $utime;
+
+    return view('admin.user.oneDetail', ['data' => $data]);
+   }
 
 }

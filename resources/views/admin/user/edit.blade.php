@@ -9,12 +9,12 @@
 <section class="content-header">
     <h1>
         用户管理
-        <small>添加</small>
+        <small>编辑</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>
         <li><a href="#">用户管理</a></li>
-        <li class="active">添加</li>
+        <li class="active">编辑</li>
     </ol>
 </section>
 
@@ -26,10 +26,10 @@
             <!-- general form elements -->
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">快速添加用户</h3>
+                    <h3 class="box-title">编辑用户信息</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" action="{{ url('/admin/user/insert') }}" method="post" enctype="multipart/form-data">
+                <form role="form" action="{{ url('/admin/user/update') }}" method="post" enctype="multipart/form-data">
 
                     <div class="box-body">
                     <!-- 添加失败 -->
@@ -47,45 +47,50 @@
                         @endforeach
                     </div>
                     @endif
+                        <input type="hidden" name="id" value="{{ $data -> id}}">
                     {{ csrf_field() }}
-                        <input type="hidden" name="created_at" value="1">
-                        <input type="hidden" name="updated_at" value="2">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;用户名</label>
-                            <input name="name" value="{{ old('name') }}" type="text" class="form-control" id="exampleInputName"
+                            <label for="exampleInputEmail1">用户名&nbsp;&nbsp;&nbsp;</label>
+                            <input name="name" value="{{ $data -> name }}" type="text"  id="exampleInputName"
                                    placeholder="请输入6-18位用户名">
                         </div>
-                          <div class="form-group">
-                            <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;邮箱</label>
-                            <input name="email" value="{{ old('email') }}" type="text" class="form-control" id="exampleInputEmail1"
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">昵 &nbsp;&nbsp;&nbsp; 称&nbsp;&nbsp;&nbsp;</label>
+                            <input name="nickname" value="{{ $data -> nickname }}" type="text"  id="exampleInputName"
+                                   placeholder="请输入昵称">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">性 &nbsp;&nbsp;&nbsp; 别</label>&nbsp;&nbsp;&nbsp;
+                            男 <input name="sex" value="{{ $data -> sex }}" type="radio" value="1">&nbsp;&nbsp;&nbsp;
+                            女 <input name="sex" value="{{ $data -> sex }}" type="radio" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">邮 &nbsp;&nbsp;&nbsp; 箱</label>&nbsp;&nbsp;&nbsp;
+                            <input name="email" value="{{ $data -> email }}" type="text"  id="exampleInputEmail1"
                                    placeholder="请输入邮箱">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;权限</label>
+                            <label for="exampleInputEmail1">手 &nbsp;&nbsp;&nbsp; 机&nbsp;&nbsp;&nbsp;</label>
+                            <input name="phone" value="{{ $data ->phone }}" type="text"  id="exampleInputEmail1"
+                                   placeholder="请输入手机号">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">权 &nbsp;&nbsp;&nbsp; 限&nbsp;&nbsp;&nbsp;</label>
                             <select name="author">
                                 <option value="0">普通用户</option>
                                 <option value="1">超级管理员</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">&nbsp;&nbsp;&nbsp;密码</label>
-                            <input name="password" type="password" class="form-control" id="exampleInputPassword1"
-                                   placeholder="请输入密码">
-                        </div>
-                         <div class="form-group">
-                            <label for="exampleInputPassword1">&nbsp;&nbsp;&nbsp;确认密码</label>
-                            <input name="repassword" type="password" class="form-control" id="exampleInputPassword1"
-                                   placeholder="请输入确认密码">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputFile">&nbsp;&nbsp;&nbsp;头像</label>
+                            <label for="exampleInputFile">头 &nbsp;&nbsp;&nbsp; 像&nbsp;&nbsp;&nbsp;</label>
+                            <img width="200px" height="200px" src="{{ url('/uploads/avater/') }}/{{ $data -> photo }}" alt="">
                             <input name="photo" type="file" id="exampleInputFile">
-                            <p class="help-block">选择图片作为头像</p>
+                            <p class="help-block">选择新头像</p>
                         </div>
                     </div><!-- /.box-body -->
 
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-primary">添加</button>
+                        <button type="submit" class="btn btn-primary">编辑</button>
                         <button type="reset" class="btn btn-default">重置</button>
                     </div>
                 </form>

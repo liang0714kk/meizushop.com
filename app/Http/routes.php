@@ -29,3 +29,14 @@ Route::get('/admin/user/index', "Admin\UserController@index");
 
 //双击修改状态
 Route::post('/admin/user/ajaxStatus', "Admin\UserController@ajaxStatus");
+//用户编辑
+Route::get('/admin/user/edit/{id}', "Admin\UserController@edit");
+Route::post('/admin/user/update', "Admin\UserController@update");
+//删除用户
+Route::get('/admin/user/delete/{id}', "Admin\UserController@delete");
+//用户详情
+Route::get('/admin/user/details', "Admin\UserController@details");
+Route::get('/admin/user/oneDetail/{id}', "Admin\UserController@oneDetail");
+//后台登录
+Route::get('admin/login/login', "Admin\LoginController@login");
+Route::post('admin/login/signin', "Admin\LoginController@signin");

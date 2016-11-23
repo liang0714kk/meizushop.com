@@ -23,9 +23,12 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('sex')->comment('性别');
             $table->integer('phone')->comment('手机');
             $table->string('nickname')->comment('昵称');
+            $table->tinyInteger('carts')->comment('购物车状态');
             $table->integer('level')->comment('等级')->default(10);
             $table->rememberToken()->comment('令牌');
-            $table->timestamps();
+            $table->integer('created_at')->comment('用户创建时间');
+            $table->integer('updated_at')->comment('用户登录时间');
+
         });
     }
 
