@@ -348,8 +348,8 @@
                         <span>商品管理</span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i>添加商品</a></li>
-                        <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i>商品列表</a></li>
+                        <li><a href="{{ asset('/admin/category/create') }}"><i class="fa fa-circle-o"></i>分类管理</a></li>
+                        <li><a href="{{ asset('/admin/category') }}"><i class="fa fa-circle-o"></i>商品分类列表</a></li>
                         <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i>下架商品</a></li>
                     </ul>
                 </li>

@@ -22,7 +22,7 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">快速查看用户</h3>
+                        <h3 class="box-title">查看用户基本信息</h3>
                     </div><!-- /.box-header -->
                     <div class="box-body">
 
@@ -77,8 +77,8 @@
                             <tr>
                                 <th>ID</th>
                                 <th>用户名</th>
-                                <th>邮箱</th>
                                 <th>头像</th>
+                                <th>邮箱</th>
                                 <th>状态</th>
                                 <th>操作</th>
                             </tr>
@@ -88,8 +88,8 @@
                             <tr>
                                 <td class="ids">{{ $v -> id }}</td>
                                 <td class="name">{{ $v -> name }}</td>
-                                <td>{{ $v -> email }}</td>
                                 <td><img width="60px" height="60px" src="/uploads/avater/{{ $v -> photo }}" /></td>
+                                <td>{{ $v -> email }}</td>
                                 <td class="status">
                                 @if($v -> status == 0)
                                     禁用
@@ -97,7 +97,7 @@
                                     启用
                                 @endif
                                 </td>
-                                <td><a href="{{ url('/admin/user/edit/') }}/{{ $v -> id}}">编辑</a> | <a href="{{ url('/admin/user/delete/') }}/{{ $v -> id}}">删除</a></td>
+                                <td><a href="{{ url('/admin/user/edit/') }}/{{ $v -> id}}">编辑</a> | <a href="{{ url('/admin/user/delete/') }}/{{ $v -> id}}">删除</a> | <a href="{{ url('/admin/user/oneDetail/') }}/{{ $v -> id}}">详情</a></td>
                             </tr>
                             @endforeach
                             </tbody>
@@ -158,7 +158,6 @@ window.onload = function()
                 }
             });
         });
-
 
         }
 </script>
