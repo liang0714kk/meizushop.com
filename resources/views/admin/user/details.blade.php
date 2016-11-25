@@ -127,8 +127,8 @@
                                     启用
                                 @endif
                                 </td>
-                                <td class="created_at">{{ $ctime}}</td>
-                                <td class="updated_at">{{ $time }}</td>
+                                <td class="created_at">{{ date('Y-m-d H:i:s',$v -> created_at) }}</td>
+                                <td class="updated_at">{{ date('Y-m-d H:i:s',$v -> updated_at) }}</td>
 
                                 <td><a href="{{ url('/admin/user/delete/') }}/{{ $v -> id}}">删除</a>
                             </tr>

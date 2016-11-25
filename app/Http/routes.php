@@ -29,7 +29,7 @@ Route::get('/admin/user/index', "Admin\UserController@index");
 
 //双击修改状态
 Route::post('/admin/user/ajaxStatus', "Admin\UserController@ajaxStatus");
-<<<<<<< HEAD
+// <<<<<<< HEAD
 
 
 
@@ -307,7 +307,7 @@ Route::get('admin/index/index', 'Admin\IndexController@index');
 
 // 后台订单处理
 Route::resource('admin/order/order', 'Admin\OrderController');
-=======
+// =======
 //用户编辑
 Route::get('/admin/user/edit/{id}', "Admin\UserController@edit");
 Route::post('/admin/user/update', "Admin\UserController@update");
@@ -321,4 +321,4 @@ Route::get('admin/login/login', "Admin\LoginController@login");
 Route::post('admin/login/signin', "Admin\LoginController@signin");
 //后台退出登录
 Route::get('admin/login/logout', "Admin\LoginController@logout");
->>>>>>> 791ecdd8729f123abef500ad1d54cb6cc22f5c51
+// >>>>>>> 791ecdd8729f123abef500ad1d54cb6cc22f5c51

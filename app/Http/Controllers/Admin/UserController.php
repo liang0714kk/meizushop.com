@@ -51,8 +51,12 @@ class UserController extends Controller
        $data['password'] = Crypt::encrypt($data['password']);
        //哈希加密
        // $data['password'] = HASH::make($data['password']);
+       //处理昵称
+       $data['nickname'] = str_random(8);
        //处理状态
-       $data['status'] = 0;
+       $data['status'] = 1;
+       //处理性别
+       $data['sex'] = 1;
        //处理token字
        $data['remember_token'] = str_random(50);
        //处理时间
@@ -238,28 +242,15 @@ class UserController extends Controller
    //详情
    public function details(Request $request)
    {
-    //时间格式转换
-    $tdata = DB::table('user') -> get();
-    $time  = $tdata[0] -> updated_at;
-    $ctime = $tdata[0] -> created_at;
-    $time  = date('Y-m-d H:i:s',$time);
-    $ctime = date('Y-m-d H:i:s',$ctime);
-    //搜索分页查询
-    $data = DB::table('user') -> where('name','like','%'.$request -> input('keywords').'%') -> paginate($request -> input('num', 10));
-    return view('admin.user.details', ['data' => $data, 'request' => $request -> all(), 'time' => $time, 'ctime' => $ctime]);
-   }
+      //搜索分页查询
+      $data = DB::table('user') -> where('name','like','%'.$request -> input('keywords').'%') -> paginate($request -> input('num', 10));
+      return view('admin.user.details', ['data' => $data, 'request' => $request -> all()]);
+
+  }
    //单个用户详情
    public function oneDetail($id)
    {
     $data = DB::table('user') -> where('id',$id) -> first();
-    //时间格式转换
-    $time  = $data -> created_at;
-    $utime = $data -> updated_at;
-    $time  = date('Y-m-d H:i:s',$time);
-    $utime = date('Y-m-d H:i:s',$utime);
-    $data -> created_at = $time;
-    $data -> updated_at = $utime;
-
     return view('admin.user.oneDetail', ['data' => $data]);
    }
 
