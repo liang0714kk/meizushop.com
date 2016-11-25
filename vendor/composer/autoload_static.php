@@ -265,12 +265,25 @@ class ComposerStaticInit3a993f7c2684d7b095f35e783b77b4bf
     );
 
     public static $classMap = array (
-        'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+        'CreateAddersTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_22_700000_create_adders_table.php',
+        'CreateCartsTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_22_600000_create_carts_table.php',
+        'CreateConfigsTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_22_7000000_create_configs_table.php',
+        'CreateGcolorsTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_22_2000000_create_gcolors_table.php',
+        'CreateGdetailsTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_22_900000_create_gdetails_table.php',
+        'CreateGoodsTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_22_800000_create_goods_table.php',
+        'CreateGparTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_22_4000000_create_gpar_table.php',
+        'CreateGphotosTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_22_3000000_create_gphotos_table.php',
+        'CreateGqaTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_22_5000000_create_gqa_table.php',
+        'CreateGsupportsTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_22_6000000_create_gsupports_table.php',
+        'CreateOrdersTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_22_500000_create_orders_table.php',
+        'CreatePhotosTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_22_1000000_create_photos_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
+        'GdetailsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/GdetailsTableSeeder.php',
+        'GoodsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/GoodsTableSeeder.php',
         'Hamcrest\\Arrays\\IsArray' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArray.php',
         'Hamcrest\\Arrays\\IsArrayContaining' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContaining.php',
         'Hamcrest\\Arrays\\IsArrayContainingInAnyOrder' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContainingInAnyOrder.php',
@@ -340,6 +353,7 @@ class ComposerStaticInit3a993f7c2684d7b095f35e783b77b4bf
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
         'IlluminateQueueClosure' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
+        'OrdersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/OrdersTableSeeder.php',
         'PHPUnit_Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit_Extensions_GroupTestSuite' => __DIR__ . '/..' . '/phpunit/phpunit/src/Extensions/GroupTestSuite.php',
         'PHPUnit_Extensions_PhptTestCase' => __DIR__ . '/..' . '/phpunit/phpunit/src/Extensions/PhptTestCase.php',
@@ -773,7 +787,8 @@ class ComposerStaticInit3a993f7c2684d7b095f35e783b77b4bf
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
-        'UserTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UserTableSeeder;.php',
+        'UserTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UserTableSeeder.php',
+        'cartsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/cartsTableSeeder.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

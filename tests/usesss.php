@@ -61,9 +61,19 @@
                                    placeholder="请输入商品特色说明">
                         </div>
                           <div class="form-group">
+                            <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;品牌</label>
+                            <input name="supplier" value="{{ old('supplier') }}" type="text" class="form-control" id="exampleInputEmail1"
+                                   placeholder="请输入商品品牌名称">
+                        </div>
+                          <div class="form-group">
                             <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;价格</label>
                             <input name="price" value="{{ old('price') }}" type="text" class="form-control" id="exampleInputEmail1"
                                    placeholder="请输入商品价格">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;网络类型</label>
+                            <input name="net" value="{{ old('net') }}" type="text" class="form-control" id="exampleInputEmail1"
+                                   placeholder="请输入商品网络制式类型">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;颜色分类</label>
@@ -71,16 +81,55 @@
                                    placeholder="请输入商品颜色分类">
                         </div>
                         <div class="form-group">
+                            <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;内存容量</label>
+                            <input name="rom" value="{{ old('rom') }}" type="text" class="form-control" id="exampleInputEmail1"
+                                   placeholder="请输入商品内存容量">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;套餐</label>
+                            <input name="package" value="{{ old('package') }}" type="text" class="form-control" id="exampleInputEmail1"
+                                   placeholder="请输入商品套餐">
+                        </div>
+                        <div class="form-group">
                             <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;支持</label>
                             <input name="support" value="{{ old('support') }}" type="text" class="form-control" id="exampleInputEmail1"
                                    placeholder="请输入商品支持类型">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;售后服务</label>
+                            <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;配送至</label>
+                            <input name="area" value="{{ old('area') }}" type="text" class="form-control" id="exampleInputEmail1"
+                                   placeholder="请输入商品配送区域">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;支持</label>
                             <input name="server" value="{{ old('server') }}" type="text" class="form-control" id="exampleInputEmail1"
                                    placeholder="请输入商品售后服务提供者">
                         </div>
-                        
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;优惠券</label>
+                            <input name="ticket" value="{{ old('ticket') }}" type="text" class="form-control" id="exampleInputEmail1"
+                                   placeholder="请输入商品优惠方案">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;输出频段</label>
+                            <input name="hz" value="{{ old('hz') }}" type="text" class="form-control" id="exampleInputEmail1"
+                                   placeholder="请输入商品输出频率">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;USB输出</label>
+                            <input name="usb" value="{{ old('usb') }}" type="text" class="form-control" id="exampleInputEmail1"
+                                   placeholder="请输入商品USB输出">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;尺寸</label>
+                            <input name="size" value="{{ old('size') }}" type="text" class="form-control" id="exampleInputEmail1"
+                                   placeholder="请输入商品尺寸">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;续航里程</label>
+                            <input name="mile" value="{{ old('mile') }}" type="text" class="form-control" id="exampleInputEmail1"
+                                   placeholder="请输入商品续航里程">
+                        </div>
                         <div class="form-group">
                             <label for="exampleInputFile">&nbsp;&nbsp;&nbsp;图像</label>
                             <input name="photo" type="file" id="exampleInputFile">

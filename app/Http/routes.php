@@ -97,6 +97,8 @@ Route::post('/admin/user/ajaxStatus', "Admin\UserController@ajaxStatus");
 
 
 
+
+
 //商品分类管理
 Route::resource('/admin/category', 'Admin\CategoryController');
 
@@ -116,3 +118,213 @@ Route::resource('/admin/goods', 'Admin\GoodsController');
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//网站配置
+Route::get('admin/config', 'Admin\ConfigController@index');
+Route::post('admin/config/update', 'Admin\ConfigController@update');
+
+// 后台主页
+Route::get('admin/index/index', 'Admin\IndexController@index');
+
+// 后台订单处理
+Route::resource('admin/order/order', 'Admin\OrderController');
+
+//用户编辑
+Route::get('/admin/user/edit/{id}', "Admin\UserController@edit");
+Route::post('/admin/user/update', "Admin\UserController@update");
+//删除用户
+Route::get('/admin/user/delete/{id}', "Admin\UserController@delete");
+//用户详情
+Route::get('/admin/user/details', "Admin\UserController@details");
+Route::get('/admin/user/oneDetail/{id}', "Admin\UserController@oneDetail");
+//后台登录
+Route::get('admin/login/login', "Admin\LoginController@login");
+Route::post('admin/login/signin', "Admin\LoginController@signin");
+//后台退出登录
+Route::get('admin/login/logout', "Admin\LoginController@logout");

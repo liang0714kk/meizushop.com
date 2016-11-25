@@ -19,14 +19,16 @@ class CreateOrdersTable extends Migration
             $table->integer('phone')-> unique() -> comment('收件人手机');
             $table->string('remark')  -> comment('配送说明');
             $table->integer('date') -> comment('订单日期');
+            $table->integer('no') -> comment('数量');
             $table->integer('num') -> comment('订单编号');
             $table->double('total') -> comment('订单总金额');
             $table->integer('uid') -> comment('会员编号');
             $table->integer('payid') -> comment('支付编号');
+            $table->integer('paytime') -> comment('支付时间');
             $table->integer('deliverid') -> comment('配送编号');
-            $table->string('state') -> comment('是否确认') -> default('未确认');
-            $table->string('pay') -> comment('是否支付') -> default('未支付');
-            $table->string('deliver') -> comment('是否发货') -> default('未发货');
+            $table->integer('state') -> comment('是否确认') -> default('0');
+            $table->integer('pay') -> comment('是否支付') -> default('0');
+            $table->integer('deliver') -> comment('是否发货') -> default('0');
         });
     }
 

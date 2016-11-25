@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>魅族商城 - {{ config('app.name') }} - @yield('title')</title>
+    <title>{{ config('app.name') }}  @yield('title')</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -43,7 +43,7 @@
 
     <header class="main-header">
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="{{ url('/admin/index/index') }}" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>A</b>LT</span>
             <!-- logo for regular state and mobile devices -->
@@ -291,7 +291,7 @@
                                     <a href="#" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="{{ url('/admin/login/logout')}} " class="btn btn-default btn-flat">退出</a>
                                 </div>
                             </li>
                         </ul>
@@ -332,31 +332,42 @@
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
                 <li class="header">后台控制列表</li>
-                <li class="active treeview">
+                <li class="treeview active">
                     <a href="#">
-                        <i class="fa fa-dashboard"></i> <span>用户管理</span> <i
+                        <i class="fa fa-folder"></i> <span>用户管理</span> <i
                             class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li class="active"><a href="{{ asset('/admin/user/add') }}"><i class="fa fa-circle-o"></i>添加用户</a></li>
+                        <li><a href="{{ asset('/admin/user/add') }}"><i class="fa fa-circle-o"></i>添加用户</a></li>
                         <li><a href="{{ asset('/admin/user/index') }}"><i class="fa fa-circle-o"></i> 用户列表</a></li>
+                        <li><a href="{{ asset('/admin/user/details') }}"><i class="fa fa-circle-o"></i> 用户详情列表</a></li>
+                    </ul>
+                </li>
+                <li class="treeview active">
+                    <a href="#">
+                        <i class="fa fa-folder"></i>
+                        <span>分类管理</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{ asset('/admin/category/create') }}"><i class="fa fa-circle-o"></i>添加分类</a></li>
+                        <li><a href="{{ asset('/admin/category') }}"><i class="fa fa-circle-o"></i>分类列表</a></li>
+                    </ul>
+                </li>
+                <li class="treeview active">
+                    <a href="#">
+                        <i class="fa fa-folder"></i>
+                        <span>商品管理</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{ asset('/admin/goods/create') }}"><i class="fa fa-circle-o"></i>添加商品</a></li>
+                        <li><a href="{{ asset('/admin/goods') }}"><i class="fa fa-circle-o"></i>商品列表</a></li>
+                        <li><a href="{{ asset('/admin/goods') }}"><i class="fa fa-circle-o"></i>下架商品</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
-                    <a href="#">
+                    <a href="{{ url('/admin/config')}}">
                         <i class="fa fa-files-o"></i>
-                        <span>商品管理</span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="{{ asset('/admin/category/create') }}"><i class="fa fa-circle-o"></i>分类管理</a></li>
-                        <li><a href="{{ asset('/admin/category') }}"><i class="fa fa-circle-o"></i>商品分类列表</a></li>
-                        <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i>下架商品</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="pages/widgets.html">
-                        <i class="fa fa-th"></i> <span>商品详情</span>
-                        <small class="label pull-right bg-green">规格参数</small>
+                        <span>网站配置</span>
                     </a>
                 </li>
 
