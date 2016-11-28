@@ -101,7 +101,10 @@ Route::post('/admin/user/ajaxStatus', "Admin\UserController@ajaxStatus");
 
 //商品分类管理
 Route::resource('/admin/category', 'Admin\CategoryController');
-
+//商品属性添加
+Route::get('/admin/goods/attr/{id}', 'Admin\GoodsController@attr');
+//双击修改状态
+Route::post('/admin/goods/ajaxStatus', 'Admin\GoodsController@ajaxStatus');
 //商品详情
 Route::resource('/admin/goods', 'Admin\GoodsController');
 

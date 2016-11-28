@@ -36,7 +36,7 @@
                         <div class="row">
                             <div class="col-md-2">
                             <div class="form-group">
-                            <select name="num" class="form-control select2, col-md-2"">
+                            <select name="num" class="form-control select2, col-md-2">
                                 <option
                                 @if(!empty($request['num']) && $request['num'] == 10)
                                     selected = "selected"

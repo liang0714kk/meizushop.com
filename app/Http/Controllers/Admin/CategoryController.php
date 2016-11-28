@@ -129,6 +129,7 @@ class CategoryController extends Controller
     {
         //处理编辑数据
         $data = $request -> except('_token', '_method');
+        
 
         //添加到数据库
         if($data['pid'] == 0)

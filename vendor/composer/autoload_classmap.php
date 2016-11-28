@@ -23,7 +23,6 @@ return array(
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/src/Facade.php',
     'File_Iterator_Factory' => $vendorDir . '/phpunit/php-file-iterator/src/Factory.php',
-    'GdetailsTableSeeder' => $baseDir . '/database/seeds/GdetailsTableSeeder.php',
     'GoodsTableSeeder' => $baseDir . '/database/seeds/GoodsTableSeeder.php',
     'Hamcrest\\Arrays\\IsArray' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArray.php',
     'Hamcrest\\Arrays\\IsArrayContaining' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContaining.php',
@@ -530,4 +529,5 @@ return array(
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
     'UserTableSeeder' => $baseDir . '/database/seeds/UserTableSeeder.php',
     'cartsTableSeeder' => $baseDir . '/database/seeds/cartsTableSeeder.php',
+    'gdetailsTableSeeder' => $baseDir . '/database/seeds/gdetailsTableSeeder.php',
 );
