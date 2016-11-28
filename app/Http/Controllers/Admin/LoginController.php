@@ -24,11 +24,14 @@ class LoginController extends Controller
         $res = DB::table('user') -> where('name', $request -> name) -> first();
         if($res)
         {
-            $password = Crypt::decrypt($res -> password);
+            $password = $res -> password;
+            // $password = Crypt::decrypt($res -> password);
             $rpassword = $request -> password;
             if($rpassword == $password)
             {
-                session(['master' => $res]);
+                //配置信息
+                $config = DB::table('configs') -> first();
+                session(['master' => $res, 'config' => $config]);
                 $data = DB::table('user') -> where('name', $request -> name) -> first() -> updated_at;
                 $time = time();
                 $data = $time;

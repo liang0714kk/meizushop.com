@@ -23,7 +23,7 @@ class GdetailsTableSeeder extends Seeder
             $user['rom'] = str_random(5);
             $user['package'] = str_random(5);
             $user['support'] = str_random(5);
-            $user['adder'] = str_random(5);
+            $user['area'] = str_random(5);
             $user['server'] = str_random(5);
             $user['ticket'] = 0;
             $user['hz'] = 0;
@@ -31,7 +31,7 @@ class GdetailsTableSeeder extends Seeder
             $user['size'] = 0;
             $user['created_at'] = rand(1000000000, 1400000000);
             $user['updated_at'] = rand(1000000000, 1400000000);
-            $user['pid'] = 0;
+            $user['pid'] = rand(1,100);
             $tmp[] = $user;
         }
         DB::table('gdetails') -> insert($tmp);

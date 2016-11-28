@@ -49,13 +49,10 @@
         <a href="{{ url('/admin/index/index') }}" class="logo">
 
             <!-- mini logo for sidebar mini 50x50 pixels -->
-<<<<<<< HEAD
-            <span class="logo-mini"><b></b></span>
-=======
-            <span class="logo-mini"><b>M</b></span>
->>>>>>> 75b23a69687b7ec14352c4f0d6f6ff5a99e58a09
+            <span class="logo-mini"><img src="/uploads/logo/{{ session('config') -> minlogo }}" alt=""></span>
+
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><img width="230" height="50" src="/uploads/logo/{{ $config -> logo}}" alt="" style="margin:-13px;"></span>
+            <span class="logo-lg"><img width="230" height="50" src="/uploads/logo/{{ session('config') -> logo }}" alt="" style="margin:-13px;"></span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -65,11 +62,8 @@
             </a>
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
-<<<<<<< HEAD
-                       
-=======
+
                     <!-- User Account: style can be found in dropdown.less -->
->>>>>>> 75b23a69687b7ec14352c4f0d6f6ff5a99e58a09
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="{{ asset('/uploads/avater/') }}/{{ session('master') -> photo }}"  class="user-image" alt="User Image">
@@ -84,22 +78,10 @@
                                     <small>注册时间:{{ date('Y-m',session('master') -> created_at) }}</small>
                                 </p>
                             </li>
-                            <!-- Menu Body -->
-                            <li class="user-body">
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Followers</a>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Sales</a>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Friends</a>
-                                </div>
-                            </li>
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    <a href="#" class="btn btn-default btn-flat">商城</a>
                                 </div>
                                 <div class="pull-right">
                                     <a href="{{ url('/admin/login/logout')}} " class="btn btn-default btn-flat">退出</a>
@@ -167,10 +149,16 @@
                 <li class="treeview active">
                     <a href="#">
                         <i class="fa fa-folder"></i>
-                        <span>商品管理</span> <i class="fa fa-angle-left pull-right"></i>
+                        <span>商品管理</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                        <ul class="treeview-menu">
+                        <li><a href="{{ asset('/admin/goods/create') }}"><i class="fa fa-circle-o"></i>添加商品</a></li>
+                        <li><a href="{{ asset('/admin/goods') }}"><i class="fa fa-circle-o"></i>商品列表</a></li>
+                        <li><a href="{{ asset('/admin/goods') }}"><i class="fa fa-circle-o"></i>下架商品</a></li>
+                    </ul>
                     </a>
-<<<<<<< HEAD
-                </li>               
+
+                </li>
                  <li class="treeview">
                     <a href="#">
                         <i class="fa fa-files-o"></i> <span>订单管理</span>
@@ -179,12 +167,6 @@
                     <ul class="treeview-menu">
                         <li><a href="{{ url('/admin/order/order')}}"><i class="fa fa-circle-o"></i>订单列表</a></li>
                         <li><a href="{{ url('/admin/carts/index')}}"><i class="fa fa-circle-o"></i> 购物车</a></li>
-=======
-                    <ul class="treeview-menu">
-                        <li><a href="{{ asset('/admin/goods/create') }}"><i class="fa fa-circle-o"></i>添加商品</a></li>
-                        <li><a href="{{ asset('/admin/goods') }}"><i class="fa fa-circle-o"></i>商品列表</a></li>
-                        <li><a href="{{ asset('/admin/goods') }}"><i class="fa fa-circle-o"></i>下架商品</a></li>
->>>>>>> 75b23a69687b7ec14352c4f0d6f6ff5a99e58a09
                     </ul>
                 </li>
                 <li class="treeview">
@@ -203,7 +185,7 @@
         <div class="pull-right hidden-xs">
             <b>Version</b> 2.3.0
         </div>
-        <strong>Copyright {{ $config -> copyright}}</strong>
+        <strong>Copyright {{ session('config') -> copyright}}</strong>
     </footer>
 
     <!-- Control Sidebar -->

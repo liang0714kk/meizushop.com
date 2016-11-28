@@ -33,10 +33,6 @@ class CreateGdetailsTable extends Migration
             $table->string('usb') -> comment('USB输出');
             $table->string('size') -> comment('尺寸');
             $table->string('mile') -> comment('里程');
-<<<<<<< HEAD
-            $table->integer('pid') -> comment('商品父id');
-=======
->>>>>>> 873c7c04f389898568ccade5958f2493f601e141
             $table->integer('created_at') -> comment('创建时间');
             $table->integer('updated_at') -> comment('更新时间');
 

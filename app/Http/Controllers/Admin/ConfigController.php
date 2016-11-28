@@ -61,6 +61,9 @@ class ConfigController extends Controller
     		-> update($data);
     	if($res)
 		{
+            //配置信息
+            $config = DB::table('configs') -> first();
+            session(['config' => $config]);
 			return redirect('/admin/index/index') -> with('info', '修改成功');
 		}else
 		{

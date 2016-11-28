@@ -26,16 +26,8 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('carts')->comment('购物车状态');
             $table->integer('level')->comment('等级')->default(10);
             $table->rememberToken()->comment('令牌');
-<<<<<<< HEAD
             $table->integer('created_at')->comment('创建时间');
             $table->integer('updated_at')->comment('更新时间');
-
-=======
-            $table->integer('created_at')->comment('用户创建时间');
-            $table->integer('updated_at')->comment('用户登录时间');
-
-
->>>>>>> 873c7c04f389898568ccade5958f2493f601e141
         });
     }
 
