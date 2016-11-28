@@ -14,8 +14,10 @@ class CreateGdetailsTable extends Migration
     {
         Schema::create('gdetails', function (Blueprint $table) {
             $table->increments('id') -> comment('编号');
-            $table->string('name') -> comment('商品名称');
+            $table->string('name') -> unique()-> comment('商品名称');
             $table->string('explain') -> comment('说明');
+            $table->integer('pid') -> comment('商品父id');
+            $table->string('supplier') -> comment('品牌');
             $table->double('price') -> comment('商品价格');
             $table->string('color') -> comment('颜色');
             $table->string('photo') -> comment('图片');
@@ -23,7 +25,7 @@ class CreateGdetailsTable extends Migration
             $table->string('rom') -> comment('内存');
             $table->string('package') -> comment('套餐');
             $table->string('support') -> comment('支持');
-            $table->string('adder') -> comment('地址');
+            $table->string('area') -> comment('配送区域');
             $table->string('server') -> comment('售后服务');
             $table->integer('num') -> comment('数量');
             $table->string('ticket') -> comment('购物券');
@@ -31,7 +33,10 @@ class CreateGdetailsTable extends Migration
             $table->string('usb') -> comment('USB输出');
             $table->string('size') -> comment('尺寸');
             $table->string('mile') -> comment('里程');
+<<<<<<< HEAD
             $table->integer('pid') -> comment('商品父id');
+=======
+>>>>>>> 873c7c04f389898568ccade5958f2493f601e141
             $table->integer('created_at') -> comment('创建时间');
             $table->integer('updated_at') -> comment('更新时间');
 
