@@ -207,7 +207,9 @@ class UserController extends Controller
         //执行
         $res = DB::table('user') -> where('id', $request -> id) -> update($data);
         if($res)
-        {
+        {  
+            $res = DB::table('user') -> where('id', $request -> id) -> first();
+            session(['master' => $res]);
             return redirect('admin/user/index') -> with(['info' => '修改成功']);
         }else
         {
