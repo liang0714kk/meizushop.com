@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+@section('content')
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name') }}  @yield('title')</title>
+    <!-- <link rel="icon" href="/logo.ico" type="image/x-icon"/> -->
+    <link href="//store.res.meizu.com/resources/php/store/java/layout/img/favicon-2e71785f44.ico" rel="icon" type="image/x-icon" />
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -46,7 +49,11 @@
         <a href="{{ url('/admin/index/index') }}" class="logo">
 
             <!-- mini logo for sidebar mini 50x50 pixels -->
+<<<<<<< HEAD
             <span class="logo-mini"><b></b></span>
+=======
+            <span class="logo-mini"><b>M</b></span>
+>>>>>>> 75b23a69687b7ec14352c4f0d6f6ff5a99e58a09
             <!-- logo for regular state and mobile devices -->
             <span class="logo-lg"><img width="230" height="50" src="/uploads/logo/{{ $config -> logo}}" alt="" style="margin:-13px;"></span>
         </a>
@@ -58,19 +65,23 @@
             </a>
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
+<<<<<<< HEAD
                        
+=======
+                    <!-- User Account: style can be found in dropdown.less -->
+>>>>>>> 75b23a69687b7ec14352c4f0d6f6ff5a99e58a09
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="{{ asset('/ad/dist/img/user2-160x160.jpg') }}"  class="user-image" alt="User Image">
-                            <span class="hidden-xs">meizushop</span>
+                            <img src="{{ asset('/uploads/avater/') }}/{{ session('master') -> photo }}"  class="user-image" alt="User Image">
+                            <span class="hidden-xs">{{ session('master') -> nickname }}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <img src="{{ asset('/ad/dist/img/user2-160x160.jpg') }}"  class="img-circle" alt="User Image">
+                                <img src="{{ asset('/uploads/avater/') }}/{{ session('master') -> photo }}"  class="img-circle" alt="User Image">
                                 <p>
-                                    Alexander Pierce - Web Developer
-                                    <small>Member since Nov. 2012</small>
+                                    {{ session('master') -> name }}
+                                    <small>注册时间:{{ date('Y-m',session('master') -> created_at) }}</small>
                                 </p>
                             </li>
                             <!-- Menu Body -->
@@ -111,11 +122,11 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="{{ asset('/ad/dist/img/user2-160x160.jpg') }}"  class="img-circle" alt="User Image">
+                    <img src="{{ asset('/uploads/avater/') }}/{{ session('master') -> photo }}"  class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p>放牛的小羊</p>
-                    <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
+                    <p>{{ session('master') -> nickname }}</p>
+                    <a href="#"><i class="fa fa-circle text-success"></i>在线</a>
                 </div>
             </div>
             <!-- search form -->
@@ -132,33 +143,33 @@
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
                 <li class="header">后台控制列表</li>
-                <li class="active treeview">
+                <li class="treeview active">
                     <a href="#">
-                        <i class="fa fa-dashboard"></i> <span>用户管理</span> <i
+                        <i class="fa fa-folder"></i> <span>用户管理</span> <i
                             class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li class="active"><a href="{{ asset('/admin/user/add') }}"><i class="fa fa-circle-o"></i>添加用户</a></li>
+                        <li><a href="{{ asset('/admin/user/add') }}"><i class="fa fa-circle-o"></i> 添加用户</a></li>
                         <li><a href="{{ asset('/admin/user/index') }}"><i class="fa fa-circle-o"></i> 用户列表</a></li>
-                        <li><a href="{{ asset('/admin/user/details') }}"><i class="fa fa-circle-o"></i> 用户详情列表</a></li>
+                        <li><a href="{{ asset('/admin/user/details') }}"><i class="fa fa-circle-o"></i> 用户详情</a></li>
                     </ul>
                 </li>
-                <li class="treeview">
+                <li class="treeview active">
                     <a href="#">
-                        <i class="fa fa-files-o"></i>
-                        <span>商品管理</span>
+                        <i class="fa fa-folder"></i>
+                        <span>分类管理</span> <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i>添加商品</a></li>
-                        <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i>商品列表</a></li>
-                        <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i>下架商品</a></li>
+                        <li><a href="{{ asset('/admin/category/create') }}"><i class="fa fa-circle-o"></i>添加分类</a></li>
+                        <li><a href="{{ asset('/admin/category') }}"><i class="fa fa-circle-o"></i>分类列表</a></li>
                     </ul>
                 </li>
-                <li>
-                    <a href="pages/widgets.html">
-                        <i class="fa fa-th"></i> <span>商品详情</span>
-                        <small class="label pull-right bg-green">规格参数</small>
+                <li class="treeview active">
+                    <a href="#">
+                        <i class="fa fa-folder"></i>
+                        <span>商品管理</span> <i class="fa fa-angle-left pull-right"></i>
                     </a>
+<<<<<<< HEAD
                 </li>               
                  <li class="treeview">
                     <a href="#">
@@ -168,6 +179,12 @@
                     <ul class="treeview-menu">
                         <li><a href="{{ url('/admin/order/order')}}"><i class="fa fa-circle-o"></i>订单列表</a></li>
                         <li><a href="{{ url('/admin/carts/index')}}"><i class="fa fa-circle-o"></i> 购物车</a></li>
+=======
+                    <ul class="treeview-menu">
+                        <li><a href="{{ asset('/admin/goods/create') }}"><i class="fa fa-circle-o"></i>添加商品</a></li>
+                        <li><a href="{{ asset('/admin/goods') }}"><i class="fa fa-circle-o"></i>商品列表</a></li>
+                        <li><a href="{{ asset('/admin/goods') }}"><i class="fa fa-circle-o"></i>下架商品</a></li>
+>>>>>>> 75b23a69687b7ec14352c4f0d6f6ff5a99e58a09
                     </ul>
                 </li>
                 <li class="treeview">
@@ -395,3 +412,4 @@
 <script src="{{ asset('/ad/dist/js/demo.js') }}"></script>
 </body>
 </html>
+@endsession

@@ -31,7 +31,7 @@ class GdetailsTableSeeder extends Seeder
             $user['size'] = 0;
             $user['created_at'] = rand(1000000000, 1400000000);
             $user['updated_at'] = rand(1000000000, 1400000000);
-            $user['gid'] = 0;
+            $user['pid'] = 0;
             $tmp[] = $user;
         }
         DB::table('gdetails') -> insert($tmp);

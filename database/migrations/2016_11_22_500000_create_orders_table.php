@@ -16,7 +16,11 @@ class CreateOrdersTable extends Migration
             $table->increments('id') -> comment('编号');
             $table->string('name') -> comment('收件人');
             $table->string('adder') -> comment('收件人地址');
+<<<<<<< HEAD
             $table->string('phone')-> unique() -> comment('收件人手机');
+=======
+            $table->integer('phone') -> comment('收件人手机');
+>>>>>>> 75b23a69687b7ec14352c4f0d6f6ff5a99e58a09
             $table->string('remark')  -> comment('配送说明');
             $table->integer('date') -> comment('订单日期');
             $table->integer('no') -> comment('数量');

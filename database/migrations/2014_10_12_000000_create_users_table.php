@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
         Schema::create('user', function (Blueprint $table) {
             $table->increments('id')->comment('ID');
             $table->string('name')->comment('用户名');
-            $table->string('email')->unique()->comment('邮箱');
+            $table->string('email')->comment('邮箱');
             $table->string('password')->comment('密码');
             $table->tinyInteger('status')->comment('状态')->default(1);
             $table->tinyInteger('author')->comment('权限')->default(0);
@@ -29,11 +29,13 @@ class CreateUsersTable extends Migration
 <<<<<<< HEAD
             $table->integer('created_at')->comment('创建时间');
             $table->integer('updated_at')->comment('更新时间');
+
 =======
             $table->integer('created_at')->comment('用户创建时间');
             $table->integer('updated_at')->comment('用户登录时间');
 
->>>>>>> 791ecdd8729f123abef500ad1d54cb6cc22f5c51
+
+>>>>>>> 873c7c04f389898568ccade5958f2493f601e141
         });
     }
 
@@ -44,6 +46,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('user');
+        Schema::drop('users');
     }
 }

@@ -14,8 +14,12 @@ class CreateGoodsTable extends Migration
     {
         Schema::create('goods', function (Blueprint $table) {
             $table->increments('id') -> comment('编号');
-            $table->string('name') - unique() -> comment('商品名字');
+<<<<<<< HEAD
+            $table->string('name') -> comment('商品名字');
             $table->string('photo') -> comment('商品图片');
+=======
+            $table->string('name') -> unique() -> comment('商品名字');
+>>>>>>> 873c7c04f389898568ccade5958f2493f601e141
             $table->integer('pid')  -> comment('父类id');
             $table->string('path') -> comment('路径');
             $table->integer('created_at') -> comment('创建时间');

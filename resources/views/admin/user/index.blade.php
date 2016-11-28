@@ -75,6 +75,8 @@
                         <table id="example2" class="table table-bordered table-hover">
                             <thead>
                             <tr>
+                                <th>ID</th>
+                                <th>用户名</th>
                                 <th>用户编号</th>
                                 <th>昵称</th>
                                 <th>头像</th>
@@ -87,6 +89,7 @@
                             @foreach($data as $v)
                             <tr>
                                 <td class="ids">{{ $v -> id }}</td>
+                                <td class="name">{{ $v -> name }}</td>
                                 <td class="nickname">{{ $v -> nickname }}</td>
                                 <td><img width="60px" height="60px" src="/uploads/avater/{{ $v -> photo }}" /></td>
                                 <td>{{ $v -> email }}</td>
