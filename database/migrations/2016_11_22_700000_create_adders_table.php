@@ -16,7 +16,7 @@ class CreateAddersTable extends Migration
             $table->increments('id') -> comment('编号');
             $table->string('name') -> comment('姓名');
             $table->string('adder') -> comment('地址');
-            $table->integer('phone') -> comment('电话');
+            $table->string('phone') -> comment('电话');
             $table->integer('uid') -> comment('会员编号');
         });
     }

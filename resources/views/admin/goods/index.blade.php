@@ -1,4 +1,7 @@
 @extends('admin.layout')
+
+@section('title', $title)
+
 @section('content')
 
 <!-- Content Wrapper. Contains page content -->
@@ -25,7 +28,12 @@
                             <h3 class="box-title"> 商品基本信息 </h3>
                         </div><!-- /.box-header -->
                         <div class="box-body">
-
+                        @if(session('info'))
+                        <div id="jg" class="callout callout-info">
+                            <p>{{ session('info')}}</p>
+                        </div>
+                        @endif
+                        
                              <form action="{{ url('/admin/goods/') }}" method="get">
                         <div class="row">
                             <div class="col-md-2">

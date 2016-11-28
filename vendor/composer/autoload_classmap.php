@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'CartsTableSeeder' => $baseDir . '/database/seeds/CartsTableSeeder.php',
     'CreateAddersTable' => $baseDir . '/database/migrations/2016_11_22_700000_create_adders_table.php',
     'CreateCartsTable' => $baseDir . '/database/migrations/2016_11_22_600000_create_carts_table.php',
     'CreateConfigsTable' => $baseDir . '/database/migrations/2016_11_22_7000000_create_configs_table.php',
@@ -528,6 +529,9 @@ return array(
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
     'UserTableSeeder' => $baseDir . '/database/seeds/UserTableSeeder.php',
+<<<<<<< HEAD
     'cartsTableSeeder' => $baseDir . '/database/seeds/cartsTableSeeder.php',
     'gdetailsTableSeeder' => $baseDir . '/database/seeds/gdetailsTableSeeder.php',
+=======
+>>>>>>> 466082fae97086bf6431d037a53f0b0aa9bd3624
 );

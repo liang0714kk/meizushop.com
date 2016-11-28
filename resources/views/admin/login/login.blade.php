@@ -4,6 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <title>{{ config('app.name') }} - 后台登录</title>
+<!-- <link rel="icon" href="/logo.ico" type="image/x-icon"/> -->
+<link href="//store.res.meizu.com/resources/php/store/java/layout/img/favicon-2e71785f44.ico" rel="icon" type="image/x-icon" />
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="stylesheet" href="/ad/login/css.css">
 
@@ -79,12 +81,13 @@ input:focus
 <body>
 
 <div class="login">
-    <center><img src="/ad/login/img/logo.png" alt="logo"></center>
+    <center><img src="/uploads/logo/logo.png" alt="logo"></center>
     <br>
     <form method="post" action="/admin/login/signin">
      {{ csrf_field() }}
         <input type="text" name="name" placeholder="用户名" required="required" />
         <input type="password" name="password" placeholder="密码" required="required" />
+
         <button type="submit" class="btn btn-primary btn-block btn-large">登录</button>
         @if(session('info'))
             <div id="jg" class="btn-primary ">

@@ -181,8 +181,17 @@ class GoodsController extends Controller
     public function edit($id)
     {
         //编辑商品列表
+        $gdata = DB::table('goods') -> select('*', DB::raw("concat(path,',',id) as path_str")) -> orderBy('path_str') -> get();
+
+        foreach($gdata as $k => $v)
+        {
+            $num = substr_count($v -> path, ',');
+            $str = str_repeat('|----------', $num);
+            $gdata[$k] -> name = $str.$v -> name;
+        }
+
         $data = DB::table('gdetails') -> where('id', $id) -> first();
-        return view('admin.goods.edit', ['data' => $data, 'title' => '编辑商品信息']);
+        return view('admin.goods.edit', ['data' => $data, 'gdata' => $gdata, 'title' => '编辑商品信息']);
     }
 
     //修改添加商品属性
@@ -240,11 +249,11 @@ class GoodsController extends Controller
 
         if($res)
         {
-            return redirect('./admin/goods');
+            return redirect('./admin/goods') -> with(['info' => '编辑成功']);
         }
         else
             {
-                return back();
+                return back() -> with(['info' => '添加失败']);
             }
     }
 
@@ -258,24 +267,24 @@ class GoodsController extends Controller
     public function destroy($id)
     {
         //商品删除
-        echo $id;
-    //     $data = DB::table('gdetails') -> where('id', $id) -> first();
-    //     $res = DB::table('gdetails') -> where('id' , $id) -> delete();
-    //     // 获取原图片
-    //     $oldPhoto = $data -> photo;
-    //     if(file_exists('./uploads/goods/'.$oldPhoto))
-    //     {
-    //         if($oldPhoto != 'default.jpg')
-    //         {
-    //             unlink('./uploads/goods/'.$oldPhoto);
-    //         }
-    //     }
-    //     if($res)
-    //     {
-    //         return redirect('./admin/goods') -> with(['info' => '删除成功']);
-    //     }else
-    //     {
-    //         return back() -> with(['info' => '删除失败']);
-    //     }
+        
+        $data = DB::table('gdetails') -> where('id', $id) -> first();
+        $res = DB::table('gdetails') -> where('id' , $id) -> delete();
+        // 获取原图片
+        $oldPhoto = $data -> photo;
+        if(file_exists('./uploads/goods/'.$oldPhoto))
+        {
+            if($oldPhoto != 'default.jpg')
+            {
+                unlink('./uploads/goods/'.$oldPhoto);
+            }
+        }
+        if($res)
+        {
+            return redirect('./admin/goods') -> with(['info' => '删除成功']);
+        }else
+        {
+            return back() -> with(['info' => '删除失败']);
+        }
      }
 }

@@ -28,7 +28,7 @@
             <!-- fix for small devices only -->
             <div class="clearfix visible-sm-block"></div>
 
-            <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
                     <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
                     <div class="info-box-content">
@@ -37,22 +37,40 @@
                     </div><!-- /.info-box-content -->
                 </div><!-- /.info-box -->
             </div><!-- /.col -->
-            <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="info-box">
                     <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">新增会员</span>
-                        <span class="info-box-number">{{ $newMemember }}人</span>
+                        <span class="info-box-number">{{ $newMemember }}</span>
                     </div><!-- /.info-box-content -->
                 </div><!-- /.info-box -->
             </div><!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-green"><i class="fa fa-flag-o"></i></span>
+                        <div class="info-box-content" style="white-space:nowrap;">
+                            <span class="info-box-text">等待发货</span>
+                            <span id="orderwaite" class="info-box-number">{{ $orderwaite }}</span>
+                        </div><!-- /.info-box-content -->
+                    </div><!-- /.info-box -->
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-yellow"><i class="fa fa-files-o"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">商品总数</span>
+                            <span class="info-box-number">{{ $goodTotal }}种</span>
+                        </div><!-- /.info-box-content -->
+                    </div><!-- /.info-box -->
+                </div>
         </div><!-- /.row -->
 
         <div class="row">
             <!-- TABLE: LATEST ORDERS -->
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">今日订单</h3>
+                        <h3 class="box-title">等待发货</h3>
                         <div class="box-tools pull-right">
                             <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                             </button>
@@ -67,7 +85,7 @@
                                 <tr>
                                     <th>订单号</th>
                                     <th>商品名</th>
-                                    <th>状态</th>
+                                    <th>一键发货</th>
                                     <th>收件人名称</th>
                                     <th>收件人地址</th>
                                     <th>收件人电话</th>
@@ -78,22 +96,13 @@
                                 <tbody>
                             @foreach($newOrder as $v)
                                 <tr>
-                                    <td><a href="pages/examples/invoice.html">{{ $v -> num}}</a></td>
-                                    <td>商品名及属性组合需多表查询</td>
+                                    <td class="id">{{ $v -> id}}</a></td>
+                                    <td>{{ $v-> goodname}} {{ $v-> net}} {{ $v-> color}} {{ $v-> rom}}<br>
+                                    ¥{{ $v-> price}}x{{ $v-> num}}</td>
                                     <td>
-                                    @if($v -> deliver == 1)<span class="label label-info">已发货</span>
+                                    @if($v -> deliver == 1)<span class="deliver"><span class="label label-info">已发货</span></span>
                                     @elseif($v -> deliver == 0)
-                                    <span class="label label-info">未发货</span>
-                                    @endif
-                                    @if($v -> state == 1)
-                                    <span class="label label-warning">已收货</span>
-                                    @elseif($v -> state == 0)
-                                    <span class="label label-warning">未收货</span>
-                                    @endif
-                                    @if($v -> pay == 1)
-                                    <span class="label label-danger">已付款</span>
-                                    @elseif($v -> pay == 0)
-                                    <span class="label label-danger">未付款</span>
+                                    <span class="deliver"><span class="label label-info">发货</span></span>
                                     @endif
                                     </td>
                                     <td>{{ $v -> name}}</td>
@@ -108,8 +117,8 @@
                         </div><!-- /.table-responsive -->
                     </div><!-- /.box-body -->
                     <div class="box-footer clearfix">
-                        <a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-left">添加新订单</a>
-                        <a href="javascript::;" class="btn btn-sm btn-default btn-flat pull-right">查看所有订单</a>
+                        <a href="{{ url('/admin/order/order/create')}}" class="btn btn-sm btn-info btn-flat pull-left">添加新订单</a>
+                        <a href="{{ url('/admin/order/order')}}" class="btn btn-sm btn-default btn-flat pull-right">查看所有订单</a>
                     </div><!-- /.box-footer -->
                 </div><!-- /.box -->
         </div><!-- /.row -->
@@ -166,9 +175,9 @@
                                 </div>
                                 <div class="product-info">
                                     <a href="javascript::;" class="product-title">{{ $v -> name }}<span
-                                            class="label label-warning pull-right">价格</span></a>
+                                            class="label label-warning pull-right">{{ $v -> price}}</span></a>
                     <span class="product-description">
-                      多表描述信息
+                      {{ $v -> explain}} 
                     </span>
                                 </div>
                             </li><!-- /.item -->
@@ -194,6 +203,51 @@
         {
             $('#jg').fadeOut(1000);
         }, 1000);
+
+
+        $.ajaxSetup({
+        headers:{
+                    'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+                }
+                 });
+
+        //发货单击事件
+        $('.deliver').on('click', function()
+        {
+            //获取当前对象
+            var t = $(this);
+            //获取id
+            var id = $(this).parent().parent().parent().find('.id').html();
+            // 获取等待订单
+            var orderwaite = $('#orderwaite').html();
+            $.ajax({
+                type:"POST",
+                url:"{{ url('/admin/order/order/ajax/deliver') }}",
+                data:{id:id},
+                success:function(data)
+                {
+                    if(data == 7)
+                    {
+                        alert('未付款不能发货');
+                    }else if(data == 1)
+                    {   
+                        t.parent().parent().html("");
+                        orderwaite = orderwaite - 1;
+                        $('#orderwaite').html(orderwaite);
+                    }else if(data == 4)
+                    {
+                        alert('发货失败');
+                    }
+                },
+                error:function()
+                {
+                    alert('数据异常');
+                }
+            });
+            return false;
+        });
+
+
     }
 </script>
 @endsection
