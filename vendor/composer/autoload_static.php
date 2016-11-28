@@ -265,6 +265,7 @@ class ComposerStaticInit3a993f7c2684d7b095f35e783b77b4bf
     );
 
     public static $classMap = array (
+        'CartsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CartsTableSeeder.php',
         'CreateAddersTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_22_700000_create_adders_table.php',
         'CreateCartsTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_22_600000_create_carts_table.php',
         'CreateConfigsTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_22_7000000_create_configs_table.php',
@@ -788,7 +789,6 @@ class ComposerStaticInit3a993f7c2684d7b095f35e783b77b4bf
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
         'UserTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UserTableSeeder.php',
-        'cartsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/cartsTableSeeder.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

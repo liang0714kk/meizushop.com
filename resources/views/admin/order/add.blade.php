@@ -36,13 +36,13 @@
 			                    <h4>警告！</h4>
 			                    @foreach ($errors->all() as $error)
 							                <p>{{ $error }}</p>
-							            @endforeach
+							     @endforeach
 			                </div>
 							@endif
                             	{{ csrf_field()}}
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">商品编号</label>
-                                    <input type="gid" name="gid" class="form-control" id="exampleInputEmail1" value="{{ old('gid')}}"
+                                    <input type="number" name="gid" class="form-control" id="exampleInputEmail1" value="{{ old('gid')}}"
                                            placeholder="请输入商品编号">
                                 </div>
                                 <div class="form-group">
@@ -69,6 +69,13 @@
                                     <label for="exampleInputPassword1">留言</label>
                                     <input type="text" name="remark" class="form-control" id="exampleInputPassword1"
                                            placeholder="请输入留言">
+                                </div>
+                                    <label for="exampleInputPassword1">配送方式</label>
+                                    <select name="deliverid" class="form-control">
+                                        <option value="1">快递配送</option>
+                                        <option value="2">送货上门</option>
+                                        <option value="4">就近自提</option>
+                                    </select>
                                 </div>
                                 <div class="checkbox">
                                     <label>

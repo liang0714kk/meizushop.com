@@ -21,6 +21,7 @@ class CreateConfigsTable extends Migration
             $table->integer('open')->comment('开关') -> default(1);
             $table->string('copyright')->comment('版权') -> default(' ©2016 Meizu Telecom Equipment Co., Ltd. All rights reserved.');
             $table->string('help')->comment('帮助') -> default('支付方式-配送说明-售后服务-付款帮助');
+            $table->string('minlogo')->comment('minlogo') -> default('minlogo.ico');
         });
     }
 

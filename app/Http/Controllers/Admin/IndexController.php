@@ -14,7 +14,7 @@ class IndexController extends Controller
     //后台主页
     public function index()
     {
-    	//最近会员
+    	//新增会员
     	// $lastUpdate = Session() -> pull('updated_at');
     	$lastUpdate = 1350000000;
     	$newMemember = DB::table('user') -> where('created_at', '>=', $lastUpdate) -> count();
@@ -37,16 +37,32 @@ class IndexController extends Controller
     				-> where('paytime', '>=', $day_start)
     	 			-> sum('total');
 
-    	 //今日订单
+    	 //等待发货
     	 $newOrder = DB::table('orders')
     				-> where('pay', '1')
-                    -> where('paytime', '>=', $day_start)
-                    // -> LeftJoin('gdetails as g', 'g.id', '=', 'orders.gid')
-                    // -> select('orders.*', 'g.price', 'g.net', 'g.rom', 'g.color')
-    	 			-> get();
+                    -> where('deliver', 0)
+                    -> LeftJoin('gdetails as g', 'g.id', '=', 'orders.gid')
+                    -> select('orders.*', 'g.name as goodname', 'g.price', 'g.net', 'g.rom', 'g.color')
+    	 			-> orderBy('orders.date')
+                    -> get();
+                    // SELECT orders.*,gdetails.price,gdetails.color from orders LEFT join gdetails on  orders.gid = gdetails.id  where orders.pay = 1 ;
     	 // 今日新品
-         $newGood = DB::table('goods') -> where('created_at', '>=', $day_start) -> orderBy('created_at', 'desc')-> get(); 
+         $newGood = DB::table('goods') 
+                     -> LeftJoin('gdetails as g', 'g.pid', '=', 'goods.id')
+                     -> select('goods.*', 'g.explain', 'g.price')
+                     -> where('goods.created_at', '>=', $day_start) 
+                     -> orderBy('goods.created_at', 'desc')-> get(); 
 
-        return view('admin.index.index') -> with(['newMemember' => $newMemember, 'lastMemember' => $lastMemember, 'sailes' => $sailes, 'newOrder' => $newOrder, 'newGood' => $newGood]);
+         // 商品总数
+         // select count(DISTINCT pid) from gdetails;
+          $goodTotal = DB::table('gdetails') ->  distinct('pid') -> count('pid');
+
+         //等待发货
+         $orderwaite = DB::table('orders') -> where('pay', 1) -> where('deliver', 0) -> count(); 
+
+         //配置信息
+         $config = DB::table('configs') -> first();
+
+        return view('admin.index.index') -> with(['newMemember' => $newMemember, 'lastMemember' => $lastMemember, 'sailes' => $sailes, 'newOrder' => $newOrder, 'newGood' => $newGood, 'goodTotal' => $goodTotal, 'orderwaite' => $orderwaite, 'config' => $config]);
     }
 }
