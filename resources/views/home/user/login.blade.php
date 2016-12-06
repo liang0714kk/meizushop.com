@@ -23,7 +23,7 @@
     </div>
         <center>
         <div style="width:1423px;height:660px;background-color:black;">
-            <div style="background-color:white;width:400px;height:550px;float:right;margin-right:250px;margin-top:50px;">
+            <div style="background-color:white;width:400px;height:490px;float:right;margin-right:250px;margin-top:80px;">
                 <h2 style="margin-top:30px;color:#2292DD;">账号登录</h2>
                 <hr color="#1ABDE6" width="335px">
                 <br><br>

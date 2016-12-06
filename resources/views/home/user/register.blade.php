@@ -23,25 +23,35 @@
     </div>
         <center>
         <div style="width:1423px;height:660px;background-color:black;">
-            <div style="background-color:white;width:400px;height:570px;float:right;margin-right:250px;margin-top:50px;">
+            <div style="background-color:white;width:400px;height:580px;float:right;margin-right:250px;margin-top:45px;">
                 <h2 style="margin-top:30px;color:#2292DD;">账号注册</h2>
                 <hr color="#2292DD" width="335px">
                 <br>
                 <form action="/home/user/doregister" method="post" style="text-align: center;font-size:15px;">
 
-                @if(session('info'))
-                    <center><div id="jg" style="color:white;background-color:#2292DD;width:200px;">
-                        <p>{{ session('info')}}</p>
-                    </div><br></center>
-                @endif
+@if(session('info'))
+<center><div id="jg" style="color:white;background-color:#2292DD;width:200px;">
+<p>{{ session('info')}}</p>
+</div><br></center>
+@endif
 
-                @if(count($errors) > 0)
-                    <center><div id="jg" style="color:white;background-color:#2292DD;width:200px;">
-                        @foreach($errors->all() as $error)
-                            <p>{{ $error }}</p>
-                        @endforeach
-                    </div><br></center>
-                @endif
+@if(count($errors) > 0)
+<center><div id="jg" style="color:white;background-color:#2292DD;width:200px;">
+@foreach($errors->all() as $error)
+<p>{{ $error }}</p>
+@endforeach
+</div><br></center>
+@endif
+<script type="text/javascript">
+window.onload = function()
+{
+//设置定时器 淡出
+setInterval(function()
+{
+$("#jg").fadeOut('1000');
+},1000);
+}
+</script>
                 {{csrf_field()}}
                 <div>
                 <b>账 &nbsp;&nbsp;&nbsp;&nbsp; 号 : &nbsp;&nbsp;&nbsp;&nbsp;</b><input type="text" name="name" style="border:1px solid #ccc; width:250px;height:40px;" placeholder=" &nbsp;请输入6-18位Flyme账号"><br><br>

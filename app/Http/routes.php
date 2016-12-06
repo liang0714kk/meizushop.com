@@ -417,7 +417,6 @@ Route::get('home/index/inxex', "Admin\UserController@inHome");
 //后台购物车
 Route::get('admin/carts/index', 'Admin\CartsController@index');
 Route::get('admin/carts/delete/{id}', 'Admin\CartsController@delete');
-<<<<<<< HEAD
 
 
 
@@ -440,7 +439,8 @@ Route::get('admin/carts/delete/{id}', 'Admin\CartsController@delete');
 
 
 
-     
+
+
 
 
 
@@ -479,16 +479,3 @@ Route::get('home/ordercenter/address/delete/{id}', 'Home\OrdercenterController@d
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> 196e292591617f64d799155d2547c0609a0b08eb

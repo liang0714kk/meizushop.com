@@ -1,21 +1,18 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> 196e292591617f64d799155d2547c0609a0b08eb
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-<<<<<<< HEAD
+
     <title>| {{ config('app.name') }} - @yield('title')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-=======
+
     <title>魅族官网在线商店-提供魅族 PRO 5、魅族MX系列、魅蓝note系列、魅蓝metal系列产品的预约和购买</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="/jquery-1.8.3.min.js"></script>
->>>>>>> 196e292591617f64d799155d2547c0609a0b08eb
+
     <link href="//store.res.meizu.com/resources/php/store/java/layout/img/favicon-2e71785f44.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="//store.res.meizu.com/resources/php/store/java/layout/img/favicon-2e71785f44.ico" rel="icon" type="image/x-icon" />
     <meta name="description" content="魅族商城是魅族面向全国服务的官方电商平台，提供魅族 PRO 系列、MX系列、魅蓝note系列和魅蓝metal系列的手机，配件和智能硬件的预约和购买。官方正品，全国联保，全场包邮，7天无理由退货，15天换货保障。">
@@ -27,7 +24,7 @@
     <script src="js/html5shiv-3ed50bb69a.js" type="text/javascript"></script>
     <script src="js/es5-shim-50bbaee56e.js" type="text/javascript"></script>
     <![endif]-->
-<<<<<<< HEAD
+
 <link rel="stylesheet" href="{{url('/hm/css/main.css')}}"/>
 </head>
 <body>
@@ -56,7 +53,7 @@
             <li class="layout-topbar-right-links signout"><a class="layout-topbar-link" target="_blank" href="{{url('/home/user/register')}}">注册</a></li>
             <li class="layout-topbar-right-links member signin">
                 <a class="layout-topbar-link" target="_blank" href="http://me.meizu.com/member/index"><span class="layout-topbar-username" id="topbarUser"></span>的商城<i class="layout-topbar-triangle"></i></a>
-=======
+
 <link rel="stylesheet" href="{{url('/hm/css/pkg-home.css')}}"/>
 </head>
 <body>
@@ -82,21 +79,21 @@
             <!-- @else if(session('master')) -->
             <li class="layout-topbar-right-links member signin">
                 <a class="layout-topbar-link" target="_blank" href="http://me.meizu.com/member/index"><span class="layout-topbar-username" id="topbarUser">{{session('master') -> nickname}}</span>的商城<i class="layout-topbar-triangle"></i></a>
->>>>>>> 196e292591617f64d799155d2547c0609a0b08eb
+
                 <ul class="layout-topbar-downmenu">
                     <li class="layout-topbar-downmenu-item"><a class="layout-topbar-downmenu-link" data-mdesc="我的商城下拉框1" data-mtype="store_index_yt_my_1" target="_blank" href="http://me.meizu.com/member/address/index">地址管理</a></li>
                     <li class="layout-topbar-downmenu-item"><a class="layout-topbar-downmenu-link" data-mdesc="我的商城下拉框2" data-mtype="store_index_yt_my_2" target="_blank" href="http://me.meizu.com/member/repo_ticket/index">我的回购券</a></li>
                     <li class="layout-topbar-downmenu-item"><a class="layout-topbar-downmenu-link" data-mdesc="我的商城下拉框3" data-mtype="store_index_yt_my_3" target="_blank" href="http://me.meizu.com/member/advice/index">问题反馈</a></li>
-<<<<<<< HEAD
+
                     <li class="layout-topbar-downmenu-item"><a class="layout-topbar-downmenu-link exit" data-mdesc="我的商城下拉框4" data-mtype="store_index_yt_my_4" href="javascript:window.location.href='http://store.meizu.com/member/logout.htm?useruri='+window.location.href;">退出</a></li>
                 </ul>
             </li>
-=======
+
                     <li class="layout-topbar-downmenu-item"><a class="layout-topbar-downmenu-link exit" data-mdesc="我的商城下拉框4" data-mtype="store_index_yt_my_4" href="{{url('home/user/logout')}}">退出</a></li>
                 </ul>
             </li>
             <!-- @endif -->
->>>>>>> 196e292591617f64d799155d2547c0609a0b08eb
+
         </ul>
     </div>
 </div>
@@ -526,13 +523,13 @@
         <div class="layout-header-nav-downmenu" id="layoutHeaderNavDownmenu"></div>
     </div>
 </div>
-<<<<<<< HEAD
-      
+
+
 
 @yield('content')
 
 
-=======
+
 <div class="home-category-wrap">
     <div class="mzcontainer home-category-position">
         <div class="home-category-list">
@@ -2841,7 +2838,6 @@
         </div>
     </div>
         <div class="home-full-box" style="height: 80px;"></div>
->>>>>>> 196e292591617f64d799155d2547c0609a0b08eb
 <div class="layout-footer clearfix">
     <div class="mzcontainer">
         <ul class="layout-footer-service clearfix">
@@ -2979,8 +2975,7 @@ $(function(){
     })();
 </script>
 
-<<<<<<< HEAD
-=======
+
 <script type="text/javascript" charset="utf-8">
     var _hmt = _hmt || [];
     (function () {
@@ -2990,7 +2985,7 @@ $(function(){
         s.parentNode.insertBefore(hm, s);
     })();
 </script>
->>>>>>> 196e292591617f64d799155d2547c0609a0b08eb
+
 
 <script type="text/javascript">
     var _hmt = _hmt || [];

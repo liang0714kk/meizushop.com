@@ -166,7 +166,7 @@ class PersonalController extends Controller
     //验证码
     public function ajaxNewEmail(Request $request)
     {
-        $code = rand(10000,999999);
+        $code = rand(100000,999999);
         session('master') -> code = $code;
         $data = $request -> except('_token');
         $res  = DB::table('user') -> where('id', $data['id']) -> first();

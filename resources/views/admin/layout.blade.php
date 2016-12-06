@@ -171,16 +171,16 @@
                     <ul class="treeview-menu">
                         <li><a href="{{ asset('/admin/goods/create') }}"><i class="fa fa-circle-o"></i>添加商品</a></li>
                         <li><a href="{{ asset('/admin/goods/') }}"><i class="fa fa-circle-o"></i>商品列表</a></li>
-                       
+
                     </ul>
-<<<<<<< HEAD
+
                 </li>
 
                  <li class="treeview">
-=======
-                </li>               
+
+                </li>
                  <li class="treeview active">
->>>>>>> 3a0340987ac218709bb37d27f7df348e5319c433
+
                     <a href="#">
                         <i class="fa fa-folder"></i> <span>订单管理</span>
                         <i class="fa fa-angle-left pull-right"></i>

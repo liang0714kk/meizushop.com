@@ -51,7 +51,7 @@ class CartController extends Controller
    		$res['price'] = $price;
    		$res2 = DB::table('carts') -> where('gid', $v -> gid) -> update($res);
    	}
-   	$data = DB::table('carts') 
+   	$data = DB::table('carts')
    				-> leftJoin('gdetails as g', 'g.id', '=', 'carts.gid' )
     			-> select('carts.*', 'g.name as goodname', 'g.price', 'g.color', 'g.net', 'g.rom', 'g.photo')
     			-> where('uid', $uid) -> get();
@@ -80,6 +80,7 @@ class CartController extends Controller
         // $uid = sesion('master') -> id;
         $uid = 1;
         $data2 = $request -> except('_token', 'checked');
+        dd($data2);
         $data = DB::table('gdetails') -> where('id', $data2['gid']) -> first();
         $total = $data2['total'];
         $request = $data;
