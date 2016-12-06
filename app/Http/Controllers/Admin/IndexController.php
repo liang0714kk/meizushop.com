@@ -60,9 +60,7 @@ class IndexController extends Controller
          //等待发货
          $orderwaite = DB::table('orders') -> where('pay', 1) -> where('deliver', 0) -> count(); 
 
-         //配置信息
-         $config = DB::table('configs') -> first();
 
-        return view('admin.index.index') -> with(['newMemember' => $newMemember, 'lastMemember' => $lastMemember, 'sailes' => $sailes, 'newOrder' => $newOrder, 'newGood' => $newGood, 'goodTotal' => $goodTotal, 'orderwaite' => $orderwaite, 'config' => $config]);
+        return view('admin.index.index') -> with(['newMemember' => $newMemember, 'lastMemember' => $lastMemember, 'sailes' => $sailes, 'newOrder' => $newOrder, 'newGood' => $newGood, 'goodTotal' => $goodTotal, 'orderwaite' => $orderwaite]);
     }
 }

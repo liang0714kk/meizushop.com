@@ -61,8 +61,10 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">性 &nbsp;&nbsp;&nbsp; 别</label>&nbsp;&nbsp;&nbsp;
-                            男 <input name="sex" value="{{ $data -> sex }}" type="radio" value="1">&nbsp;&nbsp;&nbsp;
-                            女 <input name="sex" value="{{ $data -> sex }}" type="radio" value="0">
+                            男 <input name="sex" type="radio" value="1">
+                            &nbsp;&nbsp;&nbsp;
+
+                            女 <input name="sex" type="radio" value="0">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">邮 &nbsp;&nbsp;&nbsp; 箱</label>&nbsp;&nbsp;&nbsp;

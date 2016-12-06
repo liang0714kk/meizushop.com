@@ -49,10 +49,15 @@
         <a href="{{ url('/admin/index/index') }}" class="logo">
 
             <!-- mini logo for sidebar mini 50x50 pixels -->
+
             <span class="logo-mini"><img src="/uploads/logo/{{ session('config') -> minlogo }}" alt=""></span>
 
             <!-- logo for regular state and mobile devices -->
             <span class="logo-lg"><img width="230" height="50" src="/uploads/logo/{{ session('config') -> logo }}" alt="" style="margin:-13px;"></span>
+
+            <span class="logo-mini"><img src="/uploads/logo/{{ session('config') -> minlogo}}" alt=""></span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><img width="230" height="50" src="/uploads/logo/{{ session('config') -> logo}}" alt="" style="margin:-13px;"></span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -63,7 +68,9 @@
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
 
+
                     <!-- User Account: style can be found in dropdown.less -->
+
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="{{ asset('/uploads/avater/') }}/{{ session('master') -> photo }}"  class="user-image" alt="User Image">
@@ -81,7 +88,7 @@
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">商城</a>
+                                    <a href="/home/index/index" class="btn btn-default btn-flat">商城</a>
                                 </div>
                                 <div class="pull-right">
                                     <a href="{{ url('/admin/login/logout')}} " class="btn btn-default btn-flat">退出</a>
@@ -158,7 +165,16 @@
                     </ul>
                     </a>
 
+
                 </li>
+
+                    <ul class="treeview-menu">
+                        <li><a href="{{ asset('/admin/goods/create') }}"><i class="fa fa-circle-o"></i>添加商品</a></li>
+                        <li><a href="{{ asset('/admin/goods') }}"><i class="fa fa-circle-o"></i>商品列表</a></li>
+                        <li><a href="{{ asset('/admin/goods') }}"><i class="fa fa-circle-o"></i>下架商品</a></li>
+                    </ul>
+                </li>
+
                  <li class="treeview">
                     <a href="#">
                         <i class="fa fa-files-o"></i> <span>订单管理</span>

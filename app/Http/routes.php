@@ -18,26 +18,68 @@ Route::get('/form2', function(){
     return view('form2');
 });
 Route::post('admin/back', "Admin\UserController@back");
-
 //后台主页
 Route::get('/admin/index/index', "Admin\IndexController@index");
-
 //用户管理
 Route::get('/admin/user/add', "Admin\UserController@add");
 Route::post('/admin/user/insert',"Admin\UserController@insert");
 Route::get('/admin/user/index', "Admin\UserController@index");
-
 //双击修改状态
 Route::post('/admin/user/ajaxStatus', "Admin\UserController@ajaxStatus");
-
 //前台主页
 Route::get('/home/index/index', "Home\IndexController@index");
-//前台注册
+//前台注册页面
 Route::get('/home/user/register', "Home\UserController@register");
-//前台登录
+//前台执行注册
+Route::post('home/user/doregister', "Home\UserController@doregister");
+//邮箱验证
+Route::post('home/user/ajaxResEmail', "Home\UserController@ajaxResEmail");
+//前台登录页面
 Route::get('/home/user/login', "Home\UserController@login");
-//前台普通登录
-Route::get('/home/user/pLogin', "Home\UserController@pLogin");
+//前台执行登录
+Route::post('/home/user/dologin', "Home\UserController@dologin");
+//前台退出
+Route::get('/home/user/logout', "Home\UserController@logout");
+
+Route::get('/home/user/login', "Home\UserController@login");
+//验证码
+Route::get('home/user/captcha/{tmp}', "Home\UserController@captcha");
+//忘记密码
+//验证账号页面
+Route::get('home/user/forget1', "Home\UserController@forget1");
+//验证账号
+Route::post('/home/user/doName', "Home\UserController@doName");
+//验证邮箱
+Route::get('home/user/forget2', "Home\UserController@forget2");
+Route::post('/home/user/sendEmail', "Home\UserController@sendEmail");
+Route::get('home/user/reset/{id}/{remember_token}', "Home\UserController@reset");
+Route::get('home/user/info', "Home\UserController@info");
+Route::post('home/user/repass', "Home\UserController@repass");
+
+//个人中心
+Route::get('home/user/personal/index', "Home\PersonalController@index");
+//修改个人信息
+Route::get('home/user/personal/edit', "Home\PersonalController@edit");
+//修改头像
+Route::get('/home/user/personal/ePhoto', "Home\PersonalController@ePhoto");
+Route::post('/home/user/personal/editPhoto', "Home\PersonalController@editPhoto");
+//修改昵称
+Route::post('/home/user/personal/ajaxNickname',"Home\PersonalController@ajaxNickname");
+//修改密码
+Route::post('/home/user/personal/changePassword', "Home\PersonalController@changePassword");
+//修改邮箱(验证密码)
+Route::post('/home/user/personal/verPass', "Home\PersonalController@verPass");
+//修改邮箱(发送验证码)
+Route::post('/home/user/personal/ajaxNewEmail',"Home\PersonalController@ajaxNewEmail");
+//修改邮箱
+Route::post('/home/user/personal/verEmail', "Home\PersonalController@verEmail");
+//重定向edit
+Route::get('home/user/psersonal/index', "Home\PersonalController@index");
+//绑定手机号(验证密码)
+Route::post('/home/user/personal/verPhonePass', "Home\PersonalController@verPhonePass");
+//绑定手机号(验证手机)
+Route::post('home/user/personal/verNewPhone', "Home\PersonalController@verNewPhone");
+
 //服务条款
 Route::get('/home/user/service', "Home\UserController@service");
 //前台个人中心
@@ -332,6 +374,7 @@ Route::resource('admin/order/order', 'Admin\OrderController');
 Route::post('admin/order/order/ajax/deliver', 'Admin\OrderajaxController@deliver');
 Route::post('admin/order/order/ajax/pay', 'Admin\OrderajaxController@pay');
 
+
 //用户编辑
 Route::get('/admin/user/edit/{id}', "Admin\UserController@edit");
 Route::post('/admin/user/update', "Admin\UserController@update");
@@ -345,6 +388,8 @@ Route::get('admin/login/login', "Admin\LoginController@login");
 Route::post('admin/login/signin', "Admin\LoginController@signin");
 //后台退出登录
 Route::get('admin/login/logout', "Admin\LoginController@logout");
+//后台进入商城
+Route::get('home/index/inxex', "Admin\UserController@inHome");
 
 
 
