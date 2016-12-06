@@ -14,7 +14,7 @@ class CreateGdetailsTable extends Migration
     {
         Schema::create('gdetails', function (Blueprint $table) {
             $table->increments('id') -> comment('编号');
-            $table->string('name') -> unique()-> comment('商品名称');
+            $table->string('name') -> comment('商品名称');
             $table->string('explain') -> comment('说明');
             $table->integer('pid') -> comment('商品父id');
             $table->string('supplier') -> comment('品牌');
@@ -34,6 +34,7 @@ class CreateGdetailsTable extends Migration
             $table->string('size') -> comment('尺寸');
             $table->string('mile') -> comment('里程');
             $table->tinyinteger('status') -> comment('状态') -> default(0);
+            $table->tinyinteger('hot') -> comment('热品推荐') -> default(0);
             $table->integer('created_at') -> comment('创建时间');
             $table->integer('updated_at') -> comment('更新时间');
 

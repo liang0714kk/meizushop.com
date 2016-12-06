@@ -27,7 +27,7 @@ class GoodsController extends Controller
         return view('admin.goods.index', ['data' => $data, 'request' => $request -> all()], ['title' => '商品列表页']);
     }
 
-    // ajax 修改状态
+    // ajax 修改status
    public function ajaxStatus(Request $request)
    {
         $id = $request -> input('id');
@@ -59,6 +59,42 @@ class GoodsController extends Controller
         }
    }
 
+   //ajax修改hot
+
+   public function ajaxHot(Request $request)
+   {
+      //获取id 
+
+      $id = $request -> input('id');
+
+      //查询数据hot
+      $hot = DB::table('gdetails') -> where('id', $id) -> first() -> hot;
+
+      //判断并修改数据
+        if($hot == 1)
+        {
+            $res = DB::table('gdetails') -> where('id', $id) -> update(['hot' => 0]);
+            if($res)
+            {
+                return 0;
+            }
+            else
+            {
+                return 2;
+            }
+        }
+        else if($hot == 0)
+        {
+            $res = DB::table('gdetails') -> where('id' , $id) -> update(['hot' => 1]);
+            if($res)
+            {
+                return 1;
+            }else
+            {
+                return 2;
+            }
+        }
+   }
     /**
      * Show the form for creating a new resource.
      *

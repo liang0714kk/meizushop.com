@@ -87,6 +87,7 @@
                                     <th>支持</th>
                                     <th>服务</th>
                                     <th>状态</th>
+                                    <th>热品</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -110,6 +111,13 @@
                                         下架
                                     @endif
                                     </td>
+                                    <td class="hot">
+                                    @if($v -> hot == 0)
+                                        普通
+                                    @elseif($v -> hot == 1)
+                                        推荐
+                                    @endif
+                                    </td>
                                     <td>
                                     <div class="btn-group">
                                         <form action="{{url('/admin/goods/')}}/{{$v -> id}}" method="post">
@@ -126,6 +134,8 @@
             
                                             <li class="divider"></li>
                                             <li><a href="{{ url('/admin/goods/attr') }}/{{ $v -> id}}">添加属性</a></li>
+                                            <li><a href="{{ url('/admin/FAQ/add') }}/{{ $v -> name}}">常见问题</a></li>
+                                            <li><a href="{{ url('/admin/photos/add') }}/{{ $v -> name}}">详情图片</a></li>
                                         </ul>
                                     </div>
                                     </td>
@@ -187,8 +197,44 @@ window.onload = function()
                 }
             });
         });
+    
+        //双击改变hot状态
+        $('.hot').on('click',function(){
+            //获取当前对象
+            var t = $(this);
+            // console.log (t);
+            //获取id
+            var id = $(this).parent().find('.ids').html();
 
-        }
+            // console.log (id);
+            $.ajax({
+
+                type:"POST",
+                url:"{{ url('/admin/goods/ajaxHot')}}",
+                data:{id:id},
+                success:function(data)
+                {
+                    
+                    if(data == 2)
+                    {
+                        alert('修改失败');
+                    }else if(data == 0)
+                    {
+                        t.html('普通');
+                    }else if(data == 1)
+                    {
+                        t.html('推荐');
+                    }
+                },
+                error:function()
+                {
+                    alert('数据异常');
+                }
+            });
+        });
+    }
+    
+
 </script>
 
 @endsection

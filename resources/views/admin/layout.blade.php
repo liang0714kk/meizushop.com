@@ -151,7 +151,17 @@
                     <ul class="treeview-menu">
                         <li><a href="{{ asset('/admin/goods/create') }}"><i class="fa fa-circle-o"></i>添加商品</a></li>
                         <li><a href="{{ asset('/admin/goods/') }}"><i class="fa fa-circle-o"></i>商品列表</a></li>
-                       
+                        <li><a href="{{ asset('/admin/photos/index') }}"><i class="fa fa-circle-o"></i>详情图片</a></li>
+                    </ul>
+                </li>             
+                <li class="treeview active">
+                    <a href="#">
+                        <i class="fa fa-folder"></i>
+                        <span>文章管理</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{ asset('/admin/FAQ/index') }}"><i class="fa fa-circle-o"></i>常见问题展示</a></li>
+                        <li><a href="{{ asset('/home/feedback/index') }}"><i class="fa fa-circle-o"></i>反馈建议展示</a></li>
                     </ul>
                 </li>               
                  <li class="treeview active">
@@ -389,4 +399,3 @@
 <script src="{{ asset('/ad/dist/js/demo.js') }}"></script>
 </body>
 </html>
-@endsession

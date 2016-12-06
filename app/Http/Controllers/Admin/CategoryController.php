@@ -16,7 +16,7 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //分类列表
 
@@ -24,7 +24,9 @@ class CategoryController extends Controller
        -> leftJoin('goods as c2', 'c1.pid','=','c2.id')
        -> select('c1.*',DB::raw("concat(c1.path,',',c1.id) as path_str"),'c2.name as pname')
        -> orderBy('path_str')
-       -> get();
+       -> where('c1.name','like','%'.$request -> input('keywords').'%')
+       -> paginate($request -> input('num', 10));
+      
         
         foreach($data as $k => $v)
         {
@@ -32,8 +34,7 @@ class CategoryController extends Controller
             $str = str_repeat('|----------', $num);
             $data[$k] -> name = $str.$v -> name;
         }
-
-        return view('admin.category.index', ['title' => '分类列表页'],[ 'data' => $data]);
+        return view('admin.category.index', ['data' => $data, 'request' => $request -> all()],['title' => '分类列表页']);
     }
 
     /**
@@ -65,11 +66,82 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+      //处理字段
+      $this -> validate($request,[
+        'pid' => 'required',
+        'name' => 'required',
+        ],[
+        'pid.required' => '不能为空',
+        'name.required' => '分类名不能为空'
+        ]);
         //添加到数据库
-       $data = $request -> only('name', 'pid');
+       $data = $request -> except('_token');
+      //处理时间
+       $time = time();
+       $data['created_at'] = $time;
+       $data['updated_at'] = $time;
        if($data['pid'] == 0)
        {
             $data['path'] = 0;
+
+        //处理banner图片
+       if($request -> hasFile('banner'))
+       {
+          if($request -> file('banner') -> isValid())
+          {
+              $suffix = $request -> file('banner') -> getClientOriginalExtension();
+              $fileName = time().mt_rand(10000,999999).'.'.$suffix;
+              //移动文件
+              if(!file_exists('./uploads/banner/'))
+              {
+                  mkdir('./uploads/banner', true, '777');
+              }
+              $move = $request -> file('banner') -> move('./uploads/banner/', $fileName);
+
+              if($move)
+              {
+                  $data['banner'] = $fileName;
+              }
+              else
+              {
+                  $data['banner'] = 'default.jpg';
+              }
+          }
+       }
+       else
+       {
+          $data['banner'] = 'default.jpg';
+       }
+
+       //处理first图
+       if($request -> hasFile('photo'))
+       {
+          if($request -> file('photo') ->isValid())
+          {
+              $suffix = $request -> file('photo') -> getClientOriginalExtension();
+              $fileName = time().mt_rand(100000,999999).'.'.$suffix;
+              //移动图像文件
+              if(!file_exists('./uploads/first/'))
+              {
+                  mkdir('./uploads/first/', true, 777);
+              }
+              $move = $request -> file('photo') -> move('./uploads/first/', $fileName);
+
+              if($move)
+              {
+                  $data['photo'] = $fileName;
+              }
+              else
+              {
+                  $data['photo'] = 'default.jpg';
+              }
+          }
+       }
+       else
+       {
+          $data['photo'] = 'default.jpg';
+       }
+
        }
        else
        {
@@ -78,7 +150,10 @@ class CategoryController extends Controller
             $data['path'] = $parent_path.','.$request -> pid;
        }
 
-      //连通数据库
+
+ 
+
+      //连通数据库，执行添加
        $res = DB::table('goods') -> insert($data);
        if($res)
        {
@@ -130,11 +205,72 @@ class CategoryController extends Controller
         //处理编辑数据
         $data = $request -> except('_token', '_method');
         
+ 
 
-        //添加到数据库
+        //执行修改并作用数据库
         if($data['pid'] == 0)
        {
             $data['path'] = 0;
+
+        //获取banner图
+        $oldBanner = DB::table('goods') -> where('id', $id) -> first() -> banner;
+
+        // dd ($oldBanner);
+        if($request -> hasFile('banner'))
+        {
+            if($request -> file('banner') -> isValid())
+            {
+                $suffix = $request -> file('banner') -> getClientOriginalExtension();
+                $fileName = time(). mt_rand(100000,999999). '.' .$suffix;
+
+                //移动图像文件
+                $move = $request -> file('banner') -> move('./uploads/banner/', $fileName);
+
+                if($move)
+                {
+                    $data['banner'] = $fileName;
+
+                    //删除原来图像
+                    if(file_exists('./uploads/banner/'.$oldBanner))
+                    {
+                        if($oldBanner !== 'default.jpg')
+                        {
+                            unlink('./uploads/banner/'.$oldBanner);
+                        }
+                    }
+                }
+            }
+        }
+
+        //获取first图
+        $oldPhoto = DB::table('goods') -> where('id', $id) -> first() -> banner;
+
+        // dd ($oldBanner);
+        if($request -> hasFile('photo'))
+        {
+            if($request -> file('photo') -> isValid())
+            {
+                $suffix = $request -> file('photo') -> getClientOriginalExtension();
+                $fileName = time(). mt_rand(100000,999999). '.' .$suffix;
+
+                //移动图像文件
+                $move = $request -> file('photo') -> move('./uploads/first/', $fileName);
+
+                if($move)
+                {
+                    $data['photo'] = $fileName;
+
+                    //删除原来图像
+                    if(file_exists('./uploads/first/'.$oldPhoto))
+                    {
+                        if($oldPhoto !== 'default.jpg')
+                        {
+                            unlink('./uploads/first/'.$oldPhoto);
+                        }
+                    }
+                }
+            }
+        }
        }
        else
        {
@@ -168,9 +304,31 @@ class CategoryController extends Controller
         //删除分类数据
         $res = DB::table('goods') -> where('pid', $id) -> get();
 
+          dd ($res);
+            //banner图像删除
+            $oldBanner = $res -> banner;
+            if(file_exists('./uploads/banner/'.$oldBanner))
+            {
+                if($oldBanner !== 'default.jpg')
+                {
+                    unlink('./uploads/banner/'.$oldBanner);
+                }
+            }
+
+            //删除first图
+            $oldPhoto = $res -> photo;
+            if(file_exsts('./uploads/first/'.$oldPhoto))
+            {
+                if($oldPhoto !== 'default.jpg')
+                {
+                    unlink('./uploads/first/'.$oldPhoto);
+                }
+            }
         if(!$res)
         {
             $r = DB::table('goods') -> delete($id);
+
+            //执行判断
             if($r)
             {
                 return redirect('/admin/category') -> with(['info' => "删除成功"]);

@@ -72,7 +72,26 @@
                             <input name="name" value="{{ $data -> name }}" type="text" class="form-control" id="exampleInputName"
                                    placeholder="请输入商品分类名">
                         </div>
-                          
+                        
+                        <div class="form-group">
+                            <label for="exampleInputFile">&nbsp;&nbsp;&nbsp;原分类首图</label>
+                            <img width="122px" height="169px" src="/uploads/first/{{ $data -> photo }}"  />
+                        </div>
+
+                        <div class="form-group">
+                            <input name="photo" type="file" id="exampleInputFile">
+                            <p class="help-block">选择图片作为分类展示图</p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="exampleInputFile">&nbsp;&nbsp;&nbsp;原广告横图</label>
+                            <img width="620px" height="80px" src="/uploads/banner/{{ $data -> banner }}"  />
+                        </div>
+
+                        <div class="form-group">
+                            <input name="banner" type="file" id="exampleInputFile">
+                            <p class="help-block">选择图片作为广告展示横图</p>
+                        </div>
                     </div><!-- /.box-body -->
 
                     <div class="box-footer">

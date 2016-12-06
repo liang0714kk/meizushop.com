@@ -62,9 +62,21 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;商品分类名称</label>
                             <input name="name" value="{{ old('name') }}" type="text" class="form-control" id="exampleInputName"
-                                   placeholder="请输入商品分类名">
+                                   placeholder="请输入商品分类名" disabled>
                         </div>
-                          
+                         
+                        <div class="form-group">
+                        <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;分类展示图</label>
+                            <input name="photo" type="file" id="exampleInputFile">
+                            <p class="help-block">选择图片作为分类展示图</p>
+                        </div>
+                        
+                        <div class="form-group">
+                        <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;广告展示横图</label>
+                            <input name="banner" type="file" id="exampleInputFile">
+                            <p class="help-block">选择图片作为广告展示横图</p>
+                        </div> 
+                    
                     </div><!-- /.box-body -->
 
                     <div class="box-footer">

@@ -31,7 +31,7 @@ Route::get('/admin/user/index', "Admin\UserController@index");
 Route::post('/admin/user/ajaxStatus', "Admin\UserController@ajaxStatus");
 
 //前台主页
-Route::get('/home/index/index', "Home\IndexController@index");
+Route::get('/home/index/index', "home\IndexController@index");
 //前台注册
 Route::get('/home/user/register', "Home\UserController@register");
 //前台登录
@@ -114,10 +114,27 @@ Route::post('home/user/dologin', "Home\UserController@dologin");
 Route::resource('/admin/category', 'Admin\CategoryController');
 //商品属性添加
 Route::get('/admin/goods/attr/{id}', 'Admin\GoodsController@attr');
-//双击修改状态
+//双击修改status事件
 Route::post('/admin/goods/ajaxStatus', 'Admin\GoodsController@ajaxStatus');
+//双击修改hot事件
+Route::post('/admin/goods/ajaxHot', 'Admin\GoodsController@ajaxHot');
 //商品详情
 Route::resource('/admin/goods', 'Admin\GoodsController');
+//详情图片管理
+Route::controller('admin/photos', 'Admin\PhotosController');
+//文章管理之FAQ
+Route::controller('admin/FAQ', 'Admin\FAQController');
+//文章管理之反馈建议feedback前台页
+Route::get('home/feedback/add', 'Home\FeedbackController@add');
+//文章管理之后台展示页
+Route::get('home/feedback/index', 'Home\FeedbackController@index');
+Route::get('home/feedback/delete/{id}', 'Home\FeedbackController@delete');
+//单击feedback提交数据
+Route::post('/home/feedback/ajaxFeedback', 'Home\FeedbackController@AjaxFeedback');
+//前台商品分类展示页
+Route::get('/home/category/index', 'Home\CategoryController@index');
+
+
 
 
 
