@@ -367,7 +367,78 @@ Route::get('admin/login/logout', "Admin\LoginController@logout");
 
 
 
-//购物车
+//后台购物车
 Route::get('admin/carts/index', 'Admin\CartsController@index');
 Route::get('admin/carts/delete/{id}', 'Admin\CartsController@delete');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+
+
+
+
+
+//前台商品详情页
+Route::get('home/gdetail/{pid}/{name}', 'Home\gdetailController@index');
+
+// 提交订单
+Route::post('home/order', 'Home\OrderController@index');
+// 添加订单
+Route::post('home/order/addorder', 'Home\OrderController@add');
+//添加地址
+Route::post('home/order/ajax', 'Home\OrderController@ajax');
+//支付订单
+Route::get('home/order/pay', 'Home\OrderController@pay');
+
+//购物车
+Route::post('home/cart/ajax', 'Home\CartController@ajax');
+Route::get('home/cart/index', 'Home\CartController@index');
+Route::get('home/cart/delete/{gid}', 'Home\CartController@delete');
+Route::post('home/cart/pay', 'Home\CartController@pay');
+
+// 订单中心
+Route::get('home/ordercenter/index', 'Home\OrdercenterController@index');
+Route::get('home/ordercenter/delete/{id}', 'Home\OrdercenterController@delete');
+Route::get('home/ordercenter/update/{id}', 'Home\OrdercenterController@update');
+Route::get('home/ordercenter/paynow/{id}', 'Home\OrdercenterController@paynow');
+Route::get('home/ordercenter/nopay/', 'Home\OrdercenterController@nopay');
+Route::get('home/ordercenter/nodeliver/', 'Home\OrdercenterController@nodeliver');
+Route::get('home/ordercenter/nostate/', 'Home\OrdercenterController@nostate');
+Route::get('home/ordercenter/achive/', 'Home\OrdercenterController@achive');
+Route::get('home/ordercenter/address', 'Home\OrdercenterController@address');
+Route::post('home/ordercenter/address/add', 'Home\OrdercenterController@add');
+Route::get('home/ordercenter/address/delete/{id}', 'Home\OrdercenterController@deleteAdder');
+
+
+
+
+
+
+
+
+
+
+
+
+
 
