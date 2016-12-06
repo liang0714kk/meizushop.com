@@ -32,4 +32,5 @@ class DatabaseSeeder extends Seeder
         }
         DB::table('user') -> insert($tmp);
     }
+
 }

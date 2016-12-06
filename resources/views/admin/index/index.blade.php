@@ -177,7 +177,7 @@
                                     <a href="javascript::;" class="product-title">{{ $v -> name }}<span
                                             class="label label-warning pull-right">{{ $v -> price}}</span></a>
                     <span class="product-description">
-                      {{ $v -> explain}} 
+                      {{ $v -> explain}}
                     </span>
                                 </div>
                             </li><!-- /.item -->
@@ -188,8 +188,8 @@
                         <a href="javascript::;" class="uppercase">查看所有商品</a>
                     </div><!-- /.box-footer -->
                 </div><!-- /.box -->
-            </div><!-- /.col -->  
-        </div><!-- /.row -->        
+            </div><!-- /.col -->
+        </div><!-- /.row -->
 
 
 
@@ -230,7 +230,7 @@
                     {
                         alert('未付款不能发货');
                     }else if(data == 1)
-                    {   
+                    {
                         t.parent().parent().html("");
                         orderwaite = orderwaite - 1;
                         $('#orderwaite').html(orderwaite);

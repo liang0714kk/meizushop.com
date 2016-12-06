@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @extends('home.layout');
 
 @section('content');
@@ -323,3 +324,6 @@
     </div>
     @endforeach
 @endsection;
+=======
+@extends('home.layout')
+>>>>>>> 90e60ba55aab25317b9b32b41012d6d497be79ee
