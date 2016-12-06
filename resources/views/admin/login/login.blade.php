@@ -81,7 +81,7 @@ input:focus
 <body>
 
 <div class="login">
-    <center><img src="/uploads/logo/logo.png" alt="logo"></center>
+    <center><img width="100px" height="50px" src="/uploads/logo/{{ $logo -> logo }}" alt="logo"></center>
     <br>
     <form method="post" action="/admin/login/signin">
      {{ csrf_field() }}

@@ -36,7 +36,7 @@
                         <div class="row">
                             <div class="col-md-2">
                             <div class="form-group">
-                            <select name="num" class="form-control select2, col-md-2"">
+                            <select name="num" class="form-control select2, col-md-2">
                                 <option
                                 @if(!empty($request['num']) && $request['num'] == 10)
                                     selected = "selected"
@@ -76,8 +76,6 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>用户名</th>
-                                <th>用户编号</th>
                                 <th>昵称</th>
                                 <th>头像</th>
                                 <th>邮箱</th>
@@ -89,7 +87,6 @@
                             @foreach($data as $v)
                             <tr>
                                 <td class="ids">{{ $v -> id }}</td>
-                                <td class="name">{{ $v -> name }}</td>
                                 <td class="nickname">{{ $v -> nickname }}</td>
                                 <td><img width="60px" height="60px" src="/uploads/avater/{{ $v -> photo }}" /></td>
                                 <td>{{ $v -> email }}</td>

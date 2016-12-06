@@ -1,0 +1,266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="description" content="欢迎登录和注册魅族Flyme账号，您可以体验手机云服务功能，包括：在线下载应用，同步手机数据和查找手机等，让您的手机管理更加智能。">
+	<meta name="keywords" content="魅族  meizu 登录flyme 云服务  查找手机  充值账号  MX M9 MX2">
+	<meta content="width=1080" name="viewport">
+	<title>账号管理</title>
+	<link href="ePhoto_files/base.css" type="text/css" rel="Stylesheet">
+	<link href="ePhoto_files/head.css" type="text/css" rel="Stylesheet">
+	<link href="ePhoto_files/jquery-ui.css" type="text/css" rel="Stylesheet">
+	<link href="ePhoto_files/jquery.css" type="text/css" rel="Stylesheet">
+	<link href="ePhoto_files/mzhead20130905.css" type="text/css" rel="Stylesheet">
+	<link href="ePhoto_files/modifyIcon.css" type="text/css" rel="Stylesheet">
+	<link href="ePhoto_files/jquery_002.css" type="text/css" rel="stylesheet">
+</head>
+<body style="min-height: 1000px;">
+	<div id="content" class="content">
+		
+
+
+
+	
+<input id="mz_csrf_tks" value="" type="hidden">
+<div id="header-top" class="headWrap">
+	<a href="http://www.meizu.com/index.html" class="headLogo"><i class="i_icon"></i></a>
+	<ul class="headLeft">
+		<li class="head-store">
+			<a href="http://store.meizu.com/" class="" hidefocus=""><i class="i_icon"></i></a>
+		</li>
+		<li class="head-products">
+			<a href="http://www.meizu.com/products/pro5/summary.html" class="" hidefocus=""><i class="i_icon"></i></a>
+		</li>
+		<li class="head-retail">
+			<a href="http://retail.meizu.com/" class="" hidefocus=""><i class="i_icon"></i></a>
+		</li>
+		<li class="head-flyme">
+			<a href="http://www.flyme.cn/" class="" hidefocus=""><i class="i_icon"></i></a>
+		</li>
+		<li class="head-services">
+			<a href="http://service.meizu.com/" class="" hidefocus=""><i class="i_icon"></i></a>
+		</li>
+		<li class="head-bbs">
+			<a href="http://bbs.meizu.cn/" class="" hidefocus=""><i class="i_icon"></i></a>
+		</li>
+	</ul>
+
+	<div class="headRight">
+		<span id="loginWrap" style="">
+			<a id="head-name" class="linkAGray" href="https://i.flyme.cn/uc/webjsp/member/detail" title="放牛的小羊">放牛的小羊</a>
+			<span id="show-msg-pub" class="none">1</span>
+			<span class="line_head">|</span>
+			<a id="head-logout" class="linkAGray" href="javascript:window.location.href%20=%20'https://login.flyme.cn/sso/logout?useruri='+encodeURIComponent(window.location.href);">退出</a>
+		
+		</span>
+
+        <!--密码风险提示-->
+        <div id="show-psw-tip" class="none">
+            <div class="tip-content">
+                <div class="tip-span-msg">当前密码风险较高，请尽快修改密码</div>
+                <div class="tip-cancel"></div>
+            </div>
+        </div>
+
+		<span id="unloginWrap" style="display:none;">
+			<a href="javascript:window.location.href%20=%20'https://login.flyme.cn/sso/logout?useruri='+encodeURIComponent(window.location.href);" class="head-name">登录</a>
+			<span class="line_head">|</span>
+			<a href="https://i.flyme.cn/register" class="head-logout">注册</a>
+		</span>
+	</div>
+</div>
+
+		<div class="flymeContent">
+			
+
+<style type="text/css">
+	.navWrap{
+		height: 58px;
+		border-bottom: #e4e7e9 1px solid;
+	}
+	.navWrap .nav{
+		display: block;
+		float: left;
+		line-height: 58px;
+	}
+	.navWrap .nav li{
+		position: relative;
+		display: inline-block;
+		margin-right: 40px;
+		width: 100px;
+		height: 100%;
+		float: left;
+	}
+	.navWrap .nav li a{
+		display: inline-block;
+		width: 100%;
+		height: 56px;
+		font-size: 16px;
+		text-align: center;
+	}
+	.navWrap .nav .current{
+		margin: 0px auto;
+		height: 2px;
+		width: 100px;
+		overflow: hidden;
+		background-color: #1daeed;
+	}
+</style>
+<div id="navWrap" class="navWrap">
+	<ul class="nav">
+		<li id="accountManage"><a href="https://i.flyme.cn/uc/webjsp/member/detail" class="linkABlue">账号管理</a><div class="current"></div></li>
+		<li id="contact"><a href="https://pay.meizu.com/meibi/account" class="linkAGray">魅币</a></li>
+	</ul>
+</div>
+<div class="clear"></div>
+
+			<div id="mainWrap" class="mainWrap">
+				<div id="topWrap" class="topWrap">
+					<div class="top-leftWrap">
+						<span class="display fontBig">当前头像</span>
+						<img id="userImg" src="ePhoto_files/w200h200.jpg">
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="grayBorderB">
+					<div class="titleWrap">
+						<div class="leftWrap-bottom">
+							<span class="fright">支持jpg、jpeg、png、bmp格式，文件小于5M</span>
+							<span class="fontBig fleft">设置新头像</span>
+						</div>
+						<div class="clear"></div>
+					</div>
+			    </div>
+				<div id="upload">
+					<form id="uploadForm" name="uploadForm" enctype="multipart/form-data">
+						<div class="lineWrap grayTip divFloat" id="bg4chooseImg">
+							<a id="chooseImg" class="normalInput">
+								<em><i class="i_icon"></i>选择照片</em>
+							</a>
+						</div>
+						<input id="file" name="file" class="file" size="28" accept="image/*" type="file">
+						<!--[if lte IE 8]><span style="position:absolute; left:140px; top:5px">双击选择照片</span><![endif]-->
+					</form>
+					<div class="contain">
+							<div class="frame marginOrgFrame originalImg">
+								<img id="origImg" class="originalMaxWH" data-src="https://image.meizu.com/image/uc/aa362455465872554e2d572ee159859f?t=1480565246000" src="ePhoto_files/aa362455465872554e2d572ee159859f.jpg" style="top: 93px; left: 93px; width: 300px; display: none; visibility: hidden; height: 300px;"><div style="width: 300px; height: 300px; position: relative; background-color: white; top: 0px; left: 0px;" class="jcrop-holder"><div style="position: absolute; z-index: 600; width: 50px; height: 50px; top: 0px; left: 0px;"><div style="width: 100%; height: 100%; z-index: 310; position: absolute; overflow: hidden;"><img src="ePhoto_files/aa362455465872554e2d572ee159859f.jpg" style="border: medium none; visibility: visible; margin: 0px; padding: 0px; position: absolute; top: 0px; left: 0px; width: 300px; height: 300px;"><div style="position: absolute; opacity: 0.4;" class="jcrop-hline"></div><div style="position: absolute; opacity: 0.4;" class="jcrop-hline bottom"></div><div style="position: absolute; opacity: 0.4;" class="jcrop-vline right"></div><div style="position: absolute; opacity: 0.4;" class="jcrop-vline"></div><div class="jcrop-tracker" style="cursor: move; position: absolute; z-index: 360;"></div></div><div style="width: 100%; height: 100%; z-index: 320; display: block;"><div style="cursor: n-resize; position: absolute; z-index: 370;" class="ord-n jcrop-dragbar"></div><div style="cursor: s-resize; position: absolute; z-index: 371;" class="ord-s jcrop-dragbar"></div><div style="cursor: e-resize; position: absolute; z-index: 372;" class="ord-e jcrop-dragbar"></div><div style="cursor: w-resize; position: absolute; z-index: 373;" class="ord-w jcrop-dragbar"></div><div style="cursor: n-resize; position: absolute; z-index: 374; opacity: 0.5;" class="ord-n jcrop-handle"></div><div style="cursor: s-resize; position: absolute; z-index: 375; opacity: 0.5;" class="ord-s jcrop-handle"></div><div style="cursor: e-resize; position: absolute; z-index: 376; opacity: 0.5;" class="ord-e jcrop-handle"></div><div style="cursor: w-resize; position: absolute; z-index: 377; opacity: 0.5;" class="ord-w jcrop-handle"></div><div style="cursor: nw-resize; position: absolute; z-index: 378; opacity: 0.5;" class="ord-nw jcrop-handle"></div><div style="cursor: ne-resize; position: absolute; z-index: 379; opacity: 0.5;" class="ord-ne jcrop-handle"></div><div style="cursor: se-resize; position: absolute; z-index: 380; opacity: 0.5;" class="ord-se jcrop-handle"></div><div style="cursor: sw-resize; position: absolute; z-index: 381; opacity: 0.5;" class="ord-sw jcrop-handle"></div></div></div><div class="jcrop-tracker" style="width: 304px; height: 304px; position: absolute; top: -2px; left: -2px; z-index: 290; cursor: crosshair;"></div><input style="position: fixed; left: -120px; width: 12px;" class="jcrop-keymgr" type="radio"><img class="originalMaxWH" data-src="https://image.meizu.com/image/uc/aa362455465872554e2d572ee159859f?t=1480565246000" src="ePhoto_files/aa362455465872554e2d572ee159859f.jpg" style="top: 0px; left: 0px; width: 300px; display: block; visibility: visible; height: 300px; border: medium none; margin: 0px; padding: 0px; position: absolute; opacity: 0.2;"><div class="marginBigFrame bigImgTop" id="preview200" style="top: 20px; left: 375px;">
+								<div class="frame marginBigFrame bigImg">
+									<img id="bigImg" src="ePhoto_files/aa362455465872554e2d572ee159859f.jpg" style="width: 1200px; height: 1200px; margin-left: 0px; margin-top: 0px;">
+								</div>
+								<span class="imgTip big">200*200px</span>
+							</div><div class="commonFrame middleImgTop" id="preview100" style="top: 20px; left: 605px;">
+								<div class="frame commonFrame middleImg">
+									<img id="middleImg" src="ePhoto_files/aa362455465872554e2d572ee159859f.jpg" style="width: 600px; height: 600px; margin-left: 0px; margin-top: 0px;">
+								</div>
+								<span class="imgTip common">100*100px</span>
+							</div><div class="commonFrame smallImgTop" id="preview50" style="top: 20px; left: 735px;">
+								<div class="frame commonFrame smallImg">
+									<img id="smallImg" src="ePhoto_files/aa362455465872554e2d572ee159859f.jpg" style="width: 300px; height: 300px; margin-left: 0px; margin-top: 0px;">
+								</div>
+								<span class="imgTip small">50*50px</span>
+							</div></div>
+							</div>
+							<div class="instrunction">
+								您上传的头像会自动生成三种尺寸，请注意中小尺寸是否清晰
+							</div>
+							
+							
+							
+						</div>
+					<div class="lineWrap ftop" style="">
+						<a class="fullBtnBlue fleft" id="save">保存</a>
+						<a class="fullBtnGray black iconCancel fleft" id="cancel" href="https://i.flyme.cn/uc/webjsp/member/detail">取消</a>
+					</div>
+				</div>
+					<form id="scropForm" name="scropForm" enctype="application/x-www-form-urlencoded">
+						<input id="origIconUrl" name="origIconUrl" value="https://image.meizu.com/image/uc/aa362455465872554e2d572ee159859f?t=1480565246000" type="hidden">
+						<input id="x" name="x" value="0" type="hidden">
+						<input id="y" name="y" value="0" type="hidden">
+						<input id="w" name="w" value="19" type="hidden">
+						<input id="h" name="h" value="19" type="hidden"> 
+					</form>
+			</div>
+		</div>
+	</div>
+	
+
+
+
+
+<div id="flymeFooter" class="footerWrap">
+	<div class="footerInner">
+		<div class="footer-layer1">
+			<div class="footer-innerLink">
+				<a href="http://www.meizu.com/about.html" target="_blank" title="关于魅族">关于魅族</a>
+				<img class="foot-line" src="ePhoto_files/space.gif">
+				<a href="http://hr.meizu.com/" target="_blank" title="工作机会">工作机会</a>
+				<img class="foot-line" src="ePhoto_files/space.gif">
+				<a href="http://www.meizu.com/contact.html" target="_blank" title="联系我们">联系我们</a>
+				<img class="foot-line" src="ePhoto_files/space.gif">
+				<a href="http://www.meizu.com/legalStatement.html" target="_blank" title="法律声明">法律声明</a>
+				<img class="foot-line" src="ePhoto_files/space.gif">
+				
+				<div href="javascript:void(0);" id="globalName" class="footer-language" title="简体中文">
+					简体中文&nbsp;&nbsp;&nbsp;
+					<div id="globalContainer" class="footer-language_menu" style="left: 512px;">
+						<a href="https://i.flyme.cn/uc/webjsp/membericon/modify?lang=en_US" id="i18n-link" title="English" class="ClobalItem">English</a>
+						<script type="text/javascript" src="ePhoto_files/flow.js"></script><script>
+							;(function() {
+								var u = decodeURIComponent(location.href)
+								var r = /lang=([^&\s]+)/
+								var lowB = !('addEventListener' in window)
+								var addEvent = lowB ? window.attachEvent : window.addEventListener
+
+								if(r.test(u)) u = u.replace(r, 'lang=en_US')
+								else u += (~u.indexOf('?') ? '&' : '?') + 'lang=en_US'
+
+								addEvent(lowB ? 'onload' : 'load', function() {document.getElementById('i18n-link').setAttribute('href',u)})
+							}());
+						</script>
+					</div>
+				</div>
+			</div>
+			<div class="footer-service">
+				<span class="service-label">客服热线</span>
+				<span class="service-num">400-788-3333</span>
+				<a id="service-online" class="service-online" href="javascript:void(0);" title="在线客服">在线客服</a>
+			</div>
+			<div class="footer-outerLink">
+				<a class="footer-sinaMblog" href="http://weibo.com/meizumobile" target="_blank"><i class="i_icon"></i></a>
+				
+				<a id="footer-weChat" class="footer-weChat" href="javascript:void(0);" target="_blank"><i class="i_icon"></i></a>
+				<a class="footer-qzone" href="http://user.qzone.qq.com/2762957059" target="_blank"><i class="i_icon"></i></a>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div id="flymeCopyright" class="copyrightWrap">
+			<div class="copyrightInner">
+				<span>©2016 Meizu Telecom Equipment Co., Ltd. All rights reserved.</span>
+				<a href="http://www.miitbeian.gov.cn/" class="linkAGray" target="_blank">备案号: 粤ICP备13003602号-4</a>
+				<a href="http://www3.res.meizu.com/static/cn/widget/footer/images/icp2_b2dcb54.jpg" class="linkAGray" target="_blank">经营许可证编号: 粤B2-20130198</a>
+				<a target="_blank" href="http://www2.res.meizu.com/zh_cn/images/common/com_licence.jpg" hidefocus="true" class="linkAGray">营业执照</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="wechatPic"></div>
+<script type="text/javascript">
+(function() {
+    var ga = document.createElement('script'), s;
+    ga.type = 'text/javascript';
+    ga.src = ('https:' == document.location.protocol ? 'https://tongji-res.meizu.com' : 'http://tongji-res1.meizu.com') + '/resources/tongji/flow.js';
+    s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+	<script charset="utf-8" type="text/javascript" src="ePhoto_files/jquery-1.js"></script>
+	<script charset="utf-8" type="text/javascript" src="ePhoto_files/M20130902.js"></script>
+	<script type="text/javascript" src="ePhoto_files/jquery_002.js" charset="utf-8"></script>
+	<script type="text/javascript" src="ePhoto_files/jquery_003.js" charset="utf-8"></script>
+	<script type="text/javascript" src="ePhoto_files/utils.js" charset="utf-8"></script>
+	<script type="text/javascript" src="ePhoto_files/flyme.js" charset="utf-8"></script>
+	<script type="text/javascript" src="ePhoto_files/base.js" charset="utf-8"></script>
+	<script type="text/javascript" src="ePhoto_files/jquery.js" charset="utf-8"></script>
+	<script type="text/javascript" src="ePhoto_files/modifyIcon.js" charset="utf-8"></script>
+	
+</body></html>

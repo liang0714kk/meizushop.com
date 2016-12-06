@@ -179,6 +179,7 @@ class UserController extends Controller
             ]);
 
         $data = $request -> except('_token');
+        // dd($data);
         //获取原图片
         $oldPhoto = DB::table('user') -> where('id', $request -> id) -> first() -> photo;
         if($request -> hasFile('photo'))
@@ -205,9 +206,11 @@ class UserController extends Controller
             }
         }
         //执行
+
         $res = DB::table('user') -> where('id', $request -> id) -> update($data);
         if($res)
-        {  
+        {
+
             $res = DB::table('user') -> where('id', $request -> id) -> first();
             session(['master' => $res]);
             return redirect('admin/user/index') -> with(['info' => '修改成功']);
@@ -255,5 +258,9 @@ class UserController extends Controller
     $data = DB::table('user') -> where('id',$id) -> first();
     return view('admin.user.oneDetail', ['data' => $data]);
    }
-
+   //后台转商城
+   public function inHome()
+   {
+      view('home.index.index');
+   }
 }

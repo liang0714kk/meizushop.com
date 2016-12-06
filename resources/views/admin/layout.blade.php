@@ -49,6 +49,12 @@
         <a href="{{ url('/admin/index/index') }}" class="logo">
 
             <!-- mini logo for sidebar mini 50x50 pixels -->
+
+            <span class="logo-mini"><img src="/uploads/logo/{{ session('config') -> minlogo }}" alt=""></span>
+
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><img width="230" height="50" src="/uploads/logo/{{ session('config') -> logo }}" alt="" style="margin:-13px;"></span>
+
             <span class="logo-mini"><img src="/uploads/logo/{{ session('config') -> minlogo}}" alt=""></span>
             <!-- logo for regular state and mobile devices -->
             <span class="logo-lg"><img width="230" height="50" src="/uploads/logo/{{ session('config') -> logo}}" alt="" style="margin:-13px;"></span>
@@ -61,6 +67,10 @@
             </a>
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
+
+
+                    <!-- User Account: style can be found in dropdown.less -->
+
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="{{ asset('/uploads/avater/') }}/{{ session('master') -> photo }}"  class="user-image" alt="User Image">
@@ -78,7 +88,7 @@
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">商城</a>
+                                    <a href="/home/index/index" class="btn btn-default btn-flat">商城</a>
                                 </div>
                                 <div class="pull-right">
                                     <a href="{{ url('/admin/login/logout')}} " class="btn btn-default btn-flat">退出</a>
@@ -146,19 +156,35 @@
                 <li class="treeview active">
                     <a href="#">
                         <i class="fa fa-folder"></i>
-                        <span>商品管理</span> <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
+                        <span>商品管理</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                        <ul class="treeview-menu">
                         <li><a href="{{ asset('/admin/goods/create') }}"><i class="fa fa-circle-o"></i>添加商品</a></li>
                         <li><a href="{{ asset('/admin/goods') }}"><i class="fa fa-circle-o"></i>商品列表</a></li>
                         <li><a href="{{ asset('/admin/goods') }}"><i class="fa fa-circle-o"></i>下架商品</a></li>
                     </ul>
-                </li>               
+                    </a>
+
+
+                </li>
+
+                    <ul class="treeview-menu">
+                        <li><a href="{{ asset('/admin/goods/create') }}"><i class="fa fa-circle-o"></i>添加商品</a></li>
+                        <li><a href="{{ asset('/admin/goods/') }}"><i class="fa fa-circle-o"></i>商品列表</a></li>
+                       
+                    </ul>
+<<<<<<< HEAD
+                </li>
+
                  <li class="treeview">
+=======
+                </li>               
+                 <li class="treeview active">
+>>>>>>> 3a0340987ac218709bb37d27f7df348e5319c433
                     <a href="#">
-                        <i class="fa fa-files-o"></i> <span>订单管理</span>
+                        <i class="fa fa-folder"></i> <span>订单管理</span>
                         <i class="fa fa-angle-left pull-right"></i>
-                    </a> 
+                    </a>
                     <ul class="treeview-menu">
                         <li><a href="{{ url('/admin/order/order')}}"><i class="fa fa-circle-o"></i>订单列表</a></li>
                         <li><a href="{{ url('/admin/carts/index')}}"><i class="fa fa-circle-o"></i> 购物车</a></li>
@@ -166,7 +192,7 @@
                 </li>
                 <li class="treeview">
                     <a href="{{ url('/admin/config')}}">
-                        <i class="fa fa-folder"></i>
+                        <i class="fa fa-files-o"></i>
                         <span>网站配置</span>
                     </a>
                 </li>

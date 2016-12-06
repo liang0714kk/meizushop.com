@@ -33,7 +33,7 @@ class CategoryController extends Controller
             $data[$k] -> name = $str.$v -> name;
         }
 
-        return view('admin.category.index', [ 'data' => $data, 'title' => '分类列表页']);
+        return view('admin.category.index', ['title' => '分类列表页'],[ 'data' => $data]);
     }
 
     /**
@@ -129,6 +129,7 @@ class CategoryController extends Controller
     {
         //处理编辑数据
         $data = $request -> except('_token', '_method');
+        
 
         //添加到数据库
         if($data['pid'] == 0)

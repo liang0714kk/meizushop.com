@@ -60,6 +60,21 @@
                             <input name="explain" value="{{ old('explain') }}" type="text" class="form-control" id="exampleInputEmail1"
                                    placeholder="请输入商品特色说明">
                         </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;父分类名</label>
+                                    <select name="pid" class="form-control">
+                                    <option value="0">根分类</option>
+                                    @foreach($data as $v)
+                                        <option value="{{ $v -> id}}">{{ $v -> name }}</option>
+                                    @endforeach
+                                    </select>
+        
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;品牌</label>
+                            <input name="supplier" value="{{ old('supplier') }}" type="text" class="form-control" id="exampleInputEmail1"
+                                   placeholder="请输入商品所属品牌">
+                        </div>
                           <div class="form-group">
                             <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;价格</label>
                             <input name="price" value="{{ old('price') }}" type="text" class="form-control" id="exampleInputEmail1"

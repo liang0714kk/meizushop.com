@@ -15,7 +15,8 @@ class LoginController extends Controller
     //登录界面
     public function login()
     {
-        return view('admin.login.login');
+        $data = DB::table('configs') ->first();
+        return view('admin.login.login', ['logo' => $data]);
     }
 
     //登录执行
@@ -24,11 +25,13 @@ class LoginController extends Controller
         $res = DB::table('user') -> where('name', $request -> name) -> first();
         if($res)
         {
-            // $password = Crypt::decrypt($res -> password);
-            $password = $res -> password;
+
+            $password = Crypt::decrypt($res -> password);
+            // $password = $res -> password;
             $rpassword = $request -> password;
             if($rpassword == $password)
             {
+
 
                 //配置信息
                 $config = DB::table('configs') -> first();
@@ -50,11 +53,12 @@ class LoginController extends Controller
             return back() -> with(['info' => '账户名与密码不匹配']);
         }
     }
+
     //退出登录
     public function logout()
     {
         Session::forget('master');
-        var_dump(session('master'));
+        // dd(session('master'));
         return redirect('admin/login/login') -> with(['info' => '退出成功，请登录']);
     }
 }
