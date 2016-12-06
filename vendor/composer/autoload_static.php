@@ -752,7 +752,6 @@ class ComposerStaticInit3a993f7c2684d7b095f35e783b77b4bf
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
-        'GdetailsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/GdetailsTableSeeder.php',
         'GoodsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/GoodsTableSeeder.php',
         'Gregwar\\Captcha\\CaptchaBuilder' => __DIR__ . '/..' . '/gregwar/captcha/CaptchaBuilder.php',
         'Gregwar\\Captcha\\CaptchaBuilderInterface' => __DIR__ . '/..' . '/gregwar/captcha/CaptchaBuilderInterface.php',
@@ -2936,6 +2935,7 @@ class ComposerStaticInit3a993f7c2684d7b095f35e783b77b4bf
         'Symfony\\Polyfill\\Util\\TestListener' => __DIR__ . '/..' . '/symfony/polyfill-util/TestListener.php',
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
+<<<<<<< HEAD
         'UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UsersTableSeeder.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'XdgBaseDir\\Xdg' => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
@@ -3000,6 +3000,11 @@ class ComposerStaticInit3a993f7c2684d7b095f35e783b77b4bf
         'phpDocumentor\\Reflection\\Types\\String_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/String_.php',
         'phpDocumentor\\Reflection\\Types\\This' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/This.php',
         'phpDocumentor\\Reflection\\Types\\Void_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Void_.php',
+=======
+        'UserTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UserTableSeeder.php',
+        'cartsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/cartsTableSeeder.php',
+        'gdetailsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/gdetailsTableSeeder.php',
+>>>>>>> 3a0340987ac218709bb37d27f7df348e5319c433
     );
 
     public static function getInitializer(ClassLoader $loader)

@@ -485,7 +485,6 @@ return array(
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/src/Facade.php',
     'File_Iterator_Factory' => $vendorDir . '/phpunit/php-file-iterator/src/Factory.php',
-    'GdetailsTableSeeder' => $baseDir . '/database/seeds/GdetailsTableSeeder.php',
     'GoodsTableSeeder' => $baseDir . '/database/seeds/GoodsTableSeeder.php',
     'Gregwar\\Captcha\\CaptchaBuilder' => $vendorDir . '/gregwar/captcha/CaptchaBuilder.php',
     'Gregwar\\Captcha\\CaptchaBuilderInterface' => $vendorDir . '/gregwar/captcha/CaptchaBuilderInterface.php',
@@ -2669,6 +2668,7 @@ return array(
     'Symfony\\Polyfill\\Util\\TestListener' => $vendorDir . '/symfony/polyfill-util/TestListener.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
+<<<<<<< HEAD
     'UsersTableSeeder' => $baseDir . '/database/seeds/UsersTableSeeder.php',
     'Webmozart\\Assert\\Assert' => $vendorDir . '/webmozart/assert/src/Assert.php',
     'XdgBaseDir\\Xdg' => $vendorDir . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
@@ -2733,4 +2733,12 @@ return array(
     'phpDocumentor\\Reflection\\Types\\String_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/String_.php',
     'phpDocumentor\\Reflection\\Types\\This' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/This.php',
     'phpDocumentor\\Reflection\\Types\\Void_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Void_.php',
+=======
+    'UserTableSeeder' => $baseDir . '/database/seeds/UserTableSeeder.php',
+<<<<<<< HEAD
+    'cartsTableSeeder' => $baseDir . '/database/seeds/cartsTableSeeder.php',
+    'gdetailsTableSeeder' => $baseDir . '/database/seeds/gdetailsTableSeeder.php',
+=======
+>>>>>>> 466082fae97086bf6431d037a53f0b0aa9bd3624
+>>>>>>> 3a0340987ac218709bb37d27f7df348e5319c433
 );

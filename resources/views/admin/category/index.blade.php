@@ -1,4 +1,7 @@
 @extends('admin.layout')
+
+@section('title', $title)
+
 @section('content')
 
 <!-- Content Wrapper. Contains page content -->

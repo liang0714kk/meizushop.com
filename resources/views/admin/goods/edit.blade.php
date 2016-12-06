@@ -9,12 +9,12 @@
 <section class="content-header">
     <h1>
         商品管理
-        <small>添加</small>
+        <small>编辑</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>
         <li><a href="#">商品管理</a></li>
-        <li class="active">添加商品</li>
+        <li class="active">编辑商品基本信息</li>
     </ol>
 </section>
 
@@ -26,10 +26,10 @@
             <!-- general form elements -->
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">添加商品</h3>
+                    <h3 class="box-title">编辑商品基本信息</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" action="{{ url('/admin/goods') }}" method="post" enctype="multipart/form-data">
+                <form role="form" action="{{ url('/admin/goods') }}/{{ $data -> id }}" method="post" enctype="multipart/form-data">
 
                     <div class="box-body">
                     <!-- 添加失败 -->
@@ -47,24 +47,24 @@
                         @endforeach
                     </div>
                     @endif
+                    
                     {{ csrf_field() }}
-                        <input type="hidden" name="created_at" value="1">
-                        <input type="hidden" name="updated_at" value="2">
+                    {{ method_field('PUT')}}
                         <div class="form-group">
                             <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;商品名</label>
-                            <input name="name" value="{{ old('name') }}" type="text" class="form-control" id="exampleInputName"
+                            <input name="name" value="{{ $data -> name }}" type="text" class="form-control" id="exampleInputName"
                                    placeholder="请输入商品名称">
                         </div>
                           <div class="form-group">
                             <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;特色说明</label>
-                            <input name="explain" value="{{ old('explain') }}" type="text" class="form-control" id="exampleInputEmail1"
+                            <input name="explain" value="{{ $data -> explain }}" type="text" class="form-control" id="exampleInputEmail1"
                                    placeholder="请输入商品特色说明">
                         </div>
-                        <div class="form-group">
+                         <div class="form-group">
                             <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;父分类名</label>
-                                    <select name="pid" class="form-control">
+                                    <select name="pid" value="{{ $data -> pid }}"class="form-control">
                                     <option value="0">根分类</option>
-                                    @foreach($data as $v)
+                                    @foreach($gdata as $v)
                                         <option value="{{ $v -> id}}">{{ $v -> name }}</option>
                                     @endforeach
                                     </select>
@@ -72,39 +72,43 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;品牌</label>
-                            <input name="supplier" value="{{ old('supplier') }}" type="text" class="form-control" id="exampleInputEmail1"
+                            <input name="supplier" value="{{ $data -> supplier }}" type="text" class="form-control" id="exampleInputEmail1"
                                    placeholder="请输入商品所属品牌">
                         </div>
                           <div class="form-group">
                             <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;价格</label>
-                            <input name="price" value="{{ old('price') }}" type="text" class="form-control" id="exampleInputEmail1"
+                            <input name="price" value="{{ $data -> price }}" type="text" class="form-control" id="exampleInputEmail1"
                                    placeholder="请输入商品价格">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;颜色分类</label>
-                            <input name="color" value="{{ old('color') }}" type="text" class="form-control" id="exampleInputEmail1"
+                            <input name="color" value="{{ $data -> color }}" type="text" class="form-control" id="exampleInputEmail1"
                                    placeholder="请输入商品颜色分类">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;支持</label>
-                            <input name="support" value="{{ old('support') }}" type="text" class="form-control" id="exampleInputEmail1"
+                            <input name="support" value="{{ $data -> support }}" type="text" class="form-control" id="exampleInputEmail1"
                                    placeholder="请输入商品支持类型">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;售后服务</label>
-                            <input name="server" value="{{ old('server') }}" type="text" class="form-control" id="exampleInputEmail1"
+                            <input name="server" value="{{ $data -> server }}" type="text" class="form-control" id="exampleInputEmail1"
                                    placeholder="请输入商品售后服务提供者">
                         </div>
                         
                         <div class="form-group">
-                            <label for="exampleInputFile">&nbsp;&nbsp;&nbsp;图像</label>
+                            <label for="exampleInputFile">&nbsp;&nbsp;&nbsp;原图像</label>
+                            <img width="100px" height="100px" src="/uploads/goods/{{ $data -> photo }}"  />
+                        </div>
+
+                        <div class="form-group">
                             <input name="photo" type="file" id="exampleInputFile">
                             <p class="help-block">选择图片作为商品图片</p>
                         </div>
                     </div><!-- /.box-body -->
 
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-primary">添加</button>
+                        <button type="submit" class="btn btn-primary">编辑</button>
                         <button type="reset" class="btn btn-default">重置</button>
                     </div>
                 </form>

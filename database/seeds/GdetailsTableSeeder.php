@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class GdetailsTableSeeder extends Seeder
+class gdetailsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,9 +11,22 @@ class GdetailsTableSeeder extends Seeder
      */
     public function run()
     {
+        //
         $tmp = [];
-        for($i = 0; $i < 100; $i++)
+        for($i=0; $i<99; $i++)
         {
+<<<<<<< HEAD
+        	$user['name'] = str_random(10);
+        	$user['explain'] = str_random(10);
+        	$user['price'] = str_random(50,100);
+        	$user['color'] = str_random(10);
+        	$user['photo'] = 'default.jpg';
+        	$user['support'] = str_random(10);
+        	$user['server'] = str_random(10);
+        	$user['status'] = 0;
+        	$tmp [] = $user;
+    
+=======
             $user['name'] = str_random(5);
             $user['explain'] = str_random(5);
             $user['price'] = rand(10, 20);
@@ -37,6 +50,7 @@ class GdetailsTableSeeder extends Seeder
             $user['pid'] = rand(1, 100);
 >>>>>>> 466082fae97086bf6431d037a53f0b0aa9bd3624
             $tmp[] = $user;
+>>>>>>> 466082fae97086bf6431d037a53f0b0aa9bd3624
         }
         DB::table('gdetails') -> insert($tmp);
     }
