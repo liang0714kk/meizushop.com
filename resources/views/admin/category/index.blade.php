@@ -35,8 +35,39 @@
                     </div>
                     @endif
 
-                      
-                    <div class="box-body">
+                         <form action="{{ url('/admin/category/') }}" method="get">
+                        <div class="row">
+                            <div class="col-md-2">
+                            <div class="form-group">
+                            <select name="num" class="form-control select2, col-md-2">
+                                <option
+                                @if(!empty($request['num']) && $request['num'] == 10)
+                                    selected = "selected"
+                                @endif
+                                >10</option>
+                                <option
+                                @if(!empty($request['num']) && $request['num'] == 25)
+                                    selected = "selected"
+                                @endif
+                                >25</option>
+                                <option
+                                @if(!empty($request['num']) && $request['num'] == 50)
+                                    selected = "selected"
+                                @endif
+                                >50</option>
+                            </select>
+                            </div><!-- /.form-group -->
+                            </div>
+                            <div class="col-md-3 col-md-offset-7">
+                            <div class="input-group input-group-sm">
+                                <input value="{{ $request['keywords'] or '' }}" name="keywords" type="text" class="form-control">
+                            <span class="input-group-btn">
+                                <button class="btn btn-info btn-flat">搜索</button>
+                            </span>
+                            </div><!-- /input-group -->
+                            </div>
+                        </div>
+                        </form>
 
                         <table id="example2" class="table table-bordered table-hover">
                             <thead>
@@ -63,6 +94,8 @@
                             @endforeach
                             </tbody>
                         </table>
+                          <!-- {!! $data -> appends($request) ->  render() !!} -->
+                        {!! $data -> appends($request) -> render() !!}
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
 

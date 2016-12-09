@@ -138,36 +138,43 @@ class UserController extends Controller
         }
 
         $res = DB::table('user') -> where('name', $request -> name) -> first();
-
-        if($res)
+        if($res -> status == 1)
         {
-            $password = Crypt::decrypt($res -> password);
-            $rpassword = $request -> password;
-            if($rpassword == $password)
+            if($res)
             {
-                session(['master' => $res]);
-                $data = DB::table('user') -> where('name', $request -> name) -> first() -> updated_at;
-                $time = time();
-                $data = $time;
-                //修改登录时间
-                $res = DB::table('user') -> where('name', $request -> name) -> update(['updated_at' => $data]);
-                return redirect('home/user/personal/index') -> with(['info' => '登录成功']);
-            }
-            else
+                $password = Crypt::decrypt($res -> password);
+                $rpassword = $request -> password;
+                if($rpassword == $password)
+                {
+                    session(['master' => $res]);
+                    $config = DB::table('configs') -> first();
+                    session(['config' => $config]);
+                    $data = DB::table('user') -> where('name', $request -> name) -> first() -> updated_at;
+                    $time = time();
+                    $data = $time;
+                    //修改登录时间
+                    $res = DB::table('user') -> where('name', $request -> name) -> update(['updated_at' => $data]);
+                    return redirect('home/index/index') -> with(['info' => '登录成功']);
+                }
+                else
+                {
+                    return back() -> with(['info' => '您输入的账户名与密码不匹配']);
+                }
+            }else
             {
-                return back() -> with(['info' => '您输入的账户名与密码不匹配']);
-            }
-        }
-        else
-        {
             return back() -> with(['info' => '您输入的账户名与密码不匹配']);
+            }
+        }else
+        {
+            return back() -> with(['info' => '您的账号已被冻结，请联系客服']);
         }
+
     }
     //前台退出
     public function logout()
     {
         Session::forget('master');
-        return redirect('/home/user/login') -> with(['info' => '退出成功，请登录']);
+        return redirect('home/index/index') -> with(['info' => '退出成功']);
     }
 
     //忘记密码
@@ -190,23 +197,25 @@ class UserController extends Controller
         //判断
         if($res)
         {
-            return redirect('home/user/forget2');
+            $name = $request -> name;
+            // dd($name);
+            return redirect('/home/user/forget2/'."$name");
         }else
         {
             return back() -> with(['info' => '您输入的账号不存在']);
         }
     }
     //验证邮箱页面
-     public function forget2()
+     public function forget2($name)
     {
-        return view('home.user.forget2');
+        return view('home.user.forget2') -> with(['name' => $name]);
     }
 
     //发送邮件
     public function sendEmail(Request $request)
     {
         $data = $request -> except('_token');
-        $res = DB::table('user') -> where('email', $data['email']) -> first();
+        $res = DB::table('user') -> where('name', $data['name']) -> first();
 
         if(!$res)
         {

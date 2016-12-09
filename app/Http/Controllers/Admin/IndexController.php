@@ -21,7 +21,7 @@ class IndexController extends Controller
 
     	$lastMemember = DB::table('user') -> where('created_at', '>=', $lastUpdate) -> orderBy('created_at', 'desc')-> get();
 
-    	for ($i=0; $i < count($lastMemember); $i++) { 
+    	for ($i=0; $i < count($lastMemember); $i++) {
     		$lastMemember[$i] -> created_at = date('Y-m-d', $lastMemember[$i] -> created_at);
     	}
 
@@ -47,18 +47,18 @@ class IndexController extends Controller
                     -> get();
                     // SELECT orders.*,gdetails.price,gdetails.color from orders LEFT join gdetails on  orders.gid = gdetails.id  where orders.pay = 1 ;
     	 // 今日新品
-         $newGood = DB::table('goods') 
+         $newGood = DB::table('goods')
                      -> LeftJoin('gdetails as g', 'g.pid', '=', 'goods.id')
                      -> select('goods.*', 'g.explain', 'g.price')
-                     -> where('goods.created_at', '>=', $day_start) 
-                     -> orderBy('goods.created_at', 'desc')-> get(); 
+                     -> where('goods.created_at', '>=', $day_start)
+                     -> orderBy('goods.created_at', 'desc')-> get();
 
          // 商品总数
          // select count(DISTINCT pid) from gdetails;
           $goodTotal = DB::table('gdetails') ->  distinct('pid') -> count('pid');
 
          //等待发货
-         $orderwaite = DB::table('orders') -> where('pay', 1) -> where('deliver', 0) -> count(); 
+         $orderwaite = DB::table('orders') -> where('pay', 1) -> where('deliver', 0) -> count();
 
 
         return view('admin.index.index') -> with(['newMemember' => $newMemember, 'lastMemember' => $lastMemember, 'sailes' => $sailes, 'newOrder' => $newOrder, 'newGood' => $newGood, 'goodTotal' => $goodTotal, 'orderwaite' => $orderwaite]);

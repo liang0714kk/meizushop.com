@@ -14,7 +14,10 @@ class PersonalController extends Controller
 {
     public function index()
     {
-        return view('home.user.personal.index');
+        $uid = session('master') -> id;
+        $noPaycount = DB::table('orders') -> where('uid', $uid) -> where('pay', 0) -> count();
+        $noDelivercount = DB::table('orders') -> where('uid', $uid) -> where('deliver', 0) -> count();
+        return view('home.user.personal.index') -> with(['noPaycount' => $noPaycount, 'noDelivercount' => $noDelivercount]);
     }
 
     //修改信息
@@ -230,7 +233,6 @@ class PersonalController extends Controller
         $data = $request -> except('_token');
         $newPhone = $data['newPhone'];
         $phoneCode = rand(10000,999999);
-        $res = $this -> sendPhone ($phoneCode, $newPhone);
         if($res)
         {
             session(['verPhone' => $phoneCode]);
@@ -240,10 +242,25 @@ class PersonalController extends Controller
         {
             return 2;
         }
-
-
     }
 
+    //添加
+    public function phoneAdd(Request $request)
+    {
+        $data = $request -> except('_token','id','kapkay');
+        $res = DB::table('user') -> where('id', $request -> id) -> update($data);
+        if($res)
+        {
+            $sres = DB::table('user') -> where('id', $request -> id) -> first();
+            // dd($data);
+            session(['master' => $sres]);
+            return redirect('home/user/personal/edit') -> with(['info' => '绑定成功']);
+        }
+        else
+        {
+            return back() -> with(['info' => '绑定失败']);
+        }
+    }
     // 短信验证
     private function send($code,$phone){
 

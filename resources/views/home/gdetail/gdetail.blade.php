@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>PRO 6s-魅族商城</title>
+    <title>魅族商城</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="//store.res.meizu.com/resources/php/store/java/layout/img/favicon-2e71785f44.ico" rel="shortcut icon" type="image/x-icon" />
@@ -25,467 +25,37 @@
 <body>
 
     <!-- common header -->
-<div class="layout-topbar clearfix" id="topbar">
+<div class="layout-topbar clearfix login" id="topbar">
     <div class="mzcontainer">
         <ul class="layout-topbar-left clearfix">
-            <li class="layout-topbar-left-links"><a class="layout-topbar-link" data-mdesc="页头中第1个" data-mtype="store_index_yt_1" target="_blank" href="meizushop.com">魅族官网</a></li>
-            <li class="layout-topbar-left-links"><a class="layout-topbar-link" data-mdesc="页头中第2个" data-mtype="store_index_yt_2" href="http://store.meizu.com/index.html">魅族商城</a></li>
-            <li class="layout-topbar-left-links"><a class="layout-topbar-link" data-mdesc="页头中第3个" data-mtype="store_index_yt_3" target="_blank" href="http://www.flyme.cn">Flyme</a></li>
-            <li class="layout-topbar-left-links"><a class="layout-topbar-link" data-mdesc="页头中第4个" data-mtype="store_index_yt_4" target="_blank" href="http://retail.meizu.com/index.html">专卖店</a></li>
-            <li class="layout-topbar-left-links"><a class="layout-topbar-link" data-mdesc="页头中第5个" data-mtype="store_index_yt_5" target="_blank" href="http://service.meizu.com/index.html">服务</a></li>
-            <li class="layout-topbar-left-links"><a class="layout-topbar-link" data-mdesc="页头中第6个" data-mtype="store_index_yt_6" target="_blank" href="http://bbs.meizu.cn">社区</a></li>
+            <li class="layout-topbar-left-links"><a class="layout-topbar-link" data-mdesc="页头中第1个" data-mtype="store_index_yt_1" target="" href="#">魅族官网</a></li>
+            <li class="layout-topbar-left-links"><a class="layout-topbar-link" data-mdesc="页头中第2个" data-mtype="store_index_yt_2" href="{{ url('/home/index/index') }}">魅族商城</a></li>
+            <li class="layout-topbar-left-links"><a class="layout-topbar-link" data-mdesc="页头中第3个" data-mtype="store_index_yt_3" target="" href="#">Flyme</a></li>
+            <li class="layout-topbar-left-links"><a class="layout-topbar-link" data-mdesc="页头中第4个" data-mtype="store_index_yt_4" target="" href="#">专卖店</a></li>
+            <li class="layout-topbar-left-links"><a class="layout-topbar-link" data-mdesc="页头中第5个" data-mtype="store_index_yt_5" target="" href="#">服务</a></li>
+            <li class="layout-topbar-left-links"><a class="layout-topbar-link" data-mdesc="页头中第6个" data-mtype="store_index_yt_6" target="" href="#">社区</a></li>
         </ul>
         <ul class="layout-topbar-right clearfix">
-            <li class="layout-topbar-right-links pop">
-                <div class="layout-topbar-pop" id="topbarPop">
-                    <a class="layout-topbar-pop-title" data-mdesc="页头消息气泡" data-mtype="store_index_yt_qp" href=""></a>
-                    <div class="layout-tpobar-pop-close"></div>
-                </div>
-            </li>
-            <li class="layout-topbar-right-links signin"><a id="topbarMsg" class="layout-topbar-link" data-mdesc="页头-消息" data-mtype="store_index_yt_msg " target="_blank" href="http://me.meizu.com/member/message/index">消息</a></li>
-            <li class="layout-topbar-right-links"><a class="layout-topbar-link" data-mdesc="页头-收藏   " data-mtype="store_index_yt_collect" target="_blank" href="http://me.meizu.com/member/favorite/index">我的收藏<i class="layout-icon layout-icon-new"></i></a></li>
-            <li class="layout-topbar-right-links"><a id="topbarOrderMsg" class="layout-topbar-link" data-mdesc="页头-我的订单" data-mtype="store_index_yt_order" target="_blank" href="http://ordercenter.meizu.com/list/index.html">我的订单</a></li>
-            <li class="layout-topbar-right-links signout"><a class="layout-topbar-link" href="javascript:window.location.href='https://login.flyme.cn/vCodeLogin?sid=unionlogin&service=store&autodirct=true&useruri=http://store.meizu.com/member/login.htm?useruri='+window.location.href;">登录</a></li>
-            <li class="layout-topbar-right-links signout"><a class="layout-topbar-link" target="_blank" href="https://member.meizu.com/register">注册</a></li>
+
+            <!-- @if(!session('master')) -->
+            <li class="layout-topbar-right-links member signin"><a class="layout-topbar-link" href="{{url('home/user/login')}}">登录</a></li>
+            <li class="layout-topbar-right-links member signin"><a class="layout-topbar-link" href="{{url('home/user/register')}}">注册</a></li>
+            <!-- @else if(session('master')) -->
+            <li class="layout-topbar-right-links"><a id="topbarOrderMsg" class="layout-topbar-link has-msg"  data-mtype="store_index_yt_order" target="_blank" href="{{ url('/home/ordercenter/index') }}">我的订单</a></li>
             <li class="layout-topbar-right-links member signin">
-                <a class="layout-topbar-link" target="_blank" href="http://me.meizu.com/member/index"><span class="layout-topbar-username" id="topbarUser"></span>的商城<i class="layout-topbar-triangle"></i></a>
+                <a class="layout-topbar-link" target="_blank" href="{{url('/home/user/psersonal/index')}}"><span class="layout-topbar-username" id="topbarUser">{{session('master') -> nickname}}</span>的商城<i class="layout-topbar-triangle"></i></a>
                 <ul class="layout-topbar-downmenu">
-                    <li class="layout-topbar-downmenu-item"><a class="layout-topbar-downmenu-link" data-mdesc="我的商城下拉框1" data-mtype="store_index_yt_my_1" target="_blank" href="http://me.meizu.com/member/address/index">地址管理</a></li>
-                    <li class="layout-topbar-downmenu-item"><a class="layout-topbar-downmenu-link" data-mdesc="我的商城下拉框2" data-mtype="store_index_yt_my_2" target="_blank" href="http://me.meizu.com/member/repo_ticket/index">我的回购券</a></li>
-                    <li class="layout-topbar-downmenu-item"><a class="layout-topbar-downmenu-link" data-mdesc="我的商城下拉框3" data-mtype="store_index_yt_my_3" target="_blank" href="http://me.meizu.com/member/advice/index">问题反馈</a></li>
-                    <li class="layout-topbar-downmenu-item"><a class="layout-topbar-downmenu-link exit" data-mdesc="我的商城下拉框4" data-mtype="store_index_yt_my_4" href="javascript:window.location.href='http://store.meizu.com/member/logout.htm?useruri='+window.location.href;">退出</a></li>
+                    <li class="layout-topbar-downmenu-item"><a class="layout-topbar-downmenu-link" data-mdesc="我的商城下拉框1" data-mtype="store_index_yt_my_1" target="_blank" href="{{ url('/home/ordercenter/address') }}">地址管理</a></li>
+
+                    <li class="layout-topbar-downmenu-item"><a class="layout-topbar-downmenu-link" data-mdesc="我的商城下拉框3" data-mtype="store_index_yt_my_3" target="_blank" href="{{ url('/home/feedback/add') }}">问题反馈</a></li>
+                    <li class="layout-topbar-downmenu-item"><a class="layout-topbar-downmenu-link exit" data-mdesc="我的商城下拉框4" data-mtype="store_index_yt_my_4" href="{{url('home/user/logout')}}">退出</a></li>
                 </ul>
             </li>
+            <!-- @endif -->
         </ul>
     </div>
 </div>
 
-<div class="layout-header clearfix">
-    <div class="mzcontainer">
-        <div class="layout-header-logo">
-            <a target="_blank" href="http://www.meizu.com" class="layout-header-logo-link" alt="魅族科技"><i
-                    class="layout-font layout-font-logo"></i></a>
-        </div>
-        <ul class="layout-header-nav clearfix" id="layoutHeaderNav">
-                <li class="layout-header-nav-item">
-                    <a href="javascript:;" class="layout-header-nav-link">PRO手机</a>
-                    <div class="layout-header-nav-child">
-                        <div class="mzcontainer">
-                            <ul class="layout-header-nav-child-list">
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link"
-                                               data-mtype="store_index_dh_1_1"
-                                               data-mdesc="导航中第1个下第1个坑" target="_blank"
-                                               href="http://detail.meizu.com/item/pro6s.html?click=store_index_dh_1_1">
-                                                <p><img src="{{ url('/detail/picture/cix_s1gbchaaevu5aa0vjoomivw373_126x126.png')}}"
-                                                        class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅族PRO 6s</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">2699</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link"
-                                               data-mtype="store_index_dh_1_2"
-                                               data-mdesc="导航中第1个下第2个坑" target="_blank"
-                                               href="http://detail.meizu.com/item/meizu_pro6.html?click=store_index_dh_1_2">
-                                                <p><img src="{{ url('/detail/picture/cnqojvee2e-aagzcabhuf4hwkyw117_126x126.png')}}"
-                                                        class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅族PRO 6</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">2299</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link"
-                                               data-mtype="store_index_dh_1_3"
-                                               data-mdesc="导航中第1个下第3个坑" target="_blank"
-                                               href="http://detail.meizu.com/item/meizu_pro5.html?click=store_index_dh_1_3">
-                                                <p><img src="{{ url('/detail/picture/1450928403@126x126.png')}}"
-                                                        class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅族PRO 5</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">2199</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                <!-- more -->
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="layout-header-nav-item">
-                    <a href="javascript:;" class="layout-header-nav-link">魅蓝手机</a>
-                    <div class="layout-header-nav-child">
-                        <div class="mzcontainer">
-                            <ul class="layout-header-nav-child-list">
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link"
-                                               data-mtype="store_index_dh_2_1"
-                                               data-mdesc="导航中第2个下第1个坑" target="_blank"
-                                               href="http://detail.meizu.com/item/meilan_5.html?click=store_index_dh_2_1">
-                                                <p><img src="{{ url('/detail/picture/cnqojvgxd2saduwtaahqpljs718976_126x126.png')}}"
-                                                        class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅蓝 5</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">699</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link"
-                                               data-mtype="store_index_dh_2_2"
-                                               data-mdesc="导航中第2个下第2个坑" target="_blank"
-                                               href="http://detail.meizu.com/item/meilan_u10.html?click=store_index_dh_2_2">
-                                                <p><img src="{{ url('/detail/picture/cix_s1fodiqaqprmaajwkwqc8nw622_126x126.png')}}"
-                                                        class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅蓝 U10</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">999</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link"
-                                               data-mtype="store_index_dh_2_3"
-                                               data-mdesc="导航中第2个下第3个坑" target="_blank"
-                                               href="http://detail.meizu.com/item/meilanU20.html?click=store_index_dh_2_3">
-                                                <p><img src="{{ url('/detail/picture/cix_s1fdkdyab0ygaeede0cxiv8257_126x126.png')}}"
-                                                        class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅蓝 U20</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">1099</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link"
-                                               data-mtype="store_index_dh_2_4"
-                                               data-mdesc="导航中第2个下第4个坑" target="_blank"
-                                               href="http://detail.meizu.com/item/meilan_e1.html?click=store_index_dh_2_4">
-                                                <p><img src="{{ url('/detail/picture/cnqojveq0ugasgufaazq2opb7qi013_126x126.png')}}"
-                                                        class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅蓝 E</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">1299</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link"
-                                               data-mtype="store_index_dh_2_5"
-                                               data-mdesc="导航中第2个下第5个坑" target="_blank"
-                                               href="http://detail.meizu.com/item/meilan3s.html?click=store_index_dh_2_5">
-                                                <p><img src="{{ url('/detail/picture/cix_s1epgr6ad8kbaa2l_exlrok404_126x126.png')}}"
-                                                        class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅蓝 3s</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">699</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link"
-                                               data-mtype="store_index_dh_2_6"
-                                               data-mdesc="导航中第2个下第6个坑" target="_blank"
-                                               href="http://detail.meizu.com/item/meilan_note3.html?click=store_index_dh_2_6">
-                                                <p><img src="{{ url('/detail/picture/1459927797@126x126.png')}}"
-                                                        class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅蓝 Note3</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">799</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                <!-- more -->
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="layout-header-nav-item">
-                    <a href="javascript:;" class="layout-header-nav-link">MX手机</a>
-                    <div class="layout-header-nav-child">
-                        <div class="mzcontainer">
-                            <ul class="layout-header-nav-child-list">
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link"
-                                               data-mtype="store_index_dh_3_1"
-                                               data-mdesc="导航中第3个下第1个坑" target="_blank"
-                                               href="http://detail.meizu.com/item/mx6.html?click=store_index_dh_3_1">
-                                                <p><img src="{{ url('/detail/picture/cix_s1en3iiasxvxaa9ipq8-shg169_126x126.png')}}"
-                                                        class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅族MX6</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">1799</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link"
-                                               data-mtype="store_index_dh_3_2"
-                                               data-mdesc="导航中第3个下第2个坑" target="_blank"
-                                               href="http://detail.meizu.com/item/meizu_mx5.html?click=store_index_dh_3_2">
-                                                <p><img src="{{ url('/detail/picture/cnqojvfd9pwas6vzaautvljefx8425_126x126.png')}}"
-                                                        class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅族MX5</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                        <span class="layout-header-nav-child-price origin">1999</span>
-                                                    <span class="layout-header-nav-child-price">999</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link"
-                                               data-mtype="store_index_dh_3_3"
-                                               data-mdesc="导航中第3个下第3个坑" target="_blank"
-                                               href="http://detail.meizu.com/item/meizu_mx5e.html?click=store_index_dh_3_3">
-                                                <p><img src="{{ url('/detail/picture/cix_s1fniqaapdejaautvljefx8334_126x126.png')}}"
-                                                        class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅族MX5e 经典版</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                        <span class="layout-header-nav-child-price origin">1499</span>
-                                                    <span class="layout-header-nav-child-price">999</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                <!-- more -->
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="layout-header-nav-item">
-                    <a href="javascript:;" class="layout-header-nav-link">精选配件</a>
-                    <div class="layout-header-nav-child">
-                        <div class="mzcontainer">
-                            <ul class="layout-header-nav-child-list">
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link"
-                                               data-mtype="store_index_dh_4_1"
-                                               data-mdesc="导航中第4个下第1个坑" target="_blank"
-                                               href="http://detail.meizu.com/item/meizu_ep51.html?skuid=696&click=store_index_dh_4_1">
-                                                <p><img src="{{ url('/detail/picture/cnqojvgkhhwauh85aahowfpsrus585_126x126.png')}}"
-                                                        class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅族 EP51蓝牙运动耳机</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">269</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link"
-                                               data-mtype="store_index_dh_4_2"
-                                               data-mdesc="导航中第4个下第2个坑" target="_blank"
-                                               href="http://detail.meizu.com/item/meizu_hd50.html?skuid=839&click=store_index_dh_4_2">
-                                                <p><img src="{{ url('/detail/picture/cnqojvgtci-ayfqraar2vqneyva922_126x126.png')}}"
-                                                        class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅族HD50 头戴式耳机</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">399</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link"
-                                               data-mtype="store_index_dh_4_3"
-                                               data-mdesc="导航中第4个下第3个坑" target="_blank"
-                                               href="http://detail.meizu.com/item/meizu_bag.html?click=store_index_dh_4_3">
-                                                <p><img src="{{ url('/detail/picture/cnqojvfqpd-aejicaavbtlzlu4u578_126x126.png')}}"
-                                                        class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅族 休闲旅行双肩包</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">199</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link"
-                                               data-mtype="store_index_dh_4_4"
-                                               data-mdesc="导航中第4个下第4个坑" target="_blank"
-                                               href="http://detail.meizu.com/item/mpower_m8e.html?skuid=1061&click=store_index_dh_4_4">
-                                                <p><img src="{{ url('/detail/picture/cix_s1efsdmaypt5aakdypuhrpq307_126x126.png')}}"
-                                                        class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅族移动电源（标准版）</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">99</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link"
-                                               data-mtype="store_index_dh_4_5"
-                                               data-mdesc="导航中第4个下第5个坑" target="_blank"
-                                               href="http://detail.meizu.com/item/lifeme_bts30.html?click=store_index_dh_4_5">
-                                                <p><img src="{{ url('/detail/picture/cnqojvfik1qabwwmaauloxmuyli896_126x126.png')}}"
-                                                        class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅族 Lifeme BTS30 蓝牙音箱</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">399</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                <!-- more -->
-                                    <li class="layout-header-nav-child-more">
-                                        <ul>
-                                                <li class="layout-header-nav-child-row">
-                                                    <a class="layout-header-nav-child-more-link" target="_blank"
-                                                       href="http://lists.meizu.com/page/list?categoryid=79&rc=sdsd">
-                                                        <img class="layout-header-nav-child-icon" src="{{url('/detail/picture/1467696166-40112.png')}}"
-                                                             width="28" height="28">耳机 / 音箱
-                                                    </a>
-                                                </li>
-                                                <li class="layout-header-nav-child-row">
-                                                    <a class="layout-header-nav-child-more-link" target="_blank"
-                                                       href="http://lists.meizu.com/page/list?categoryid=80&rc=sd">
-                                                        <img class="layout-header-nav-child-icon" src="{{url('/detail/picture/1467696197-95413.png')}}"
-                                                             width="28" height="28">路由器 / 移动电源
-                                                    </a>
-                                                </li>
-                                                <li class="layout-header-nav-child-row">
-                                                    <a class="layout-header-nav-child-more-link" target="_blank"
-                                                       href="http://lists.meizu.com/page/list?categoryid=81&rc=sd">
-                                                        <img class="layout-header-nav-child-icon" src="{{url('/detail/picture/1467696220-57637.png')}}"
-                                                             width="28" height="28">保护套 / 后盖 / 贴膜
-                                                    </a>
-                                                </li>
-                                                <li class="layout-header-nav-child-row">
-                                                    <a class="layout-header-nav-child-more-link" target="_blank"
-                                                       href="http://lists.meizu.com/page/list?categoryid=82&rc=sd">
-                                                        <img class="layout-header-nav-child-icon" src="{{url('/detail/picture/1467696242-24236.png')}}"
-                                                             width="28" height="28">数据线 / 电源适配器
-                                                    </a>
-                                                </li>
-                                                <li class="layout-header-nav-child-row">
-                                                    <a class="layout-header-nav-child-more-link" target="_blank"
-                                                       href="http://lists.meizu.com/page/list?categoryid=83&rc=sd">
-                                                        <img class="layout-header-nav-child-icon" src="{{url('/detail/picture/1467705893-97644.png')}}"
-                                                             width="28" height="28">周边配件
-                                                    </a>
-                                                </li>
-                                        </ul>
-                                    </li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="layout-header-nav-item">
-                    <a href="javascript:;" class="layout-header-nav-link">智能硬件</a>
-                    <div class="layout-header-nav-child">
-                        <div class="mzcontainer">
-                            <ul class="layout-header-nav-child-list">
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link"
-                                               data-mtype="store_index_dh_5_1"
-                                               data-mdesc="导航中第5个下第1个坑" target="_blank"
-                                               href="http://detail.meizu.com/item/router_f1.html?skuid=1112&click=store_index_dh_5_1">
-                                                <p><img src="{{ url('/detail/picture/cix_s1gjergacpa4aabxvrwlvgu324_126x126.jpg')}}"
-                                                        class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅族路由器 极速版</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">199</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link"
-                                               data-mtype="store_index_dh_5_2"
-                                               data-mdesc="导航中第5个下第2个坑" target="_blank"
-                                               href="http://detail.meizu.com/item/HANGJIA_pro3s_wifi.html?skuid=1995&click=store_index_dh_5_2">
-                                                <p><img src="{{ url('/detail/picture/cix_s1gr0uyar5gdaahkf8_dz-u475_126x126.png')}}"
-                                                        class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">航嘉智慧云防雷pro3s-wifi</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">112</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link"
-                                               data-mtype="store_index_dh_5_3"
-                                               data-mdesc="导航中第5个下第3个坑" target="_blank"
-                                               href="http://detail.meizu.com/item/ROMOSS_A10.html?skuid=1766&click=store_index_dh_5_3">
-                                                <p><img src="{{ url('/detail/picture/cnqojvgj1ckae4qsaafw6g3x6ei583_126x126.png')}}"
-                                                        class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">罗马仕AC10快充适配器</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                        <span class="layout-header-nav-child-price origin">39</span>
-                                                    <span class="layout-header-nav-child-price">35.9</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link"
-                                               data-mtype="store_index_dh_5_4"
-                                               data-mdesc="导航中第5个下第4个坑" target="_blank"
-                                               href="http://detail.meizu.com/item/meihang_MC6.html?skuid=1119&click=store_index_dh_5_4">
-                                                <p><img src="{{ url('/detail/picture/cnqojvgr0ywatx8jaappc6xx8sa241_126x126.png')}}"
-                                                        class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅航智能行车记录仪MC6</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">399</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link"
-                                               data-mtype="store_index_dh_5_5"
-                                               data-mdesc="导航中第5个下第5个坑" target="_blank"
-                                               href="http://detail.meizu.com/item/JJQ_1.html?skuid=1687&click=store_index_dh_5_5">
-                                                <p><img src="{{ url('/detail/picture/cnqojvgj1isau8fxaav3hql3ely964_126x126.png')}}"
-                                                        class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">南山大夫颈舒按摩仪</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                        <span class="layout-header-nav-child-price origin">399</span>
-                                                    <span class="layout-header-nav-child-price">369</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link"
-                                               data-mtype="store_index_dh_5_6"
-                                               data-mdesc="导航中第5个下第6个坑" target="_blank"
-                                               href="http://detail.meizu.com/item/Moikit_Cuptime2.html?skuid=1196&click=store_index_dh_5_6">
-                                                <p><img src="{{ url('/detail/picture/cnqojvgsc0iabm12aaaezklac6w876_126x126.png')}}"
-                                                        class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">麦开智能水杯Cuptime2</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">339</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                <!-- more -->
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-        </ul>
-        <div class="layout-header-nav-downmenu" id="layoutHeaderNavDownmenu"></div>
-    </div>
-</div>
 
         <!--下面是模板标签，不可删除-->
         <main class="wrapper page-detail">
@@ -521,12 +91,12 @@
                                 </li>
                         </ul>
                     </div>
-                    
+
                     <div class="property" id="property">
                         <form action="{{ url('/home/order') }}" method="post">
                         {{csrf_field()}}
                             <div class="property-hd">
-                                <h1><input id="name" name="name" style="border:0;color:black" value="PRO 6s"></h1>
+                                <h1><input id="name" name="name" style="border:0;color:black" value="{{$name}}"></h1>
 
                                 <p class="mod-info "><input name="explain" style="border:0;BACKGROUND-COLOR: transparent;color:red" value="限量开售"></p>
                             </div>
@@ -578,21 +148,21 @@
                                                    title="玫瑰金">
                                                         <img src="{{ url('/detail/picture/cix_s1gaobuajthwaa1jpctyxxq181.png@80x80.png')}}" width="32" height="32">
                                                 </a>
-                                                        
+
                                                 <a data-value="3:18412"
                                                    class="vm-sale-img"
                                                    data-mtype="store_de_sp_2_2" href="#"
                                                    title="月光银">
                                                         <img src="{{ url('/detail/picture/cnqojvgaoh6ayundaa0vjoomivw304.png@80x80.png')}}" width="32" height="32">
                                                 </a>
-                                                        
+
                                                 <a data-value="3:18413"
                                                    class="vm-sale-img"
                                                    data-mtype="store_de_sp_2_3" href="#"
                                                    title="星空黑">
                                                         <img id="fly-photo" src="{{ url('/detail/picture/cix_s1gaog-aj-cpaaqulbibw-m082.png@80x80.png')}}" width="32" height="32">
                                                 </a>
-                                                        
+
                                         </dd>
                                     </dl>
                                     <dl class="property-set-sale" data-property="颜色分类">
@@ -619,8 +189,8 @@
                                         <dt class="vm-metatit">支<span class="s-space"></span><span class="s-space"></span>持：
                                         </dt>
                                         <dd class="mod-bd">
-                                            
-                                            
+
+
                                                 <span><i class="icon icon-service"></i><input name="supports" type="text" style="border:0;BACKGROUND-COLOR: transparent;" disabled value="顺丰包邮"></span>
                                                 <span><i class="icon icon-service"></i><input name="golden" style="border:0;BACKGROUND-COLOR: transparent;" disabled value="7天无理由退货"></span>
                                         </dd>
@@ -644,15 +214,14 @@
                                         <div class="mod-control">
                                             <a title="减少" href="#" id="reduce" class="vm-minus">-</a>
                                           <span><input required id="number" name="number" type="text" value="1"></span>
-                                            <a title="增加" href="#"  id="add" class="vm-plus ">+</a>  
+                                            <a title="增加" href="#"  id="add" class="vm-plus ">+</a>
                                         </div>
                                         </dd>
                                         <dd>
                                         <div>
                                         <button id="buy-now" class="btn btn-primary btn-lg" >立即购买</button>
                                         <a id="addcar" class="btn btn-primary btn-lg" >加入购物车</a>
-                                            <a class="vm-favorite" href="#"><i class="icon icon-favorite"></i>收藏</a>
-                                            <p class="vm-service" id="J_panicBuyingWrap"></p>
+
                                         </div>
                                     </dd>
 
@@ -730,443 +299,31 @@
                 <div class="detail-content container">
                     <div class="introduce" id="introduce" style="display:block;">
                     @foreach($photo as $val)
-                            <img class="lazy" data-original="{{ url('/uploads/home/')}}/{{$val -> name}}/{{$val -> photo}}" width="1240" alt="">
+                            <img class="lazy" data-original="{{url('/uploads/hm/photos/')}}/{{$val -> photo}}" width="1240" alt="">
                     @endforeach
                     </div>
                     <div class="standard" id="standard">
                         <table class="standard-table">
                             <tbody>
-                                    <tr class="standard-table-group">
-                                        <th colspan="2">
-                                            基础信息
-                                        </th>
-                                    </tr>
-                                        <tr>
-                                            <th>
-                                            品牌
-                                            </th>
-                                            <td>
-                                            魅族
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                            型号
-                                            </th>
-                                            <td>
-                                            PRO 6s
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                            尺寸
-                                            </th>
-                                            <td>
-                                            147.7*70.8*7.3mm
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                            电池容量
-                                            </th>
-                                            <td>
-                                            3060mAh
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                            重量
-                                            </th>
-                                            <td>
-                                            163g
-                                            </td>
-                                        </tr>
-                                    <tr class="standard-table-group">
-                                        <th colspan="2">
-                                            屏幕
-                                        </th>
-                                    </tr>
-                                        <tr>
-                                            <th>
-                                            屏幕尺寸
-                                            </th>
-                                            <td>
-                                            5.2英寸
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                            对比度
-                                            </th>
-                                            <td>
-                                            10000：1
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                            分辨率
-                                            </th>
-                                            <td>
-                                            1920×1080
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                            PPI
-                                            </th>
-                                            <td>
-                                            423.6
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                            亮度
-                                            </th>
-                                            <td>
-                                            350cd/m²（典型值）
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                            显示技术
-                                            </th>
-                                            <td>
-                                             Super AMOLED
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                            制造工艺
-                                            </th>
-                                            <td>
-                                            On-cell
-                                            </td>
-                                        </tr>
-                                    <tr class="standard-table-group">
-                                        <th colspan="2">
-                                            容量
-                                        </th>
-                                    </tr>
-                                        <tr>
-                                            <th>
-                                            运行内存（RAM）
-                                            </th>
-                                            <td>
-                                            4GB
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                            机身内存
-                                            </th>
-                                            <td>
-                                            64GB
-                                            </td>
-                                        </tr>
-                                    <tr class="standard-table-group">
-                                        <th colspan="2">
-                                            处理器
-                                        </th>
-                                    </tr>
-                                        <tr>
-                                            <th>
-                                            CPU
-                                            </th>
-                                            <td>
-                                            Helio X25 处理器
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                            GPU
-                                            </th>
-                                            <td>
-                                            ARM Mali-T880 图形处理器
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                            CPU频率
-                                            </th>
-                                            <td>
-                                            ARM® Cortex®-A53™ 1.4GHz x4 +<br>ARM® Cortex®-A53™ 2.0GHz x4 +<br>ARM® Cortex®-A72™ 2.5GHz x2
-                                            </td>
-                                        </tr>
-                                    <tr class="standard-table-group">
-                                        <th colspan="2">
-                                            摄像
-                                        </th>
-                                    </tr>
-                                        <tr>
-                                            <th>
-                                            前置摄像头
-                                            </th>
-                                            <td>
-                                            500万像素<br>ƒ/2.0 光圈<br>5 片式镜头<br>Face AE 面部曝光增强<br>智能美颜算法 自适应美肤
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                            后置摄像头
-                                            </th>
-                                            <td>
-                                            1200万像素<br>连拍模式<br>全景模式<br>四轴光学防抖 出片清晰稳定<br>6片式镜头 好画质 强解析<br>PDAF 相位对焦 急速抓拍<br>激光辅助对焦  暗广拍照更准确<br>环形双色温闪光灯  补光自然均匀<br>ƒ/2.0 光圈   大光圈 大虚化
-                                            </td>
-                                        </tr>
-                                    <tr class="standard-table-group">
-                                        <th colspan="2">
-                                            mTouch
-                                        </th>
-                                    </tr>
-                                        <tr>
-                                            <th>
-                                            响应速度
-                                            </th>
-                                            <td>
-                                            0.2s
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                            识别角度
-                                            </th>
-                                            <td>
-                                            360°
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                            指纹组数
-                                            </th>
-                                            <td>
-                                            5组
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                            mTouch版本
-                                            </th>
-                                            <td>
-                                            2.1
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                            mTouch传感器
-                                            </th>
-                                            <td>
-                                            电容式触摸传感器
-                                            </td>
-                                        </tr>
-                                    <tr class="standard-table-group">
-                                        <th colspan="2">
-                                            运营商与制式
-                                        </th>
-                                    </tr>
-                                        <tr>
-                                            <th>
-                                            全网通
-                                            </th>
-                                            <td>
-                                            移动 4G TD-LTE<br>联通/电信 4G TD/FDD-LTE<br>移动 3G TD-SCDMA<br>联通 3G WCDMA<br>电信 3G EVDO<br>移动/联通 2G GSM<br>电信 2G CDMA<br>全网通（公开版）
-                                            </td>
-                                        </tr>
-                                    <tr class="standard-table-group">
-                                        <th colspan="2">
-                                            其他参数
-                                        </th>
-                                    </tr>
-                                        <tr>
-                                            <th>
-                                            WLAN功能
-                                            </th>
-                                            <td>
-                                            802.11a/b/g/n/ac 无线网络<br>支持 5GHz 和 2.4GHz 频段
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                            蓝牙
-                                            </th>
-                                            <td>
-                                            Bluetooth 4.1<br>支持 BLE
-                                            </td>
-                                        </tr>
-                                    <tr class="standard-table-group">
-                                        <th colspan="2">
-                                            音质参数
-                                        </th>
-                                    </tr>
-                                        <tr>
-                                            <th>
-                                            Hi-Fi
-                                            </th>
-                                            <td>
-                                            Cirrus Logic CS43L36 芯片
-                                            </td>
-                                        </tr>
-                                    <tr class="standard-table-group">
-                                        <th colspan="2">
-                                            多媒体
-                                        </th>
-                                    </tr>
-                                        <tr>
-                                            <th>
-                                            视频
-                                            </th>
-                                            <td>
-                                            支持 MP4、3GP、MOV、MKV、AVI、FLV、MPEG 视频格式
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                            音频
-                                            </th>
-                                            <td>
-                                            支持 FLAC、APE、AAC、MKA、OGG、MIDI、M4A、AMR 音频格式
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                            图片
-                                            </th>
-                                            <td>
-                                            支持 JPEG、PNG、GIF、BMP 图片格式
-                                            </td>
-                                        </tr>
-                                    <tr class="standard-table-group">
-                                        <th colspan="2">
-                                            系统与应用
-                                        </th>
-                                    </tr>
-                                        <tr>
-                                            <th>
-                                            系统版本
-                                            </th>
-                                            <td>
-                                            Flyme 5
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                            传感器
-                                            </th>
-                                            <td>
-                                            霍尔磁感应<br>重力感应<br>红外距离感应<br>陀螺仪<br>环境光度感应<br>触摸感应<br>电子罗盘
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                            导航定位
-                                            </th>
-                                            <td>
-                                            GPS<br>A-GPS<br>GLONASS<br>电子罗盘
-                                            </td>
-                                        </tr>
-                                    <tr class="standard-table-group">
-                                        <th colspan="2">
-                                            操作环境
-                                        </th>
-                                    </tr>
-                                        <tr>
-                                            <th>
-                                            操作环境
-                                            </th>
-                                            <td>
-                                            工作环境温度 -15 至 55°C<br>非工作温度 -40 至 70°C<br>相对湿度 95%<br>工作高度 高达 5000 米
-                                            </td>
-                                        </tr>
-                                    <tr class="standard-table-group">
-                                        <th colspan="2">
-                                            包装清单
-                                        </th>
-                                    </tr>
-                                        <tr>
-                                            <th>
-                                            包装清单
-                                            </th>
-                                            <td>
-                                            主机 x 1<br>电源适配器 x 1<br>保修证书 x 1<br>SIM卡顶针 x 1<br>数据线 x 1
-                                            </td>
-                                        </tr>
+                                @foreach($parameter as $v)
+                                    {!! $v -> parameter !!}
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
                         <div class="question" id="question">
                             <div class="question-list">
                                 <h2>热门回答</h2>
+                                @foreach($faq as $v)
                                     <dl class="mod-item">
                                         <dt class="vm-question">
-                                        PRO 6s 的屏幕尺寸是多大？有哪几种颜色？机身材质？
+                                        {!! $v -> question !!}
                                         </dt>
                                         <dd class="vm-answer">
-                                            5.2 英寸，星空黑、月光银、香槟金、玫瑰金，金属一体化机身。
+                                        {!! $v -> answer !!}
                                         </dd>
                                     </dl>
-                                    <dl class="mod-item">
-                                        <dt class="vm-question">
-                                        PRO 6s 是否支持指纹识别？
-                                        </dt>
-                                        <dd class="vm-answer">
-                                            支持 mTouch 2.1，响应速度达 0.2s，支持移动指纹支付功能 。
-                                        </dd>
-                                    </dl>
-                                    <dl class="mod-item">
-                                        <dt class="vm-question">
-                                        PRO 6s 是否支持 Hi-Fi 功能？
-                                        </dt>
-                                        <dd class="vm-answer">
-                                            PRO 6s 采用了 Cirrus Logic 的解码耳放一体芯片，支持 Hi-Fi 音质播放。
-                                        </dd>
-                                    </dl>
-                                    <dl class="mod-item">
-                                        <dt class="vm-question">
-                                        PRO 6s 的 mSound 是什么功能？
-                                        </dt>
-                                        <dd class="vm-answer">
-                                            PRO 6s 搭载了 NXP 第三代 Smart PA 系统。先进的芯片通过实时感知外放喇叭的状态，可以智能控制喇叭的震动；从而充分榨取喇叭的性能，大大提高了声音整体的响度和低频的质量，洪亮不破音，澎湃而清晰，使外放达到准 Hi-Fi 水平，我们称之为 mSound。
-                                        </dd>
-                                    </dl>
-                                    <dl class="mod-item">
-                                        <dt class="vm-question">
-                                        PRO 6s 支持的网络有哪些？是否具备 VoLTE 语音通话技术？
-                                        </dt>
-                                        <dd class="vm-answer">
-                                            PRO 6s 全网通版可支持中国移动、中国联通、中国电信，一张卡 4G 极速上网，另一张卡 2G 语音畅聊，不可同时支持两张电信卡。支持 VoLTE 高清通话。
-                                        </dd>
-                                    </dl>
-                                    <dl class="mod-item">
-                                        <dt class="vm-question">
-                                        PRO 6s 的 CPU 是用什么？
-                                        </dt>
-                                        <dd class="vm-answer">
-                                            全新 Helio X25 旗舰处理器，魅族革命性的 10 核 3 集群架构，最高主频达到了 2.5GHz。
-                                        </dd>
-                                    </dl>
-                                    <dl class="mod-item">
-                                        <dt class="vm-question">
-                                        PRO 6s 的运行内存是多少？
-                                        </dt>
-                                        <dd class="vm-answer">
-                                            全系标配 4G 高速运行内存。
-                                        </dd>
-                                    </dl>
-                                    <dl class="mod-item">
-                                        <dt class="vm-question">
-                                        PRO 6s 后置摄像头是多少像素？采用哪颗 CMOS？是否支持光学防抖？
-                                        </dt>
-                                        <dd class="vm-answer">
-                                            1200 万像素，索尼 IMX386，搭载 PDAF 高速相位对焦，ƒ/2.0 大光圈虚化，支持图像及视频四轴光学防抖。
-                                        </dd>
-                                    </dl>
-                                    <dl class="mod-item">
-                                        <dt class="vm-question">
-                                        PRO 6s 的电池规格？是否支持 mCharge 安全快充？是否 Type-C 接口和支持 USB 3.1 标准？
-                                        </dt>
-                                        <dd class="vm-answer">
-                                            3060 mAh 典型值，支持mCharge 安全快充。配备了Type-C接口并整合加入 USB 3.1 Gen1 标准。
-                                        </dd>
-                                    </dl>
+                                @endforeach
                             </div>
                         </div>
                 </div>
@@ -1348,6 +505,10 @@ $('#buy-now').on('click', function(){
         alert('内存容量');
         return false;
     }
+
+
+
+
 });
 
 // 根据rom改变价格
@@ -1382,7 +543,7 @@ function changePrice(){
     }
     if(romchecked == countMax)
     {
-        $("input[name='price']").attr('value', countMax2);   
+        $("input[name='price']").attr('value', countMax2);
     }else
     {
         $("input[name='price']").attr('value', countMin);
@@ -1421,7 +582,8 @@ $('#reduce').on('click', function(){
 
         $('#addcar').on('click', function(event){
 
-            //验证选择
+                 //验证选择
+
                 var net = $("input[name='net']");
                 var count = 0;
                 for (var i = 0; i < net.length; i++) {
@@ -1469,14 +631,14 @@ $('#reduce').on('click', function(){
             var color = $("input:checked[name='color']").val();
             var rom = $("input:checked[name='rom']").val();
             var number = $("input[name='number']").val();
-            
+
             $.ajax({
                 type: "POST",
                 url: "{{ url('home/cart/ajax') }}",
                 data: {name:name, price:price, net:net, color:color, rom:rom, number:number},
                 success:function(data){
                     if(data == 1)
-                    {   
+                    {
                         $("#msg").show().animate({width: '250px'}, 200).fadeOut(1000); //提示信息
                     } else if(data == 0)
                     {
@@ -1496,29 +658,30 @@ $('#reduce').on('click', function(){
 $(function() {
     var offset = $("#end").offset();
     $(".#addcar").click(function(event){
-                         var addcar = $('#addcar'); 
-        var img = $('#fly-photo').attr('src'); 
-        var flyer = $('<img class="u-flyer" src="'+img+'">'); 
+                         var addcar = $('#addcar');
+        var img = $('#fly-photo').attr('src');
+        var flyer = $('<img class="u-flyer" src="'+img+'">');
         alert(img);
-        flyer.fly({ 
-            start: { 
-                left: event.pageX, //开始位置（必填）#fly元素会被设置成position: fixed 
-                top: event.pageY //开始位置（必填） 
-            }, 
-            end: { 
-                left: offset.left+10, //结束位置（必填） 
-                top: offset.top+10, //结束位置（必填） 
-                width: 0, //结束时宽度 
-                height: 0 //结束时高度 
-            }, 
-            onEnd: function(){ //结束回调 
-                $("#msg").show().animate({width: '250px'}, 200).fadeOut(2000); //提示信息 
-                addcar.removeClass('btn-primary').unbind('click'); 
-                this.destory(); //移除dom 
-            } 
+        flyer.fly({
+            start: {
+                left: event.pageX, //开始位置（必填）#fly元素会被设置成position: fixed
+                top: event.pageY //开始位置（必填）
+            },
+            end: {
+                left: offset.left+10, //结束位置（必填）
+                top: offset.top+10, //结束位置（必填）
+                width: 0, //结束时宽度
+                height: 0 //结束时高度
+            },
+            onEnd: function(){ //结束回调
+                $("#msg").show().animate({width: '250px'}, 200).fadeOut(2000); //提示信息
+                addcar.removeClass('btn-primary').unbind('click');
+                this.destory(); //移除dom
+            }
         });
         });
         });
+
 
 </script>
 
@@ -1526,7 +689,7 @@ $(function() {
     <div class="m-sidebar">
         <div class="cart">
             <i id="end"></i>
-            <a href="{{url('/home/cart/index')}}"><span color="blue"><img width="25px" src="{{url('/detail/images/cartoon.png')}}" alt="">购物车</span></a>
+            <a id="cartsonclick" href="{{url('/home/cart/index')}}"><span color="blue"><img width="25px" src="{{url('/detail/images/cartoon.png')}}" alt="">购物车</span></a>
         </div>
     </div>
     <div id="msg" bgcolor="blue">已成功加入购物车！</div>

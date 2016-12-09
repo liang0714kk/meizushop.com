@@ -114,7 +114,7 @@
                                     <td>{{ $v -> deliverid }}</td>
                                     <td>{{ $v -> remark }}</td>
                                     <td>
-                                    <a href="{{ url('./admin/order/order/')}}/{{ $v -> id}}/edit">编辑</a> 
+                                    <a href="{{ url('./admin/order/order/')}}/{{ $v -> id}}/edit">编辑</a>
                                     <form action="{{ url('./admin/order/order')}}/{{ $v -> id}}" method="POST">
                                         {{ csrf_field()}}
                                         {{ method_field("DELETE")}}
@@ -126,7 +126,7 @@
                             </table>
                         </div><!-- /.table-responsive -->
                         <!-- 分页 -->
-                           <center>{!! $data -> appends($request) -> render()!!}</center> 
+                           <center>{!! $data -> appends($request) -> render()!!}</center>
 
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
@@ -159,7 +159,7 @@ window.onload = function()
             //获取当前对象
             var t = $(this);
             //获取id
-            var id = $(this).parent().parent().parent().find('.id').html();
+            var id = $(this).parent().parent().find('.id').html();
             $.ajax({
                 type:"POST",
                 url:"{{ url('/admin/order/order/ajax/deliver') }}",
@@ -191,14 +191,15 @@ window.onload = function()
             return false;
         });
 
-    
+
     //退款单击事件
         $('.pay').on('click', function()
         {
             //获取当前对象
             var t = $(this);
             //获取id
-            var id = $(this).parent().parent().parent().find('.id').html();
+            var id = $(this).parent().parent().find('.id').html();
+
             $.ajax({
                 type:"POST",
                 url:"{{ url('/admin/order/order/ajax/pay') }}",
@@ -227,7 +228,7 @@ window.onload = function()
             return false;
         });
 
-        
+
 
 
 }

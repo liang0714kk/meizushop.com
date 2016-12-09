@@ -19,7 +19,7 @@ class GoodsController extends Controller
     public function index(Request $request)
     {
         //商品列表展示
-      
+
        //dd ($data);
 
         //查询数据信息
@@ -27,7 +27,7 @@ class GoodsController extends Controller
         return view('admin.goods.index', ['data' => $data, 'request' => $request -> all()], ['title' => '商品列表页']);
     }
 
-    // ajax 修改状态
+    // ajax 修改status
    public function ajaxStatus(Request $request)
    {
         $id = $request -> input('id');
@@ -59,6 +59,42 @@ class GoodsController extends Controller
         }
    }
 
+   //ajax修改hot
+
+   public function ajaxHot(Request $request)
+   {
+      //获取id
+
+      $id = $request -> input('id');
+
+      //查询数据hot
+      $hot = DB::table('gdetails') -> where('id', $id) -> first() -> hot;
+
+      //判断并修改数据
+        if($hot == 1)
+        {
+            $res = DB::table('gdetails') -> where('id', $id) -> update(['hot' => 0]);
+            if($res)
+            {
+                return 0;
+            }
+            else
+            {
+                return 2;
+            }
+        }
+        else if($hot == 0)
+        {
+            $res = DB::table('gdetails') -> where('id' , $id) -> update(['hot' => 1]);
+            if($res)
+            {
+                return 1;
+            }else
+            {
+                return 2;
+            }
+        }
+   }
     /**
      * Show the form for creating a new resource.
      *
@@ -78,7 +114,7 @@ class GoodsController extends Controller
         }
 
         return view('admin.goods.add', ['title' => '商品添加'], ['data' => $data]);
-        
+
     }
 
     /**
@@ -110,7 +146,7 @@ class GoodsController extends Controller
             'support.required' => '支持类型不能为空',
             'server.required' => '售后服务商不能为空'
             ]);
-        
+
         //执行添加
         $data = $request -> except('_token');
        //处理时间
@@ -146,7 +182,7 @@ class GoodsController extends Controller
         {
             $data['photo'] = 'default.jpg';
         }
-        
+
         // dd($data);
         $res = DB::table('gdetails') -> insert($data);
 
@@ -215,7 +251,7 @@ class GoodsController extends Controller
     {
         //编辑并处理修改
         $data = $request -> except('_token','_method');
-        
+
         //获取原来的图片
         $oldPhoto = DB::table('gdetails') -> where('id', $id) -> first() -> photo;
 
@@ -226,7 +262,7 @@ class GoodsController extends Controller
                 $suffix = $request -> file('photo') -> getClientOriginalExtension();
                 $fileName = time().mt_rand(100000,999999). '.' .$suffix;
                 //移动图像文件
-                $move=$request -> file('photo') -> move('./uploads/goods',$fileName); 
+                $move=$request -> file('photo') -> move('./uploads/goods',$fileName);
 
                 if($move)
                 {
@@ -267,7 +303,7 @@ class GoodsController extends Controller
     public function destroy($id)
     {
         //商品删除
-        
+
         $data = DB::table('gdetails') -> where('id', $id) -> first();
         $res = DB::table('gdetails') -> where('id' , $id) -> delete();
         // 获取原图片

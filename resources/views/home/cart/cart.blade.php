@@ -103,6 +103,16 @@ window.onload = function()
     });   
 
 
+    $('#submitForm').on('click', function(){
+        var init = $('.order-total-price').html();
+        if(init == '')
+        {
+            alert("请选择商品");
+            return false;
+        }
+    });
+
+
 }
 </script>
 @endsection

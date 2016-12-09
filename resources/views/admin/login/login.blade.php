@@ -81,9 +81,9 @@ input:focus
 <body>
 
 <div class="login">
-    <center><img width="100px" height="50px" src="/uploads/logo/{{ $logo -> logo }}" alt="logo"></center>
+    <center><img width="100px" height="50px" src="{{url('/uploads/logo/')}}/{{ $logo -> logo }}" alt="logo"></center>
     <br>
-    <form method="post" action="/admin/login/signin">
+    <form method="post" action="{{url('/admin/login/signin')}}">
      {{ csrf_field() }}
         <input type="text" name="name" placeholder="用户名" required="required" />
         <input type="password" name="password" placeholder="密码" required="required" />

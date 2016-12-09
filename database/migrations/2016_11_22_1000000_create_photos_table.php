@@ -15,7 +15,7 @@ class CreatePhotosTable extends Migration
         Schema::create('photos', function (Blueprint $table) {
             $table->increments('id') -> comment('编号');
             $table->string('name') -> comment('商品名字');
-            $table->string('photo') -> comment('商品图片');
+            $table->string('photo') -> comment('商品图片') -> default('default.jpg');
             $table->integer('gid')  -> comment('商品id');
         });
     }

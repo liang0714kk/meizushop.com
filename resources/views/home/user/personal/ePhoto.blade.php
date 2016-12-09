@@ -1,79 +1,115 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="description" content="欢迎登录和注册魅族Flyme账号，您可以体验手机云服务功能，包括：在线下载应用，同步手机数据和查找手机等，让您的手机管理更加智能。">
-  <meta name="keywords" content="魅族  meizu 登录flyme 云服务  查找手机  充值账号  MX M9 MX2">
-  <meta content="width=1080" name="viewport">
-  <meta name="csrf-token" content="{{csrf_token()}}">
-  <title>账号管理</title>
-  <link href="/hm/personal/ePhoto_files/base.css" type="text/css" rel="Stylesheet">
-  <link href="/hm/personal/ePhoto_files/head.css" type="text/css" rel="Stylesheet">
-  <link href="/hm/personal/ePhoto_files/jquery-ui.css" type="text/css" rel="Stylesheet">
-  <link href="/hm/personal/ePhoto_files/jquery.css" type="text/css" rel="Stylesheet">
-  <link href="/hm/personal/ePhoto_files/mzhead20130905.css" type="text/css" rel="Stylesheet">
-  <link href="/hm/personal/ePhoto_files/modifyIcon.css" type="text/css" rel="Stylesheet">
-  <link href="/hm/personal/ePhoto_files/jquery_002.css" type="text/css" rel="stylesheet">
-  <script type="text/javascript" src="/jquery-1.8.3.min.js"></script>
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://me.meizu.com/member/index -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{{config('app.name')}} - 个人中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="/jquery-1.8.3.min.js"></script>
+    <link href="http://store.res.meizu.com/resources/php/store/java/layout/img/favicon-2e71785f44.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="http://store.res.meizu.com/resources/php/store/java/layout/img/favicon-2e71785f44.ico" rel="icon" type="image/x-icon">
+    <meta name="description" content="会员中心，我的商城">
+    <meta name="Keywords" content="魅族官方在线商店、魅族在线商城、魅族官网在线商店、魅族商城">
+    <link rel="stylesheet" href="/hm/personal/meizu_files/layout-ea436a570a.css">
+
+
+    <!--[if lt IE 9]>
+    <script src="//store.res.meizu.com/resources/php/store/java/layout/js/html5shiv-3ed50bb69a.js" type="text/javascript"></script>
+    <script src="//store.res.meizu.com/resources/php/store/java/layout/js/es5-shim-50bbaee56e.js" type="text/javascript"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="/hm/personal/meizu_files/site-base.css">
+    <link rel="stylesheet" href="/hm/personal/meizu_files/aio.css">
 </head>
-<body style="min-height: 800px;">
-  <div id="content" class="content">
+<body>
+<!-- common header -->
+<div class="layout-topbar clearfix login" id="topbar">
+    <div class="mzcontainer">
+        <ul class="layout-topbar-left clearfix">
+            <li class="layout-topbar-left-links"><a class="layout-topbar-link" data-mdesc="页头中第1个" data-mtype="store_index_yt_1" target="_blank" href="http://www.meizu.com/">魅族官网</a></li>
+            <li class="layout-topbar-left-links"><a class="layout-topbar-link" data-mdesc="页头中第2个" data-mtype="store_index_yt_2" href="http://store.meizu.com/index.html">魅族商城</a></li>
+            <li class="layout-topbar-left-links"><a class="layout-topbar-link" data-mdesc="页头中第3个" data-mtype="store_index_yt_3" target="_blank" href="http://www.flyme.cn/">Flyme</a></li>
+            <li class="layout-topbar-left-links"><a class="layout-topbar-link" data-mdesc="页头中第4个" data-mtype="store_index_yt_4" target="_blank" href="http://retail.meizu.com/index.html">专卖店</a></li>
+            <li class="layout-topbar-left-links"><a class="layout-topbar-link" data-mdesc="页头中第5个" data-mtype="store_index_yt_5" target="_blank" href="http://service.meizu.com/index.html">服务</a></li>
+            <li class="layout-topbar-left-links"><a class="layout-topbar-link" data-mdesc="页头中第6个" data-mtype="store_index_yt_6" target="_blank" href="http://bbs.meizu.cn/">社区</a></li>
+        </ul>
+        <ul class="layout-topbar-right clearfix">
 
 
-<input id="mz_csrf_tks" value="" type="hidden">
-<div id="header-top" class="headWrap">
-  <a href="http://www.meizu.com/index.html" class="headLogo"><i class="i_icon"></i></a>
-  <ul class="headLeft">
-    <li class="head-store">
-      <a href="http://store.meizu.com/" class="" hidefocus=""><i class="i_icon"></i></a>
-    </li>
-    <li class="head-products">
-      <a href="http://www.meizu.com/products/pro5/summary.html" class="" hidefocus=""><i class="i_icon"></i></a>
-    </li>
-    <li class="head-retail">
-      <a href="http://retail.meizu.com/" class="" hidefocus=""><i class="i_icon"></i></a>
-    </li>
-    <li class="head-flyme">
-      <a href="http://www.flyme.cn/" class="" hidefocus=""><i class="i_icon"></i></a>
-    </li>
-    <li class="head-services">
-      <a href="http://service.meizu.com/" class="" hidefocus=""><i class="i_icon"></i></a>
-    </li>
-    <li class="head-bbs">
-      <a href="http://bbs.meizu.cn/" class="" hidefocus=""><i class="i_icon"></i></a>
-    </li>
-  </ul>
+            <li class="layout-topbar-right-links"><a id="topbarOrderMsg" class="layout-topbar-link has-msg" data-mdesc="页头-我的订单" data-mtype="store_index_yt_order" target="_blank" href="{{ url('/home/ordercenter/index') }}">我的订单</a></li>
+            <li class="layout-topbar-right-links signout"><a class="layout-topbar-link" href="{{url('home/user/login')}}">登录</a></li>
+            <li class="layout-topbar-right-links signout"><a class="layout-topbar-link" target="_blank" href="{{url('hme/user/register')}}">注册</a></li>
+            <li class="layout-topbar-right-links member signin">
+                <a class="layout-topbar-link" target="_blank" href="{{url('home/user/personal/index')}}"><span class="layout-topbar-username" id="topbarUser">{{session('master') -> nickname}}</span>的商城<i class="layout-topbar-triangle"></i></a>
+                <ul class="layout-topbar-downmenu">
+                    <li class="layout-topbar-downmenu-item"><a class="layout-topbar-downmenu-link" data-mdesc="我的商城下拉框1" data-mtype="store_index_yt_my_1" target="_blank" href="{{ url('/home/ordercenter/address') }}">地址管理</a></li>
 
-  <div class="headRight">
-    <span id="loginWrap" style="">
-      <a id="head-name" class="linkAGray" href="" title="放牛的小羊">{{session('master') -> nickname}}</a>
-      <span id="show-msg-pub" class="none">1</span>
-      <span class="line_head">|</span>
-      <a id="head-logout" class="linkAGray" href="/home/user/logout">退出</a>
-
-    </span>
-
-        <!--密码风险提示-->
-        <div id="show-psw-tip" class="none">
-            <div class="tip-content">
-                <div class="tip-span-msg">当前密码风险较高，请尽快修改密码</div>
-                <div class="tip-cancel"></div>
-            </div>
-        </div>
-
-    <span id="unloginWrap" style="display:none;">
-      <a href="/home/user/login" class="head-name">登录</a>
-      <span class="line_head">|</span>
-      <a href="/home/user/register" class="head-logout">注册</a>
-    </span>
-  </div>
+                    <li class="layout-topbar-downmenu-item"><a class="layout-topbar-downmenu-link" data-mdesc="我的商城下拉框3" data-mtype="store_index_yt_my_3" target="_blank" href="{{ url('/home/feedback/add') }}">问题反馈</a></li>
+                    <li class="layout-topbar-downmenu-item"><a class="layout-topbar-downmenu-link exit" data-mdesc="我的商城下拉框4" data-mtype="store_index_yt_my_4" href="{{url('home/user/logout')}}">退出</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 </div>
 
-    <div class="flymeContent">
+    <meta name="csrf-token" content="{{csrf_token()}}">
+    <script type="text/javascript" src="/jquery-1.8.3.min.js"></script>
+    <title>账号管理</title>
+    <link href="/hm/personal/edit_files/base.css" type="text/css" rel="Stylesheet">
+    <link href="/hm/personal/edit_files/head.css" type="text/css" rel="Stylesheet">
+    <link href="/hm/personal/edit_files/cycode.css" rel="stylesheet">
+    <link href="/hm/personal/edit_files/actmanage.css" type="text/css" rel="Stylesheet">
+<script type="text/javascript">
+    var ReceiveEmail = '2****409@qq.com';
+    var isHit = 'false';
+</script>
+</head>
+<body style="min-height: 848px;">
+    <div id="content" class="content">
 
+<input type="hidden" id="mz_csrf_tks" value="">
+
+
+        <div class="flymeContent">
+
+
+<style type="text/css">
+    .navWrap{
+        height: 58px;
+        border-bottom: #e4e7e9 1px solid;
+    }
+    .navWrap .nav{
+        display: block;
+        float: left;
+        line-height: 58px;
+    }
+    .navWrap .nav li{
+        position: relative;
+        display: inline-block;
+        margin-right: 40px;
+        width: 100px;
+        height: 100%;
+        float: left;
+    }
+    .navWrap .nav li a{
+        display: inline-block;
+        width: 100%;
+        height: 56px;
+        font-size: 16px;
+        text-align: center;
+    }
+    .navWrap .nav .current{
+        margin: 0px auto;
+        height: 2px;
+        width: 100px;
+        overflow: hidden;
+        background-color: #1daeed;
+    }
+</style>
 <div id="navWrap" class="navWrap">
-  <ul class="nav">
-    <li id="accountManage"><a href="" class="linkABlue">账号管理</a><div class="current"></div></li>
-  </ul>
+    <ul class="nav">
+        <li id="accountManage"><a href="{{url('home/user/personal/ePhoto')}}" class="linkABlue">修改头像</a><div class="current"></div></li>
+
+    </ul>
 </div>
 <div class="clear"></div>
 
@@ -180,57 +216,64 @@ function clacImgZoomParam( maxWidth, maxHeight, width, height ){
       </div>
     </div>
   </div>
+  <div id="flymeFooter" class="footerWrap" style="top: 855px;">
+    <div class="footerInner">
+        <div class="footer-layer1">
+            <div class="footer-innerLink">
+                <a href="http://www.meizu.com/about.html" target="_blank" title="关于魅族">关于魅族</a>
+                <img class="foot-line" src="/hm/personal/edit_files/space.gif">
+                <a href="http://hr.meizu.com/" target="_blank" title="工作机会">工作机会</a>
+                <img class="foot-line" src="/hm/personal/edit_files/space.gif">
+                <a href="http://www.meizu.com/contact.html" target="_blank" title="联系我们">联系我们</a>
+                <img class="foot-line" src="/hm/personal/edit_files/space.gif">
+                <a href="http://www.meizu.com/legalStatement.html" target="_blank" title="法律声明">法律声明</a>
+                <img class="foot-line" src="/hm/personal/edit_files/space.gif">
 
+                <div href="javascript:void(0);" id="globalName" class="footer-language" title="简体中文">
+                    简体中文&nbsp;&nbsp;&nbsp;
+                    <div id="globalContainer" class="footer-language_menu" style="left: 513px;">
+                        <a href="https://i.flyme.cn/uc/webjsp/member/detail?lang=en_US" id="i18n-link" title="English" class="ClobalItem">English</a>
+                        <script>
+                            (function() {
+                                var u = decodeURIComponent(location.href)
+                                var r = /lang=([^&\s]+)/
+                                var lowB = !('addEventListener' in window)
+                                var addEvent = lowB ? window.attachEvent : window.addEventListener
 
+                                if(r.test(u)) u = u.replace(r, 'lang=en_US')
+                                else u += (~u.indexOf('?') ? '&' : '?') + 'lang=en_US'
 
+                                addEvent(lowB ? 'onload' : 'load', function() {document.getElementById('i18n-link').setAttribute('href',u)})
+                            }());
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-service">
+                <span class="service-label">客服热线</span>
+                <span class="service-num">400-788-3333</span>
+                <a id="service-online" class="service-online" href="javascript:void(0);" title="在线客服">在线客服</a>
+            </div>
+            <div class="footer-outerLink">
+                <a class="footer-sinaMblog" href="http://weibo.com/meizumobile" target="_blank"><i class="i_icon"></i></a>
 
-
-<div id="flymeFooter" class="footerWrap">
-  <div class="footerInner">
-    <div class="footer-layer1">
-      <div class="footer-innerLink">
-        <a href="http://www.meizu.com/about.html" target="_blank" title="关于魅族">关于魅族</a>
-        <img class="foot-line" src="/hm/personal/ePhoto_files/space.gif">
-        <a href="http://hr.meizu.com/" target="_blank" title="工作机会">工作机会</a>
-        <img class="foot-line" src="/hm/personal/ePhoto_files/space.gif">
-        <a href="http://www.meizu.com/contact.html" target="_blank" title="联系我们">联系我们</a>
-        <img class="foot-line" src="/hm/personal/ePhoto_files/space.gif">
-        <a href="http://www.meizu.com/legalStatement.html" target="_blank" title="法律声明">法律声明</a>
-        <img class="foot-line" src="/hm/personal/ePhoto_files/space.gif">
-
-        <div href="javascript:void(0);" id="globalName" class="footer-language" title="简体中文">
-          简体中文&nbsp;&nbsp;&nbsp;
-          <div id="globalContainer" class="footer-language_menu" style="left: 512px; display: none;">
-            <a href="https://i.flyme.cn/uc/webjsp/membericon/modify?lang=en_US" id="i18n-link" title="English" class="ClobalItem">English</a>
-
-            </script>
-          </div>
+                <a id="footer-weChat" class="footer-weChat" href="javascript:void(0);" target="_blank"><i class="i_icon"></i></a>
+                <a class="footer-qzone" href="http://user.qzone.qq.com/2762957059" target="_blank"><i class="i_icon"></i></a>
+            </div>
         </div>
-      </div>
-      <div class="footer-service">
-        <span class="service-label">客服热线</span>
-        <span class="service-num">400-788-3333</span>
-        <a id="service-online" class="service-online" href="javascript:void(0);" title="在线客服">在线客服</a>
-      </div>
-      <div class="footer-outerLink">
-        <a class="footer-sinaMblog" href="http://weibo.com/meizumobile" target="_blank"><i class="i_icon"></i></a>
-
-        <a id="footer-weChat" class="footer-weChat" href="javascript:void(0);" target="_blank"><i class="i_icon"></i></a>
-        <a class="footer-qzone" href="http://user.qzone.qq.com/2762957059" target="_blank"><i class="i_icon"></i></a>
-      </div>
+        <div class="clear"></div>
+        <div id="flymeCopyright" class="copyrightWrap">
+            <div class="copyrightInner">
+                <span>©2016 Meizu Telecom Equipment Co., Ltd. All rights reserved.</span>
+                <a href="http://www.miitbeian.gov.cn/" class="linkAGray" target="_blank">备案号: 粤ICP备13003602号-4</a>
+                <a href="http://www3.res.meizu.com/static/cn/widget/footer/images/icp2_b2dcb54.jpg" class="linkAGray" target="_blank">经营许可证编号: 粤B2-20130198</a>
+                <a target="_blank" href="http://www2.res.meizu.com/zh_cn/images/common/com_licence.jpg" hidefocus="true" class="linkAGray">营业执照</a>
+            </div>
+        </div>
     </div>
-    <div class="clear"></div>
-    <div id="flymeCopyright" class="copyrightWrap">
-      <div class="copyrightInner">
-        <span>©2016 Meizu Telecom Equipment Co., Ltd. All rights reserved.</span>
-        <a href="http://www.miitbeian.gov.cn/" class="linkAGray" target="_blank">备案号: 粤ICP备13003602号-4</a>
-        <a href="http://www3.res.meizu.com/static/cn/widget/footer/images/icp2_b2dcb54.jpg" class="linkAGray" target="_blank">经营许可证编号: 粤B2-20130198</a>
-        <a target="_blank" href="http://www2.res.meizu.com/zh_cn/images/common/com_licence.jpg" hidefocus="true" class="linkAGray">营业执照</a>
-      </div>
-    </div>
-  </div>
 </div>
-<div id="wechatPic"></div>
+
+
 
 
 

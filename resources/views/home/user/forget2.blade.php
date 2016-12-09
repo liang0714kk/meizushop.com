@@ -20,7 +20,7 @@
 
    <div id='content' class="content">
     <div class=ucSimpleHeader id="header">
-    <img src="{{url('/uploads/logo/saf.jpg')}}" class='meizuLogo'><i class='i_icon'></i></a>
+    <a href="{{url('home/index/index')}}"><img src="{{url('/uploads/logo/saf.jpg')}}" class='meizuLogo'><i class='i_icon'></i></a>
     </div>
         <center>
         <div>
@@ -28,34 +28,19 @@
                 <span style="font-size: 40px;">找回登录密码</span><br><br>
                 <hr color="#ccc" width="500">
                 <br><br>
-                <form action="/home/user/sendEmail" method="post" style="text-align: center;font-size:15px;">
-
                 @if(session('info'))
-                    <center><div id="jg" style="color:white;background-color:#2292DD;width:200px;">
-                        <p>{{ session('info')}}</p>
-                    </div><br></center>
-                @endif
+    <center><div id="jg" style="color:white;background-color:#2292DD;width:200px;">
+    <p>{{ session('info')}}</p>
+    </div><br></center>
+@endif
 
-                @if(count($errors) > 0)
-                    <center><div id="jg" style="color:white;background-color:#2292DD;width:200px;">
-                        @foreach($errors->all() as $error)
-                            <p>{{ $error }}</p>
-                        @endforeach
-                    </div><br></center>
-                @endif
-                {{csrf_field()}}
-                <center><div style="height:450px;width:350px;">
-
-                <b>邮 &nbsp;&nbsp;&nbsp;&nbsp; 箱 : </b> &nbsp;&nbsp;&nbsp;&nbsp;<input type="email" name="email" style="border:1px solid #ccc; width:250px;height:40px;" placeholder=" &nbsp;请输入邮箱"><br><br><br>
-
-                <!-- <div style="border:1px solid #ccc; width:150px;height:35px;line-height:35px;float:right;font-size:20px;margin-right:10px;"><a href="">获取验证码</a></div><br><br><br> -->
-                <button style="width:340px;height:50px;text-align:center;background-color:#2292DD;font-size:20px;color:white;font-weight: bold;">下一步</button>
-                </div></center>
-                </form>
-            </div>
-        </div>
-        <hr width="1100">
-        </center>
+@if(count($errors) > 0)
+    <center><div id="jg" style="color:white;background-color:#2292DD;width:200px;">
+@foreach($errors->all() as $error)
+    <p>{{ $error }}</p>
+@endforeach
+    </div><br></center>
+@endif
 <script type="text/javascript">
     window.onload = function()
     {
@@ -64,16 +49,21 @@
         {
             $("#jg").fadeOut('1000');
         },1000);
-
-        $.ajaxSetup({
-            headers:{
-                        'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content');
-                    }
-                    });
     }
-
-
 </script>
+                <form action="/home/user/sendEmail" method="post" style="text-align: center;font-size:15px;">
+                {{csrf_field()}}
+                <center><div style="height:450px;width:350px;">
+                <b>邮 &nbsp;&nbsp;&nbsp;&nbsp; 箱 : </b> &nbsp;&nbsp;&nbsp;&nbsp;<input type="email" name="email" style="border:1px solid #ccc; width:250px;height:40px;" placeholder=" &nbsp;请输入邮箱"><br><br><br>
+                <input type="hidden" name="name" value="{{$name}}">
+                <button style="width:340px;height:50px;text-align:center;background-color:#2292DD;font-size:20px;color:white;font-weight: bold;">下一步</button>
+                </div></center>
+                </form>
+            </div>
+        </div>
+        <hr width="1100">
+        </center>
+
 
 <div id='flymeFooter' class='footerWrap'>
     <div class='footerInner'>

@@ -149,7 +149,7 @@ class OrderController extends Controller
 
         // 添加其余字段
         $data = $request -> except('_token', '_method', 'id');
-        $gid = DB::table('gdetils') -> where('id', $request ->input('gid')) -> first();
+        $gid = DB::table('gdetails') -> where('id', $request ->input('gid')) -> first();
         if(!$gid)
         {
             return back() -> with(['info' => '商品不存在']);
@@ -183,11 +183,6 @@ class OrderController extends Controller
         {
             return back() -> with(['info' => '已付款,请退款后再删除']);
         }
-        if($data -> state != 1)
-        {
-            return back() -> with(['info' => '买家未收货，不能删除订单']);
-        }
-
         $res = DB::table('orders') -> delete($id);
         if($res)
         {
@@ -197,5 +192,5 @@ class OrderController extends Controller
             return back() -> with(['info' => '删除失败'] );
         }
     }
-    
+
 }

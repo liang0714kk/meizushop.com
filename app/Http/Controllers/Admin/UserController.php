@@ -30,7 +30,8 @@ class UserController extends Controller
         $this -> validate($request,[
             'name' => 'required|min:6|max:18',
             'password' => 'required|min:6|max:18',
-            'repassword' => 'required|same:password'
+            'repassword' => 'required|same:password',
+            'phone' => 'required|min:11|max:11'
             ],[
             'name.required' => '用户名不能为空',
             'name.min' => '用户名不能少于6位',
@@ -42,11 +43,13 @@ class UserController extends Controller
             'repassword.same' => '确认密码不一致',
             'email.required' => '邮箱不能为空',
             'email.email' => '邮箱格式不正确',
-            'author.required' => '请选择权限'
+            'author.required' => '请选择权限',
+            'phone.required' => '手机号不能为空',
+            'phone.min' => '请输入11位手机号',
+            'phone.max' => '请输入11位手机号'
             ]);
 
        $data = $request -> except('_token','repassword');
-       // dd($data);
        //加密密码
        $data['password'] = Crypt::encrypt($data['password']);
        //哈希加密
@@ -92,6 +95,7 @@ class UserController extends Controller
         {
             $data['photo'] = 'default.jpg';
         }
+        // dd($data);
         $res = DB::table('user') -> insert($data);
 
         if($res)
@@ -225,6 +229,7 @@ class UserController extends Controller
    public function delete($id)
    {
         $data = DB::table('user') -> where('id', $id) -> first();
+
         $res = DB::table('user') -> where('id' , $id) -> delete();
         // 获取原图片
         $oldPhoto = $data -> photo;

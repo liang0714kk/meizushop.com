@@ -18,7 +18,7 @@ class CreateAddersTable extends Migration
             $table->string('adder') -> comment('地址');
             $table->string('phone') -> comment('电话');
             $table->integer('uid') -> comment('会员编号');
-            $table->integer('uid') -> comment('默认收货') -> default(0);
+            $table->integer('default') -> comment('默认收货') -> default(0);
         });
     }
 

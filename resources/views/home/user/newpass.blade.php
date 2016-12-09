@@ -48,6 +48,7 @@
                 <center><div style="height:450px;width:350px;">
                 <b>&nbsp;新&nbsp;密&nbsp;码 : &nbsp;&nbsp;&nbsp;&nbsp;</b><input type="text" name="password" style="border:1px solid #ccc; width:250px;height:40px;" placeholder=" &nbsp;请输入新密码"><br><br><br>
                 <b>确认密码 :  &nbsp;&nbsp;&nbsp;&nbsp;</b><input type="text" name="repassword" style="border:1px solid #ccc; width:250px;height:40px;" placeholder="请再次输入新密码">
+                <input type="hidden" name="id" value="{{$id}}">
                     <br><br>
 
                 <button style="width:340px;height:50px;text-align:center;background-color:#2292DD;font-size:20px;color:white;font-weight: bold;">重置</button>

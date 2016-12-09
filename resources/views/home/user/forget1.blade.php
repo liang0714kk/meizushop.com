@@ -10,7 +10,7 @@
     <meta name="description" content="欢迎登录和注册魅族Flyme账号，您可以体验手机云服务功能，包括：在线下载应用，同步手机数据和查找手机等，让您的手机管理更加智能。" />
     <meta name="keywords" content="魅族 meizu 登录flyme 云服务 查找手机 充值账号 MX M9 MX2" />
     <meta content="width=1080" name="viewport">
-    <script type="text/javascript" src="/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="{{url('/jquery-1.8.3.min.js')}}"></script>
     <title>找回密码 - 输入账号</title>
     <link href="{{ url('/hm/register/uc-res.mzres.com/resources/uc/web/base/css/base.css?ver=20140707') }}" type="text/css" rel="Stylesheet">
     <link href="{{ url('/hm/register/uc-res.mzres.com/resources/uc/wlogin/base/css/cycode.css') }}" rel="stylesheet">
@@ -20,7 +20,7 @@
 
    <div id='content' class="content">
     <div class=ucSimpleHeader id="header">
-    <img src="{{url('/uploads/logo/saf.jpg')}}" class='meizuLogo'><i class='i_icon'></i></a>
+    <a href="{{url('home/index/index')}}"><img src="{{url('/uploads/logo/saf.jpg')}}" class='meizuLogo'><i class='i_icon'></i></a>
     </div>
         <center>
         <div>
@@ -28,21 +28,20 @@
                 <span style="font-size: 40px;">找回登录密码</span><br><br>
                 <hr color="#ccc" width="500">
                 <br><br>
+@if(session('info'))
+    <center><div id="jg" style="color:white;background-color:#2292DD;width:200px;">
+    <p>{{ session('info')}}</p>
+    </div><br></center>
+@endif
+
+@if(count($errors) > 0)
+    <center><div id="jg" style="color:white;background-color:#2292DD;width:200px;">
+@foreach($errors->all() as $error)
+    <p>{{ $error }}</p>
+@endforeach
+    </div><br></center>
+@endif
                 <form action="/home/user/doName" method="post" style="text-align: center;font-size:15px;">
-
-                @if(session('info'))
-                    <center><div id="jg" style="color:white;background-color:#2292DD;width:200px;">
-                        <p>{{ session('info')}}</p>
-                    </div><br></center>
-                @endif
-
-                @if(count($errors) > 0)
-                    <center><div id="jg" style="color:white;background-color:#2292DD;width:200px;">
-                        @foreach($errors->all() as $error)
-                            <p>{{ $error }}</p>
-                        @endforeach
-                    </div><br></center>
-                @endif
                 {{csrf_field()}}
                 <center><div style="height:450px;width:350px;">
                 <b>账 &nbsp;&nbsp;&nbsp;&nbsp; 号 : &nbsp;&nbsp;&nbsp;&nbsp;</b><input type="text" name="name" style="border:1px solid #ccc; width:250px;height:40px;" placeholder=" &nbsp;请输入6-18位Flyme账号"><br><br><br>
@@ -59,25 +58,19 @@
         </div>
         <hr width="1100">
         </center>
-
 <script type="text/javascript">
     window.onload = function()
     {
         //设置定时器 淡出
         setInterval(function()
         {
-            alert(111);
             $("#jg").fadeOut('1000');
         },1000);
-
-        $.ajaxSetup({
-            headers:{
-                        'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content');
-                    }
-                    });
     }
-
-    function re_captcha() {
+</script>
+<script type="text/javascript">
+    function re_captcha()
+    {
     var url = "{{ URL('/home/user/captcha') }}";
         url = url + "/" + Math.random();
         document.getElementById('c2c98f0de5a04167a9e427d883690ff6').src = url;

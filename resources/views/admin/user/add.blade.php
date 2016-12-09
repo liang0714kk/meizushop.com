@@ -61,6 +61,11 @@
                                    placeholder="请输入邮箱">
                         </div>
                         <div class="form-group">
+                            <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;手机号</label>
+                            <input name="phone" value="{{ old('phone') }}" type="number" class="form-control" id="exampleInputName"
+                                   placeholder="请输入11位手机号">
+                        </div>
+                        <div class="form-group">
                             <label for="exampleInputEmail1">&nbsp;&nbsp;&nbsp;权限</label>
                             <select name="author">
                                 <option value="0">普通用户</option>
@@ -79,11 +84,71 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFile">&nbsp;&nbsp;&nbsp;头像</label>
-                            <input name="photo" type="file" id="exampleInputFile">
-                            <p class="help-block">选择图片作为头像</p>
                         </div>
-                    </div><!-- /.box-body -->
+                        <input  name="photo"  size="28" accept="image/*" type="file" onchange="previewImage(this)"><br>
+                        <div id="preview">
+                        <img id="imghead" width=200 height=200 border=0 src='{{url('/uploads/avater/default.jpg')}}'>
+                        </div>
+<script type="text/javascript">
 
+
+//图片上传预览    IE是用了滤镜。
+function previewImage(file)
+{
+  var MAXWIDTH  = 260;
+  var MAXHEIGHT = 180;
+  var div = document.getElementById('preview');
+  if (file.files && file.files[0])
+  {
+      div.innerHTML ='<img id=imghead>';
+      var img = document.getElementById('imghead');
+      img.onload = function(){
+        var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+        img.width  =  rect.width;
+        img.height =  rect.height;
+//      img.style.marginLeft = rect.left+'px';
+        img.style.marginTop = rect.top+'px';
+      }
+      var reader = new FileReader();
+      reader.onload = function(evt){img.src = evt.target.result;}
+      reader.readAsDataURL(file.files[0]);
+  }
+  else //兼容IE
+  {
+    var sFilter='filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
+    file.select();
+    var src = document.selection.createRange().text;
+    div.innerHTML = '<img id=imghead>';
+    var img = document.getElementById('imghead');
+    img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
+    var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+    status =('rect:'+rect.top+','+rect.left+','+rect.width+','+rect.height);
+    div.innerHTML = "<div id=divhead style='width:"+rect.width+"px;height:"+rect.height+"px;margin-top:"+rect.top+"px;"+sFilter+src+"\"'></div>";
+  }
+}
+function clacImgZoomParam( maxWidth, maxHeight, width, height ){
+    var param = {top:0, left:0, width:width, height:height};
+    if( width>maxWidth || height>maxHeight )
+    {
+        rateWidth = width / maxWidth;
+        rateHeight = height / maxHeight;
+
+        if( rateWidth > rateHeight )
+        {
+            param.width =  maxWidth;
+            param.height = Math.round(height / rateWidth);
+        }else
+        {
+            param.width = Math.round(width / rateHeight);
+            param.height = maxHeight;
+        }
+    }
+
+    param.left = Math.round((maxWidth - param.width) / 2);
+    param.top = Math.round((maxHeight - param.height) / 2);
+    return param;
+}
+</script>
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">添加</button>
                         <button type="reset" class="btn btn-default">重置</button>

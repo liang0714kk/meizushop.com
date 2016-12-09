@@ -13,7 +13,7 @@ class GdetailController extends Controller
 {
     //index
     public function index($pid, $name)
-    {	 
+    {
     	// $pid = 12;
     	// $name = 'PRO 6s';
     	$data = DB::table('gdetails') -> where('pid', $pid) -> where('name', $name) -> groupBy('color') -> get();
@@ -31,14 +31,16 @@ class GdetailController extends Controller
         {
             $net[] = $val3 -> net;
         }
-        $data4 = DB::table('gdetails') -> where('pid', $pid) -> where('name', $name) -> groupBy('net') -> get();
+        $data4 = DB::table('gdetails') -> where('pid', $pid) -> where('name', $name) -> groupBy('price') -> get();
         foreach($data4 as $key4 => $val4)
         {
             $price[] = $val4 -> price;
         }
 
-        $photo = DB::table('gphotos') -> where('name', $name) -> get();
+        $photo = DB::table('photos') -> where('name', $name) -> get();
+        $faq = DB::table('faq') -> where('name', $name) -> get();
+        $parameter = DB::table('parameter') -> where('name', $name) -> get();
         // dd($photo);
-    	return view('home.gdetail.gdetail') -> with(['data' => $data, 'color' => $color, 'rom' => $rom, 'net' => $net, 'price' => $price, 'photo' => $photo]);
+    	return view('home.gdetail.gdetail') -> with(['data' => $data, 'color' => $color, 'rom' => $rom, 'net' => $net, 'price' => $price, 'photo' => $photo, 'name' => $name, 'faq' => $faq, 'parameter' => $parameter]);
     }
 }

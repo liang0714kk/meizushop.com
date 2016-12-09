@@ -10,7 +10,7 @@
                         <p>{{ session('info')}}</p>
                     </div>
                     @endif
- 
+
         <div class="order">
         <div class="mzcontainer">
             <div class="order-header">
@@ -43,8 +43,6 @@
                 <div class="order-address-checkbox-content">{{ $adder -> adder}}</div>
                 <div class="order-address-checkbox-tick"></div>
                 <div class="order-address-checkbox-ctrl">
-                <div class="order-address-checkbox-delete"></div>
-                <div class="order-address-checkbox-edit"></div>
                 </div></li>
                 @endforeach
                 <li id="add-newadder" class="order-address-checkbox add"><div class="order-address-add-icon"></div><div class="order-address-add-text">添加新地址</div></li>
@@ -68,10 +66,10 @@
 
 
                                     <select id='c' name="c">
-        
+
                                      </select>
                                      <select id='d' name="d">
-        
+
                                      </select>
 
                                 </div>
@@ -101,10 +99,8 @@
             <div class="mzcontainer order-product">
                 <div class="order-product-title">确认订单信息</div>
                 <div class="order-product-list" id="orderProductList">
-                
-                        {{ csrf_field()}}  
-                        <!-- <input type="hidden" name="uid" style="border:0;BACKGROUND-COLOR: transparent;color:red" value="session('master' -> id)">    --> 
-                        <input type="hidden" name="uid" style="border:0;BACKGROUND-COLOR: transparent;color:red" value="1">
+
+                        {{ csrf_field()}}
                          <input type="hidden" name="gid" style="border:0;BACKGROUND-COLOR: transparent;color:red" value="{{ $data -> id}}">
                 <table cellpadding="0" cellspacing="0">
                 <thead>
@@ -189,7 +185,7 @@ window.onload = function()
                     // alert(data);
                     if(data == 1)
                     {
-                       $('#add-newadder').before("<li id='add-newadder' class='order-address-checkbox order-address-checkbox2'><div class='order-address-checkbox-top'><div id='newname-add' class='order-address-checkbox-name' style='color:black'><b>新名字</b></div><div id='newphone-add' class='order-address-checkbox-phone' style='color:black'><b>新手机</b></div></div><div id='newadder-add' class='order-address-checkbox-content' style='color:black'><b>新地址</b></div><div class='order-address-checkbox-tick'></div><div class='order-address-checkbox-ctrl'><div class='order-address-checkbox-delete'></div><div class='order-address-checkbox-edit'></div></div></li>");
+                       $('#add-newadder').before("<li id='add-newadder' class='order-address-checkbox order-address-checkbox2'><div class='order-address-checkbox-top'><div id='newname-add' class='order-address-checkbox-name' style='color:black'><b>新名字</b></div><div id='newphone-add' class='order-address-checkbox-phone' style='color:black'><b>新手机</b></div></div><div id='newadder-add' class='order-address-checkbox-content' style='color:black'><b>新地址</b></div><div class='order-address-checkbox-tick'></div><div class='order-address-checkbox-ctrl'></div></li>");
                        $("#newname-add").html(newname);
                        $("#newphone-add").html(newphone);
                        $("#newadder-add").html(newadder);
@@ -220,13 +216,13 @@ window.onload = function()
             return false;
         });
 }
-    
+
         //显示添加地址
         $('#add-newadder').on('click', function(){
         var display = $('#newadder-add-block');
         display.css('display', 'block');
 
-     });  
+     });
 
         // 点击改变收货地址
         var alladder = $('.order-address-checkbox2');
@@ -246,7 +242,7 @@ window.onload = function()
               $("input[name='adder']").attr('value', newaddadder);
             });
         });
-        
+
         //检验手机
         $('#phone').blur(function(event) {
             var reg = /^1(3|5|7|8|4)\d{9}$/;
@@ -257,7 +253,7 @@ window.onload = function()
             alert('请输入11位手机号');
             }
         });
-        
+
 
 
         //获取元素
@@ -307,11 +303,11 @@ window.onload = function()
                 d.innerHTML = str;
             }
 
-</script>    
+</script>
 
 
 
 </script>
 
- 
+
 @endsection

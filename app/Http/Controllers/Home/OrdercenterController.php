@@ -14,12 +14,11 @@ class OrdercenterController extends Controller
     //index
     public function index()
     {
-    	// $uid = Session('master') -> id;
-    	$uid = 1;
-    	$data = DB::table('orders') 
+    	$uid = Session('master') -> id;
+    	$data = DB::table('orders')
     				-> leftJoin('gdetails as g', 'g.id', '=', 'orders.gid' )
     				-> select('orders.*', 'g.name as goodname', 'g.price', 'g.color', 'g.net', 'g.rom', 'g.photo')
-    				-> where('orders.uid', $uid) 
+    				-> where('orders.uid', $uid)
     				-> paginate('10');
     	foreach($data as $k => $v)
    		{
@@ -30,9 +29,8 @@ class OrdercenterController extends Controller
 
     //delete
     public function delete($id)
-    {	
-    	// $uid = session('master') -> id;
-    	$uid = 1;
+    {
+    	$uid = session('master') -> id;
     	$res = DB::table('orders') -> where('uid', $uid) -> delete($id);
     	if($res)
     	{
@@ -45,9 +43,8 @@ class OrdercenterController extends Controller
 
     //update
     public function update($id)
-    {	
-    	// $uid = session('master') -> id;
-    	$uid = 1;
+    {
+    	$uid = session('master') -> id;
     	$data['state'] = 1;
     	$res = DB::table('orders') -> where('id', $id) -> where('uid', $uid) -> update($data);
     	if($res)
@@ -63,10 +60,10 @@ class OrdercenterController extends Controller
     // paynow
     public function paynow($id)
     {
-    	$data = DB::table('orders') 
+    	$data = DB::table('orders')
     				-> leftJoin('gdetails as g', 'g.id', '=', 'orders.gid' )
     				-> select('orders.*', 'g.name as goodname', 'g.price', 'g.color', 'g.net', 'g.rom', 'g.photo')
-    				-> where('orders.id', $id) 
+    				-> where('orders.id', $id)
     				-> first();
     	return view('home/order/pay') -> with(['data2' => $data]);
     }
@@ -75,12 +72,12 @@ class OrdercenterController extends Controller
     // nopay
     public function nopay()
     {
-    	// $uid = Session('master') -> id;
-    	$uid = 1;
-    	$data = DB::table('orders') 
+    	$uid = Session('master') -> id;
+    	// $uid = 1;
+    	$data = DB::table('orders')
     				-> leftJoin('gdetails as g', 'g.id', '=', 'orders.gid' )
     				-> select('orders.*', 'g.name as goodname', 'g.price', 'g.color', 'g.net', 'g.rom', 'g.photo')
-    				-> where('orders.uid', $uid) 
+    				-> where('orders.uid', $uid)
     				-> where('orders.pay', 0)
     				-> where('orders.deliver', 0)
     				-> where('orders.state', 0)
@@ -96,12 +93,12 @@ class OrdercenterController extends Controller
      // nodeliver
     public function nodeliver()
     {
-    	// $uid = Session('master') -> id;
-    	$uid = 1;
-    	$data = DB::table('orders') 
+    	$uid = Session('master') -> id;
+    	// $uid = 1;
+    	$data = DB::table('orders')
     				-> leftJoin('gdetails as g', 'g.id', '=', 'orders.gid' )
     				-> select('orders.*', 'g.name as goodname', 'g.price', 'g.color', 'g.net', 'g.rom', 'g.photo')
-    				-> where('orders.uid', $uid) 
+    				-> where('orders.uid', $uid)
     				-> where('orders.pay', 1)
     				-> where('orders.deliver', 0)
     				-> where('orders.state', 0)
@@ -116,12 +113,11 @@ class OrdercenterController extends Controller
      // nostate
     public function nostate()
     {
-    	// $uid = Session('master') -> id;
-    	$uid = 1;
-    	$data = DB::table('orders') 
+    	$uid = Session('master') -> id;
+    	$data = DB::table('orders')
     				-> leftJoin('gdetails as g', 'g.id', '=', 'orders.gid' )
     				-> select('orders.*', 'g.name as goodname', 'g.price', 'g.color', 'g.net', 'g.rom', 'g.photo')
-    				-> where('orders.uid', $uid) 
+    				-> where('orders.uid', $uid)
     				-> where('orders.pay', 1)
     				-> where('orders.deliver', 1)
     				-> where('orders.state', 0)
@@ -136,12 +132,11 @@ class OrdercenterController extends Controller
      // achive
     public function achive()
     {
-    	// $uid = Session('master') -> id;
-    	$uid = 1;
-    	$data = DB::table('orders') 
+    	$uid = Session('master') -> id;
+    	$data = DB::table('orders')
     				-> leftJoin('gdetails as g', 'g.id', '=', 'orders.gid' )
     				-> select('orders.*', 'g.name as goodname', 'g.price', 'g.color', 'g.net', 'g.rom', 'g.photo')
-    				-> where('orders.uid', $uid) 
+    				-> where('orders.uid', $uid)
     				-> where('orders.pay', 1)
     				-> where('orders.deliver', 1)
     				-> where('orders.state', 1)
@@ -157,8 +152,7 @@ class OrdercenterController extends Controller
     //address
     public function address()
     {
-    	// $uid = session('master') -> id;
-    	$uid = 1;
+    	 $uid = session('master') -> id;
     	$data = DB::table('adders') -> where('uid', $uid) -> orderBy('default', 'desc') -> get();
     	$count = DB::table('adders') -> where('uid', $uid) -> count();
     	$leftcount = 20 - $count;
@@ -168,8 +162,8 @@ class OrdercenterController extends Controller
     //add
     public function add(Request $request)
     {
-    	// $uid = session('master') -> id;
-    	$uid = 1;
+    	$uid = session('master') -> id;
+
     	$data = $request -> except('_token');
     	$data2['name'] = $data['add-name'];
     	$data2['phone'] = $data['add-phone'];
@@ -185,7 +179,8 @@ class OrdercenterController extends Controller
     		// 修改默认
 	    	if($data2['default'] == 1)
 	    	{
-	    		$default = DB::table('addres') -> where('id', '<>', $res) -> update('default', '0');
+                $default['default'] = 0;
+	    		$default = DB::table('adders') -> where('id', '<>', $res) -> update($default);
 	    	}
     		return redirect('home/ordercenter/address');
     	}else

@@ -14,10 +14,10 @@ class CartController extends Controller
     //ajax
     public function ajax(Request $request)
     {
-    	$data = DB::table('gdetails') -> where('rom', $request -> input('rom')) -> where('net', $request -> input('net')) -> where('name',  $request -> input('name')) -> first();
+    	$data = DB::table('gdetails') -> where('rom', $request -> input('rom')) -> where('net', $request -> input('net')) -> where('color', $request -> input('color')) -> where('name',  $request -> input('name')) -> first();
     	$cart['gid'] = $data -> id;
-    	// $uid = session('master') -> id;
-    	$cart['uid'] = 1;
+      $uid = session('master') -> id;
+    	$cart['uid'] = $uid;
     	$res = DB::table('carts') -> where('gid', $cart['gid']) -> where('uid', $cart['uid']) -> first();
     	if($res)
     	{
@@ -41,12 +41,14 @@ class CartController extends Controller
    //index
    public function index()
    {
-   	// $uid = session('master') -> id;
-   	$uid = 1;
+   	$uid = session('master') -> id;
    	$gid = DB::table('carts') -> where('uid', $uid) -> get();
-   	// dd($gid);
-   	foreach($gid as $k => $v)
-   	{
+    if(!$gid)
+    {
+      return view('home.cart.empt');
+    }
+    foreach($gid as $k => $v)
+    {
    		$price = DB::table('gdetails') -> where('id', $v -> gid) -> first() -> price;
    		$res['price'] = $price;
    		$res2 = DB::table('carts') -> where('gid', $v -> gid) -> update($res);
@@ -62,8 +64,7 @@ class CartController extends Controller
    //delete
    public function delete($gid)
    {
-   		// $uid = session('master') -> id;
-   		$uid = 1;
+   	  $uid = session('master') -> id;
    		$res = DB::table('carts') -> where('gid', $gid) -> where('uid', $uid) -> delete();
    		if($res)
    		{
@@ -77,10 +78,8 @@ class CartController extends Controller
   //pay
    public function pay(Request $request)
     {
-        // $uid = sesion('master') -> id;
-        $uid = 1;
+        $uid = session('master') -> id;
         $data2 = $request -> except('_token', 'checked');
-        dd($data2);
         $data = DB::table('gdetails') -> where('id', $data2['gid']) -> first();
         $total = $data2['total'];
         $request = $data;

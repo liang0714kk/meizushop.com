@@ -45,359 +45,23 @@
             <li class="layout-topbar-left-links"><a class="layout-topbar-link" data-mdesc="页头中第6个" data-mtype="store_index_yt_6" target="_blank" href="http://bbs.meizu.cn/">社区</a></li>
         </ul>
         <ul class="layout-topbar-right clearfix">
-            <li class="layout-topbar-right-links pop">
-                <div class="layout-topbar-pop" id="topbarPop" style="display: none;">
-                    <a class="layout-topbar-pop-title" data-mdesc="页头消息气泡" data-mtype="store_index_yt_qp" href="http://hd.meizu.com/activity/happyweek8.html?rc=xx">部分机型立省200</a>
-                    <div class="layout-tpobar-pop-close"></div>
-                </div>
-            </li>
-            <li class="layout-topbar-right-links signin"><a id="topbarMsg" class="layout-topbar-link has-msg" data-mdesc="页头-消息" data-mtype="store_index_yt_msg " target="_blank" href="http://me.meizu.com/member/message/index">消息</a></li>
-            <li class="layout-topbar-right-links"><a class="layout-topbar-link" data-mdesc="页头-收藏 " data-mtype="store_index_yt_collect" target="_blank" href="http://me.meizu.com/member/favorite/index">我的收藏<i class="layout-icon layout-icon-new"></i></a></li>
-            <li class="layout-topbar-right-links"><a id="topbarOrderMsg" class="layout-topbar-link has-msg" data-mdesc="页头-我的订单" data-mtype="store_index_yt_order" target="_blank" href="http://ordercenter.meizu.com/list/index.html">我的订单</a></li>
-            <li class="layout-topbar-right-links signout"><a class="layout-topbar-link" href="javascript:window.location.href='https://login.flyme.cn/vCodeLogin?sid=unionlogin&service=store&autodirct=true&useruri=http://store.meizu.com/member/login.htm?useruri='+window.location.href;">登录</a></li>
-            <li class="layout-topbar-right-links signout"><a class="layout-topbar-link" target="_blank" href="https://member.meizu.com/register">注册</a></li>
+            <li class="layout-topbar-right-links"><a id="topbarOrderMsg" class="layout-topbar-link has-msg" data-mdesc="页头-我的订单" data-mtype="store_index_yt_order" target="_blank" href="{{ url('/home/ordercenter/index') }}">我的订单</a></li>
+            <li class="layout-topbar-right-links signout"><a class="layout-topbar-link" href="{{url('home/user/login')}}">登录</a></li>
+            <li class="layout-topbar-right-links signout"><a class="layout-topbar-link" target="_blank" href="{{url('home/user/register')}}">注册</a></li>
             <li class="layout-topbar-right-links member signin">
-                <a class="layout-topbar-link" target="_blank" href="http://me.meizu.com/member/index"><span class="layout-topbar-username" id="topbarUser">欣欣之w</span>的商城<i class="layout-topbar-triangle"></i></a>
+                <a class="layout-topbar-link" target="_blank" href="{{url('/home/user/psersonal/index')}}"><span class="layout-topbar-username" id="topbarUser">{{session('master') -> nickname}}</span>的商城<i class="layout-topbar-triangle"></i></a>
                 <ul class="layout-topbar-downmenu">
-                    <li class="layout-topbar-downmenu-item"><a class="layout-topbar-downmenu-link" data-mdesc="我的商城下拉框1" data-mtype="store_index_yt_my_1" target="_blank" href="{{url('/home/ordercenter/address')}}">地址管理</a></li>
-                    <li class="layout-topbar-downmenu-item"><a class="layout-topbar-downmenu-link" data-mdesc="我的商城下拉框2" data-mtype="store_index_yt_my_2" target="_blank" href="http://me.meizu.com/member/repo_ticket/index">我的回购券</a></li>
-                    <li class="layout-topbar-downmenu-item"><a class="layout-topbar-downmenu-link" data-mdesc="我的商城下拉框3" data-mtype="store_index_yt_my_3" target="_blank" href="http://me.meizu.com/member/advice/index">问题反馈</a></li>
-                    <li class="layout-topbar-downmenu-item"><a class="layout-topbar-downmenu-link exit" data-mdesc="我的商城下拉框4" data-mtype="store_index_yt_my_4" href="javascript:window.location.href='http://store.meizu.com/member/logout.htm?useruri='+window.location.href;">退出</a></li>
+                    <li class="layout-topbar-downmenu-item"><a class="layout-topbar-downmenu-link" data-mdesc="我的商城下拉框1" data-mtype="store_index_yt_my_1" target="_blank" href="{{ url('/home/ordercenter/address') }}">地址管理</a></li>
+
+                    <li class="layout-topbar-downmenu-item"><a class="layout-topbar-downmenu-link" data-mdesc="我的商城下拉框3" data-mtype="store_index_yt_my_3" target="_blank" href="{{ url('/home/feedback/add') }}">问题反馈</a></li>
+                    <li class="layout-topbar-downmenu-item"><a class="layout-topbar-downmenu-link exit" data-mdesc="我的商城下拉框4" data-mtype="store_index_yt_my_4" href="{{url('home/user/logout')}}">退出</a></li>
                 </ul>
             </li>
         </ul>
     </div>
 </div>
 
-<div class="layout-header clearfix">
-    <div class="mzcontainer">
-        <div class="layout-header-logo">
-            <a target="_blank" href="http://www.meizu.com/" class="layout-header-logo-link" alt="魅族科技"><i class="layout-font layout-font-logo"></i></a>
-        </div>
-        <ul class="layout-header-nav clearfix" id="layoutHeaderNav">
-                <li class="layout-header-nav-item">
-                    <a href="javascript:;" class="layout-header-nav-link">PRO手机</a>
-                    <div class="layout-header-nav-child">
-                        <div class="mzcontainer">
-                            <ul class="layout-header-nav-child-list">
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link" data-mtype="store_index_dh_1_1" data-mdesc="导航中第1个下第1个坑" target="_blank" href="http://hd.meizu.com/yuyue/pro6plus.html?click=store_index_dh_1_1">
-    <p><img src="./我的订单-魅族商城_files/Cix_s1g-lYOAJzMqABY2I5awJck774_126x126.png" class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅族PRO 6 Plus</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">2999</span>
 
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link" data-mtype="store_index_dh_1_2" data-mdesc="导航中第1个下第2个坑" target="_blank" href="http://detail.meizu.com/item/pro6s.html?click=store_index_dh_1_2">
-    <p><img src="./我的订单-魅族商城_files/Cix_s1gbChaAeVU5AA0vjoOMIVw373_126x126.png" class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅族PRO 6s</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">2699</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link" data-mtype="store_index_dh_1_3" data-mdesc="导航中第1个下第3个坑" target="_blank" href="http://detail.meizu.com/item/meizu_pro6.html?click=store_index_dh_1_3">
-    <p><img src="./我的订单-魅族商城_files/CnQOjVeE2E-AAGZCABHUf4HwKyw117_126x126.png" class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅族PRO 6</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">2299</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link" data-mtype="store_index_dh_1_4" data-mdesc="导航中第1个下第4个坑" target="_blank" href="http://detail.meizu.com/item/meizu_pro5.html?click=store_index_dh_1_4">
-    <p><img src="./我的订单-魅族商城_files/1450928403@126x126.png" class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅族PRO 5</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">2199</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                <!-- more -->
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="layout-header-nav-item">
-                    <a href="javascript:;" class="layout-header-nav-link">魅蓝手机</a>
-                    <div class="layout-header-nav-child">
-                        <div class="mzcontainer">
-                            <ul class="layout-header-nav-child-list">
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link" data-mtype="store_index_dh_2_1" data-mdesc="导航中第2个下第1个坑" target="_blank" href="http://hd.meizu.com/yuyue/meilanx.html?click=store_index_dh_2_1">
-    <p><img src="./我的订单-魅族商城_files/CnQOjVg-j0uAWlJIAAj4ScedJ9k483_126x126.png" class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅蓝 X</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">1699</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link" data-mtype="store_index_dh_2_2" data-mdesc="导航中第2个下第2个坑" target="_blank" href="http://detail.meizu.com/item/meilan5.html?skuid=2667&click=store_index_dh_2_2">
-    <p><img src="./我的订单-魅族商城_files/Cix_s1g9JbqAU7G9AAOSqVEq1nk348_126x126.png" class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅蓝 5 圣诞套装</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">788</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link" data-mtype="store_index_dh_2_3" data-mdesc="导航中第2个下第3个坑" target="_blank" href="http://detail.meizu.com/item/meilan_u10.html?click=store_index_dh_2_3">
-    <p><img src="./我的订单-魅族商城_files/Cix_s1fodIqAQprmAAjwkwqC8nw622_126x126.png" class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅蓝 U10</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">999</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link" data-mtype="store_index_dh_2_4" data-mdesc="导航中第2个下第4个坑" target="_blank" href="http://detail.meizu.com/item/meilanU20.html?click=store_index_dh_2_4">
-    <p><img src="./我的订单-魅族商城_files/Cix_s1fDkdyAb0YGAEeDe0CxIV8257_126x126.png" class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅蓝 U20</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">1099</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link" data-mtype="store_index_dh_2_5" data-mdesc="导航中第2个下第5个坑" target="_blank" href="http://detail.meizu.com/item/meilan_e1.html?click=store_index_dh_2_5">
-    <p><img src="./我的订单-魅族商城_files/CnQOjVeq0uGASgUFAAzQ2opb7qI013_126x126.png" class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅蓝 E</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">1299</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link" data-mtype="store_index_dh_2_6" data-mdesc="导航中第2个下第6个坑" target="_blank" href="http://detail.meizu.com/item/meilan3s.html?click=store_index_dh_2_6">
-    <p><img src="./我的订单-魅族商城_files/Cix_s1epgR6AD8KbAA2l_exLROk404_126x126.png" class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅蓝 3s</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">699</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                <!-- more -->
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="layout-header-nav-item">
-                    <a href="javascript:;" class="layout-header-nav-link">MX手机</a>
-                    <div class="layout-header-nav-child">
-                        <div class="mzcontainer">
-                            <ul class="layout-header-nav-child-list">
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link" data-mtype="store_index_dh_3_1" data-mdesc="导航中第3个下第1个坑" target="_blank" href="http://detail.meizu.com/item/mx6.html?click=store_index_dh_3_1">
-    <p><img src="./我的订单-魅族商城_files/Cix_s1eN3IiASxVXAA9IpQ8-shg169_126x126.png" class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅族MX6</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">1799</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link" data-mtype="store_index_dh_3_2" data-mdesc="导航中第3个下第2个坑" target="_blank" href="http://detail.meizu.com/item/meizu_mx5.html?click=store_index_dh_3_2">
-    <p><img src="./我的订单-魅族商城_files/CnQOjVfD9pWAS6VZAAutvljEfx8425_126x126.png" class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅族MX5</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">999</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link" data-mtype="store_index_dh_3_3" data-mdesc="导航中第3个下第3个坑" target="_blank" href="http://detail.meizu.com/item/meizu_mx5e.html?click=store_index_dh_3_3">
-    <p><img src="./我的订单-魅族商城_files/Cix_s1fNIqaAPDEJAAutvljEfx8334_126x126.png" class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅族MX5e 经典版</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">999</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                <!-- more -->
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="layout-header-nav-item">
-                    <a href="javascript:;" class="layout-header-nav-link">精选配件</a>
-                    <div class="layout-header-nav-child">
-                        <div class="mzcontainer">
-                            <ul class="layout-header-nav-child-list">
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link" data-mtype="store_index_dh_4_1" data-mdesc="导航中第4个下第1个坑" target="_blank" href="http://detail.meizu.com/item/meizu_ep51.html?skuid=696&click=store_index_dh_4_1">
-    <p><img src="./我的订单-魅族商城_files/CnQOjVgkHHWAUH85AAHOwfpsRUs585_126x126.png" class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅族 EP51蓝牙运动耳机</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">269</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link" data-mtype="store_index_dh_4_2" data-mdesc="导航中第4个下第2个坑" target="_blank" href="http://detail.meizu.com/item/meizu_hd50.html?skuid=839&click=store_index_dh_4_2">
-    <p><img src="./我的订单-魅族商城_files/CnQOjVgtci-AYfQRAAR2vqNeyVA922_126x126.png" class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅族HD50 头戴式耳机</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">399</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link" data-mtype="store_index_dh_4_3" data-mdesc="导航中第4个下第3个坑" target="_blank" href="http://detail.meizu.com/item/meizu_bag.html?click=store_index_dh_4_3">
-    <p><img src="./我的订单-魅族商城_files/CnQOjVfqPd-AEjICAAVBTlzLU4U578_126x126.png" class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅族 休闲旅行双肩包</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">199</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link" data-mtype="store_index_dh_4_4" data-mdesc="导航中第4个下第4个坑" target="_blank" href="http://detail.meizu.com/item/mpower_m8e.html?skuid=1061&click=store_index_dh_4_4">
-    <p><img src="./我的订单-魅族商城_files/Cix_s1eFsDmAYpT5AAKdyPUHRpQ307_126x126.png" class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅族移动电源（标准版）</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">99</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link" data-mtype="store_index_dh_4_5" data-mdesc="导航中第4个下第5个坑" target="_blank" href="http://detail.meizu.com/item/lifeme_bts30.html?click=store_index_dh_4_5">
-    <p><img src="./我的订单-魅族商城_files/CnQOjVfiK1qABWWMAAULoxmuYLI896_126x126.png" class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅族 Lifeme BTS30 蓝牙音箱</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">399</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                <!-- more -->
-                                    <li class="layout-header-nav-child-more">
-                                        <ul>
-                                                <li class="layout-header-nav-child-row">
-                                                    <a class="layout-header-nav-child-more-link" target="_blank" href="http://lists.meizu.com/page/list?categoryid=79&rc=sdsd">
-<img class="layout-header-nav-child-icon" src="./我的订单-魅族商城_files/1467696166-40112.png" width="28" height="28">耳机 / 音箱
-                                                    </a>
-                                                </li>
-                                                <li class="layout-header-nav-child-row">
-                                                    <a class="layout-header-nav-child-more-link" target="_blank" href="http://lists.meizu.com/page/list?categoryid=80&rc=sd">
-<img class="layout-header-nav-child-icon" src="./我的订单-魅族商城_files/1467696197-95413.png" width="28" height="28">路由器 / 移动电源
-                                                    </a>
-                                                </li>
-                                                <li class="layout-header-nav-child-row">
-                                                    <a class="layout-header-nav-child-more-link" target="_blank" href="http://lists.meizu.com/page/list?categoryid=81&rc=sd">
-<img class="layout-header-nav-child-icon" src="./我的订单-魅族商城_files/1467696220-57637.png" width="28" height="28">保护套 / 后盖 / 贴膜
-                                                    </a>
-                                                </li>
-                                                <li class="layout-header-nav-child-row">
-                                                    <a class="layout-header-nav-child-more-link" target="_blank" href="http://lists.meizu.com/page/list?categoryid=82&rc=sd">
-<img class="layout-header-nav-child-icon" src="./我的订单-魅族商城_files/1467696242-24236.png" width="28" height="28">数据线 / 电源适配器
-                                                    </a>
-                                                </li>
-                                                <li class="layout-header-nav-child-row">
-                                                    <a class="layout-header-nav-child-more-link" target="_blank" href="http://lists.meizu.com/page/list?categoryid=83&rc=sd">
-<img class="layout-header-nav-child-icon" src="./我的订单-魅族商城_files/1467705893-97644.png" width="28" height="28">周边配件
-                                                    </a>
-                                                </li>
-                                        </ul>
-                                    </li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="layout-header-nav-item">
-                    <a href="javascript:;" class="layout-header-nav-link">智能硬件</a>
-                    <div class="layout-header-nav-child">
-                        <div class="mzcontainer">
-                            <ul class="layout-header-nav-child-list">
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link" data-mtype="store_index_dh_5_1" data-mdesc="导航中第5个下第1个坑" target="_blank" href="http://detail.meizu.com/item/router_f1.html?skuid=1112&click=store_index_dh_5_1">
-    <p><img src="./我的订单-魅族商城_files/CnQOjVgzv3iAYceqAABXVrwLVgU899_126x126.jpg" class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅族路由器 极速版</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">199</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link" data-mtype="store_index_dh_5_2" data-mdesc="导航中第5个下第2个坑" target="_blank" href="http://detail.meizu.com/item/HANGJIA_pro3s_wifi.html?skuid=1995&click=store_index_dh_5_2">
-    <p><img src="./我的订单-魅族商城_files/Cix_s1gzv5GAbqslAAHKf8_DZ-U674_126x126.png" class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">航嘉智慧云防雷pro3s-wifi</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">112</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link" data-mtype="store_index_dh_5_3" data-mdesc="导航中第5个下第3个坑" target="_blank" href="http://detail.meizu.com/item/ROMOSS_A10.html?skuid=1766&click=store_index_dh_5_3">
-    <p><img src="./我的订单-魅族商城_files/CnQOjVgzwYuAA-yoAACVRHk1HFM524_126x126.png" class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">罗马仕AC10快充适配器</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">35.9</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link" data-mtype="store_index_dh_5_4" data-mdesc="导航中第5个下第4个坑" target="_blank" href="http://detail.meizu.com/item/meihang_MC6.html?skuid=1119&click=store_index_dh_5_4">
-    <p><img src="./我的订单-魅族商城_files/Cix_s1gzv6-ACUDcAAPpC6Xx8sA506_126x126.png" class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">魅航智能行车记录仪MC6</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">399</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link" data-mtype="store_index_dh_5_5" data-mdesc="导航中第5个下第5个坑" target="_blank" href="http://detail.meizu.com/item/JJQ_1.html?skuid=1687&click=store_index_dh_5_5">
-    <p><img src="./我的订单-魅族商城_files/CnQOjVgzv82AMHOOAAV3hQl3elY682_126x126.png" class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">南山大高仿真颈舒按摩仪</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">369</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                        <li class="layout-header-nav-child-item">
-                                            <a class="layout-header-nav-child-link" data-mtype="store_index_dh_5_6" data-mdesc="导航中第5个下第6个坑" target="_blank" href="http://detail.meizu.com/item/Moikit_Cuptime2.html?skuid=1196&click=store_index_dh_5_6">
-    <p><img src="./我的订单-魅族商城_files/Cix_s1gz8HGARn-KAAIRrbWmQSE946_126x126.png" class="layout-header-nav-child-img"></p>
-                                                <p class="layout-header-nav-child-name">Moikit麦开智能水杯</p>
-                                                <p class="layout-header-nav-child-bottom">
-                                                    <span class="layout-header-nav-child-price">299</span>
-
-                                                </p>
-                                            </a>
-                                        </li>
-                                <!-- more -->
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-        </ul>
-        <div class="layout-header-nav-downmenu" id="layoutHeaderNavDownmenu"></div>
-    </div>
-</div>
 
   @if(session('info'))
                     <div id="jg" class="callout callout-info">
@@ -407,28 +71,16 @@
 
     <div class="store-wrap">
         <div class="crumbs">
-            <a href="http://store.meizu.com/index.html">首页&gt;</a><a href="http://me.meizu.com/member/index">我的商城&gt;</a><a href="" class="active">我的订单</a>
+            <a href="{{url('/home/index/index')}}">首页&gt;</a><a href="{{url('/home/user/personal/index')}}">我的商城&gt;</a><a href="" class="active">地址管理</a>
         </div>
         <div class="main clearfix">
     <div class="left-nav f-fl">
         <div class="nav-main">
-            <a href="javascript:;" class="type-title"><i class="iconfont icon-orderCenter"></i>订单中心</a>
-            <a href="{{url('/home/ordercenter/index')}}" class="ml active">我的订单</a>
-            <a href="http://me.meizu.com/member/repo/index" class="ml ">我的回购单</a>
-            <a href="http://insurance.meizu.com/list/insurance.html" class="ml ">我的意外保</a>
-            <a href="javascript:;" class="type-title"><i class="iconfont icon-selfCenter"></i>个人中心</a>
-            <a href="{{url('/home/ordercenter/address')}}" class="ml ">地址管理</a>
-            <a href="http://me.meizu.com/member/favorite/index" class="ml ">我的收藏</a>
-            <a href="http://me.meizu.com/member/message/index" class="ml ">消息提醒</a>
-            <a href="http://me.meizu.com/member/advice/index" class="ml ">建议反馈</a>
-            <a href="javascript:;" class="type-title"><i class="iconfont icon-moneyCenter"></i>资产中心</a>
-            <a href="http://me.meizu.com/member/coupon/index" class="ml ">我的优惠券</a>
-            <a href="http://me.meizu.com/member/redenvelop/index" class="ml ">我的红包</a>
-            <a href="http://me.meizu.com/member/repo_ticket/index" class="ml ">我的回购券</a>
-            <a href="javascript:;" class="type-title"><i class="iconfont icon-serverCenter"></i>服务中心</a>
-            <a href="http://store.meizu.com/member/returned/index" class="ml" style="width: 105px">退款/退换货跟踪</a>
-            <a href="http://me.meizu.com/member/service/insurance" class="ml ">意外保</a>
-            <a href="http://me.meizu.com/member/service/recovery" class="ml ">以旧换新</a>
+            <a href="{{url('/home/user/personal/index')}}" class="type-title"><i class=""></i>个人中心</a>
+            <a href="{{ url('/home/user/personal/edit') }}" class="ml ">个人信息</a>
+            <a href="{{ url('/home/ordercenter/index') }}" class="ml ">我的订单</a>
+            <a href="{{ url('/home/ordercenter/address') }}" class="ml ">地址管理</a>
+            <a href="{{ url('/home/feedback/add') }}" class="ml ">建议反馈</a>
         </div>
     </div>
             <div class="right-content f-fr">
@@ -468,7 +120,7 @@
 
     <script class="resources library" src="{{url('/hm/js/area.js')}}" type="text/javascript"></script>
 
-    
+
 
     <script type="text/javascript">_init_area();</script>
 
@@ -484,9 +136,9 @@ var Gid  = document.getElementById;
 
 var showArea = function(){
 
-    Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" +    
+    Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" +
 
-    Gid('s_city').value + " - 县/区" + 
+    Gid('s_city').value + " - 县/区" +
 
     Gid('s_county').value + "</h3>"
 
@@ -510,7 +162,7 @@ Gid('s_county').setAttribute('onchange','showArea()');
                             </div>
                         </div>
                     </form>
-                    
+
                     <div class="list">
                         <div class="row">
                             <div class="title">
@@ -529,12 +181,12 @@ Gid('s_county').setAttribute('onchange','showArea()');
                         <li class="">
     <input class="addressId" value="6226478975000" type="hidden">
     <input class="isOld" value="0" type="hidden">
-    
+
     <span class="center w15">{{$v -> name}}</span>
     <span class="completeAddress center w35">{{$v -> adder}}</span>
     <span class="center w25">{{$v -> phone}}</span>
     <span class="center w10">
-      <a class="edit" href="javascript:;">修改</a>
+      <a class="edit" href="javascript:;"></a>
       <a class="delete" href="{{url('/home/ordercenter/address/delete')}}/{{$v -> id}}">删除</a>
     </span>
     <span class="left w15">
@@ -716,9 +368,9 @@ var Gid  = document.getElementById;
 
 var showArea = function(){
 
-    Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" +    
+    Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" +
 
-    Gid('s_city').value + " - 县/区" + 
+    Gid('s_city').value + " - 县/区" +
 
     Gid('s_county').value + "</h3>"
 
@@ -730,4 +382,3 @@ Gid('s_county').setAttribute('onchange','showArea()');
 
 </body>
 </html>
-        

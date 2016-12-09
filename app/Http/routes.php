@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+    // return view('welcome');
+// });
+//前台主页进入
+Route::get('/', "Home\IndexController@index");
+
 Route::get('/form2', function(){
     return view('form2');
 });
@@ -27,8 +30,20 @@ Route::get('/admin/user/index', "Admin\UserController@index");
 //双击修改状态
 Route::post('/admin/user/ajaxStatus', "Admin\UserController@ajaxStatus");
 //前台主页
+
+Route::get('/home/index/index', "Home\IndexController@index");
+
+
+//前台列表分类展示页
+
+Route::get('/home/index/list/{id}', "Home\IndexController@goodsList");
+
+
+//前台注册
+
 Route::get('/home/index/index', "Home\IndexController@index");
 //前台注册页面
+
 Route::get('/home/user/register', "Home\UserController@register");
 //前台执行注册
 Route::post('home/user/doregister', "Home\UserController@doregister");
@@ -50,7 +65,7 @@ Route::get('home/user/forget1', "Home\UserController@forget1");
 //验证账号
 Route::post('/home/user/doName', "Home\UserController@doName");
 //验证邮箱
-Route::get('home/user/forget2', "Home\UserController@forget2");
+Route::get('home/user/forget2/{name}', "Home\UserController@forget2");
 Route::post('/home/user/sendEmail', "Home\UserController@sendEmail");
 Route::get('home/user/reset/{id}/{remember_token}', "Home\UserController@reset");
 Route::get('home/user/info', "Home\UserController@info");
@@ -79,7 +94,8 @@ Route::get('home/user/psersonal/index', "Home\PersonalController@index");
 Route::post('/home/user/personal/verPhonePass', "Home\PersonalController@verPhonePass");
 //绑定手机号(验证手机)
 Route::post('home/user/personal/verNewPhone', "Home\PersonalController@verNewPhone");
-
+//添加手机号
+Route::post('home/user/personal/phoneAdd', "Home\PersonalController@phoneAdd");
 //服务条款
 Route::get('/home/user/service', "Home\UserController@service");
 //前台个人中心
@@ -89,275 +105,31 @@ Route::post('home/user/dologin', "Home\UserController@dologin");
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //商品分类管理
 Route::resource('/admin/category', 'Admin\CategoryController');
 //商品属性添加
 Route::get('/admin/goods/attr/{id}', 'Admin\GoodsController@attr');
-//双击修改状态
+//双击修改status事件
 Route::post('/admin/goods/ajaxStatus', 'Admin\GoodsController@ajaxStatus');
+//双击修改hot事件
+Route::post('/admin/goods/ajaxHot', 'Admin\GoodsController@ajaxHot');
 //商品详情
 Route::resource('/admin/goods', 'Admin\GoodsController');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//详情图片管理
+Route::controller('admin/photos', 'Admin\PhotosController');
+//文章管理之FAQ
+Route::controller('admin/FAQ', 'Admin\FAQController');
+//文章管理之规格参数
+Route::controller('admin/parameter', 'Admin\ParameterController');
+//文章管理之反馈建议feedback前台页
+Route::get('/home/feedback/add', 'Home\FeedbackController@add');
+//文章管理之后台展示页
+Route::get('home/feedback/index', 'Home\FeedbackController@index');
+Route::get('home/feedback/delete/{id}', 'Home\FeedbackController@delete');
+//单击feedback提交数据
+Route::post('/home/feedback/ajaxFeedback', 'Home\FeedbackController@AjaxFeedback');
+//前台商品分类展示页
+Route::get('/home/category/index', 'Home\CategoryController@index');
 
 
 
@@ -398,50 +170,9 @@ Route::get('home/index/inxex', "Admin\UserController@inHome");
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //后台购物车
 Route::get('admin/carts/index', 'Admin\CartsController@index');
 Route::get('admin/carts/delete/{id}', 'Admin\CartsController@delete');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -456,7 +187,8 @@ Route::post('home/order/addorder', 'Home\OrderController@add');
 //添加地址
 Route::post('home/order/ajax', 'Home\OrderController@ajax');
 //支付订单
-Route::get('home/order/pay', 'Home\OrderController@pay');
+Route::post('home/order/pay', 'Home\OrderController@pay');
+
 
 //购物车
 Route::post('home/cart/ajax', 'Home\CartController@ajax');

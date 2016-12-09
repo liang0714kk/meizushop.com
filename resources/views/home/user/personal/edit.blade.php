@@ -5,6 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{{config('app.name')}} - 个人中心</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{csrf_token()}}">
     <script type="text/javascript" src="/jquery-1.8.3.min.js"></script>
     <link href="http://store.res.meizu.com/resources/php/store/java/layout/img/favicon-2e71785f44.ico" rel="shortcut icon" type="image/x-icon">
     <link href="http://store.res.meizu.com/resources/php/store/java/layout/img/favicon-2e71785f44.ico" rel="icon" type="image/x-icon">
@@ -33,24 +34,21 @@
             <li class="layout-topbar-left-links"><a class="layout-topbar-link" data-mdesc="页头中第6个" data-mtype="store_index_yt_6" target="_blank" href="http://bbs.meizu.cn/">社区</a></li>
         </ul>
         <ul class="layout-topbar-right clearfix">
-
-            <li class="layout-topbar-right-links signin"><a id="topbarMsg" class="layout-topbar-link has-msg" data-mdesc="页头-消息" data-mtype="store_index_yt_msg " target="_blank" href="http://me.meizu.com/member/message/index">消息</a></li>
-            <li class="layout-topbar-right-links"><a class="layout-topbar-link" data-mdesc="页头-收藏   " data-mtype="store_index_yt_collect" target="_blank" href="http://me.meizu.com/member/favorite/index">我的收藏<i class="layout-icon layout-icon-new"></i></a></li>
-            <li class="layout-topbar-right-links"><a id="topbarOrderMsg" class="layout-topbar-link has-msg" data-mdesc="页头-我的订单" data-mtype="store_index_yt_order" target="_blank" href="http://ordercenter.meizu.com/list/index.html">我的订单</a></li>
-            <li class="layout-topbar-right-links signout"><a class="layout-topbar-link" href="javascript:window.location.href=&#39;https://login.flyme.cn/vCodeLogin?sid=unionlogin&amp;service=store&amp;autodirct=true&amp;useruri=http://store.meizu.com/member/login.htm?useruri=&#39;+window.location.href;">登录</a></li>
-            <li class="layout-topbar-right-links signout"><a class="layout-topbar-link" target="_blank" href="https://member.meizu.com/register">注册</a></li>
+            <li class="layout-topbar-right-links"><a id="topbarOrderMsg" class="layout-topbar-link has-msg" data-mdesc="页头-我的订单" data-mtype="store_index_yt_order" target="_blank" href="{{ url('/home/ordercenter/index') }}">我的订单</a></li>
+            <li class="layout-topbar-right-links signout"><a class="layout-topbar-link" href="{{url('home/user/login')}}">登录</a></li>
+            <li class="layout-topbar-right-links signout"><a class="layout-topbar-link" target="_blank" href="{{url('home/user/register')}}">注册</a></li>
             <li class="layout-topbar-right-links member signin">
-                <a class="layout-topbar-link" target="_blank" href=""><span class="layout-topbar-username" id="topbarUser">{{session('master') -> nickname}}</span>的商城<i class="layout-topbar-triangle"></i></a>
+                <a class="layout-topbar-link" target="_blank" href="{{url('home/user/personal/index')}}"><span class="layout-topbar-username" id="topbarUser">{{session('master') -> nickname}}</span>的商城<i class="layout-topbar-triangle"></i></a>
                 <ul class="layout-topbar-downmenu">
-                    <li class="layout-topbar-downmenu-item"><a class="layout-topbar-downmenu-link" data-mdesc="我的商城下拉框1" data-mtype="store_index_yt_my_1" target="_blank" href="http://me.meizu.com/member/address/index">地址管理</a></li>
-                    <li class="layout-topbar-downmenu-item"><a class="layout-topbar-downmenu-link" data-mdesc="我的商城下拉框2" data-mtype="store_index_yt_my_2" target="_blank" href="http://me.meizu.com/member/repo_ticket/index">我的回购券</a></li>
-                    <li class="layout-topbar-downmenu-item"><a class="layout-topbar-downmenu-link" data-mdesc="我的商城下拉框3" data-mtype="store_index_yt_my_3" target="_blank" href="http://me.meizu.com/member/advice/index">问题反馈</a></li>
+                    <li class="layout-topbar-downmenu-item"><a class="layout-topbar-downmenu-link" data-mdesc="我的商城下拉框1" data-mtype="store_index_yt_my_1" target="_blank" href="{{ url('/home/ordercenter/address') }}">地址管理</a></li>
+                    <li class="layout-topbar-downmenu-item"><a class="layout-topbar-downmenu-link" data-mdesc="我的商城下拉框3" data-mtype="store_index_yt_my_3" target="_blank" href="{{ url('/home/feedback/add') }}">问题反馈</a></li>
                     <li class="layout-topbar-downmenu-item"><a class="layout-topbar-downmenu-link exit" data-mdesc="我的商城下拉框4" data-mtype="store_index_yt_my_4" href="{{url('home/user/logout')}}">退出</a></li>
                 </ul>
             </li>
         </ul>
     </div>
 </div>
+
 
     <meta name="csrf-token" content="{{csrf_token()}}">
     <script type="text/javascript" src="/jquery-1.8.3.min.js"></script>
@@ -106,10 +104,10 @@
         background-color: #1daeed;
     }
 </style>
+
 <div id="navWrap" class="navWrap">
     <ul class="nav">
         <li id="accountManage"><a href="https://i.flyme.cn/uc/webjsp/member/detail" class="linkABlue">账号管理</a><div class="current"></div></li>
-        <li id="contact"><a href="" class="linkAGray">魅币</a></li>
     </ul>
 </div>
 <div class="clear"></div>
@@ -520,10 +518,8 @@ $('#ce-u-savenextcancel').on('click', function()
                         <div class="item-middle" id="telBind">
                             <span class="bold">@if(session('master') -> phone)
                             已绑定 <br>
-                            可通过手机:{{session('master') -> phone}} 找回密码
                             @else
                             未绑定 <br>
-                            绑定后可通过手机找回密码
                             @endif</span><br>
                             <span class="grayTip">
                             </span>
@@ -606,19 +602,19 @@ $.ajaxSetup({
                         <div class="bindTel-titleWrap">
                             <span>绑定手机号码</span>
                         </div>
-                        <form class="bindTel-bodyWrap" novalidate="novalidate">
+                        <form class="bindTel-bodyWrap" novalidate="novalidate" method="post" action="{{url('home/user/personal/phoneAdd')}}">
+                        {{csrf_field()}}
                             <div class="lineWrap">
                                 <div class="leftWrap">
                                     <label class="leftLabel">手机号码</label>
                                 </div>
-                                <!-- <input type="text" data-key="kapkey" name="phone" id="ce-u-bind_tel" class='normalInput' /> -->
                                 <div class="normalInput cycode-box show-cycode" id="cycode-box">
                                     <div class="cycode-selectbox">
                                         <span class="cycode-selected">
                                             <span class="ipt-cycode" id="cycode">+86</span>
                                             <i class="arrow-down"></i>
                                         </span>
-                                        <input type="text" data-key="kapkey" name="phone" id="ce-u-bind_tel" maxlength="11">
+                                        <input type="text"  name="phone" id="ce-u-bind_tel" maxlength="11">
                                     </div>
                                       </div>
                             </div>
@@ -627,16 +623,16 @@ $.ajaxSetup({
                                     <label class="leftLabel">验证码</label>
                                 </div>
                                 <div class="normalInput bottom">
-                                    <input type="text" name="kapkey" id="kapkeyEmail" class="kapkey" maxlength="6" autocomplete="off">
+                                <input type="hidden" name="id" value="{{session('master') -> id}}">
                                     <span class="form-line"></span>
                                     <a id="getKey-bindTel" data-value="6" href="javascript:void(0);" data-type="1" class="linkABlue invalidBtn get_kapkey">获取验证码</a>
-                                    <!-- <a href="javascript:void(0);" class="linkABlue kapkey_requested" style="display:none;">已发送 <span class="interval_num" id="dt">60</span></a> -->
+
                                     <a style="position:relative;width:100px;height:45px;margin-left:30px;display:none;color:red;font-size:weight;border-radius:10%;" id="dt" type="button">60s</a>
                                 </div>
                             </div>
                             <div class="lineWrap">
                                 <label class="fleft">&nbsp;</label>
-                                <a class="fullBtnBlue save_form fleft" id="ce-u-bindTelsave">保存</a>
+                                <input type="submit" name="" value="保存" class="fullBtnBlue ce-u-save save_form fleft" id="ce-u-save" style="width:158px;height:50px;line-height:50px;font-size:18px;background-color:#2b8cc5;color:#fff;">
                                 <a class="fullBtnGray cancel_form fleft" id="ce-u-bindTelcancel">取消</a>
                                 <div class="clear"></div>
                             </div>
@@ -774,7 +770,7 @@ $.ajaxSetup({
                             </div>
                         </form>
                     </div>
-                    <!-- <div id="questionWrap" class="lineWrap">
+                    <div id="questionWrap" class="lineWrap">
                         <div class="item-left">密保问题</div>
 
 
@@ -784,168 +780,8 @@ $.ajaxSetup({
                             <div id="questionUnSettedTip" class="item-middle">
                                 <span id="tip" class="bold">未设置</span><br> <span class="grayTip">设置密保可大幅提升账号安全</span>
                             </div>
+    </div></div></div></div></div>
 
-                        <div class="clear"></div>
-                    </div> -->
-                    <!-- 设置密保 -->
-                   <!--  <div id="setQuestion-stepOne" class="grayBorderT grayBorderB modify_content" style="display:none;">
-                        <div class="setQuestion-titleWrap">
-                            <span>设置密保（验证密码）</span>
-                        </div>
-                        <form class="setQuestion-bodyWrap" novalidate="novalidate">
-                                <div class="lineWrap">
-                                    <div class="leftWrap">
-                                        <label class="leftLabel">账号密码</label>
-                                    </div>
-                                    <input type="password" value="" name="password" id="setQuestion_pwd" class="normalInput" maxlength="16">
-                                </div>
-
-                                <div class="lineWrap">
-                                    <label class="fleft">&nbsp;</label>
-                                    <a class="fullBtnBlue save_form fleft" id="setQuestionSave">下一步</a>
-                                    <a class="fullBtnGray cancel_form fleft" id="setQuestionCancel">取消</a>
-                                    <div class="clear"></div>
-                                </div>
-                                    <div class="clear"></div>
-                        </form>
-                    </div> -->
-                    <!-- <div id="setQuestion-stepTwo" class="grayBorderT grayBorderB modify_content" style="display:none;">
-                        <div class="setQuestion-titleWrap">
-                            <span>设置密保</span>
-                        </div>
-                        <form class="setQuestion-bodyWrap" novalidate="novalidate">
-                                <div class="lineWrap">
-                                    <div class="leftWrap">
-                                        <label class="leftLabel">问题一：</label>
-                                    </div>
-                                    <button type="button" class="dropdown" data-name="questionCode1" id="questionCode1" style="position: relative;"><span>请选择密保问题</span><i class="dropdown_arrow" style="top:25px; right:10px"></i><input type="hidden" name="questionCode1"></button>
-                                </div>
-                                <div class="lineWrap">
-                                    <div class="leftWrap">
-                                        <label class="leftLabel">答案：</label>
-                                    </div>
-                                    <input type="text" value="" maxlength="32" name="answer1" id="qanswer1" class="normalInput">
-                                </div>
-                                <div class="lineWrap">
-                                    <div class="leftWrap">
-                                        <label class="leftLabel">问题二：</label>
-                                    </div>
-                                    <button type="button" class="dropdown" data-name="questionCode2" id="questionCode2" style="position: relative;"><span>请选择密保问题</span><i class="dropdown_arrow" style="top:25px; right:10px"></i><input type="hidden" name="questionCode2"></button>
-
-                                </div>
-                                <div class="lineWrap">
-                                    <div class="leftWrap">
-                                        <label class="leftLabel">答案：</label>
-                                    </div>
-                                    <input type="text" value="" maxlength="32" name="answer2" id="qanswer2" class="normalInput">
-                                </div>
-                                <div class="lineWrap">
-                                    <label class="fleft">&nbsp;</label>
-                                    <a class="fullBtnBlue save_form fleft" id="ce-u-setQuetionsave">保存</a>
-                                    <a class="fullBtnGray cancel_form fleft" id="ce-u-setQuetioncancel">取消</a>
-                                    <div class="clear"></div>
-                                </div>
-                        </form>
-                    </div> -->
-                    <!-- 修改密保 -->
-                    <!-- <div id="changeQuestionWrap" class="grayBorderT grayBorderB modify_content" style="display:none;">
-                        <div class="cQuestion-titleWrap">
-                            <span>修改密保(验证)</span>
-                        </div>
-                        <form class="cQuestion-bodyWrap" novalidate="novalidate">
-                            <div class="questionlineWrap">
-                                <div class="leftWrap">
-                                    <label class="leftLabel">问题一：</label>
-                                </div>
-                                <span id="cqone" class="normalInput current_email"></span>
-                                <input type="hidden" name="questionCode1" value="">
-                            </div>
-                            <div class="lineWrap">
-                                <div class="leftWrap">
-                                    <label class="leftLabel">答案：</label>
-                                </div>
-                                <input type="text" value="" maxlength="32" name="answer1" id="answer1" class="normalInput">
-                            </div>
-                            <div class="questionlineWrap">
-                                <div class="leftWrap">
-                                    <label class="leftLabel">问题二：</label>
-                                </div>
-                                <span id="cqtwo" class="normalInput current_email"></span>
-                                <input type="hidden" name="questionCode2" value="">
-                            </div>
-                            <div class="lineWrap">
-                                <div class="leftWrap">
-                                    <label class="leftLabel">答案：</label>
-                                </div>
-                                <input type="text" value="" maxlength="32" name="answer2" id="answer2" class="normalInput">
-                            </div>
-                            <div class="lineWrap">
-                                <label class="fleft">&nbsp;</label>
-                                <a class="fullBtnBlue save_form fleft" id="ce-u-cquestionsave">下一步</a>
-                                <a class="fullBtnGray cancel_form fleft" id="ce-u-cquestioncansel">取消</a>
-                                <div class="clear"></div>
-                            </div>
-                        </form>
-                    </div>
-                    <div id="resetQuestion" class="grayBorderT grayBorderB modify_content" style="display:none;">
-                        <div class="cQuestion-titleWrap">
-                            <span>修改密保(设置新的密保问答)</span>
-                        </div>
-                        <form class="cQuestion-bodyWrap" novalidate="novalidate">
-                            <div class="lineWrap">
-                                <div class="leftWrap">
-                                    <label class="leftLabel">问题一:</label>
-                                </div>
-                                <button type="button" class="dropdown" data-name="questionCode1" id="questionCode3" style="position: relative;"><span>请选择密保问题</span><i class="dropdown_arrow" style="top:25px; right:10px"></i><input type="hidden" name="questionCode1"></button>
-                            </div>
-                            <div class="lineWrap">
-                                <div class="leftWrap">
-                                    <label class="leftLabel">答案：</label>
-                                </div>
-                                <input type="text" value="" maxlength="32" name="answer1" id="resetanswer1" class="normalInput">
-                            </div>
-                            <div class="lineWrap">
-                                <div class="leftWrap">
-                                    <label class="leftLabel">问题二:</label>
-                                </div>
-                                <button type="button" class="dropdown" data-name="questionCode2" id="questionCode4" style="position: relative;"><span>请选择密保问题</span><i class="dropdown_arrow" style="top:25px; right:10px"></i><input type="hidden" name="questionCode2"></button>
-                            </div>
-                            <div class="lineWrap">
-                                <div class="leftWrap">
-                                    <label class="leftLabel">答案：</label>
-                                </div>
-                                <input type="text" value="" maxlength="32" name="answer2" id="resetanswer2" class="normalInput">
-                            </div>
-                            <div class="lineWrap">
-                                <label class="fleft">&nbsp;</label>
-                                <a class="fullBtnBlue save_form fleft" id="ce-u-resetQuetionsave">保存</a>
-                                <a class="fullBtnGray cancel_form fleft" id="ce-u-resetQuetioncancel">取消</a>
-                                <div class="clear"></div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div> -->
-
-            <!-- <form id="mainForm" enctype="application/x-www-form-urlencoded">
-                <input type="text" value="" name="username" id="username" class='normalInput' maxlength='32' placeholder='手机号/ Flyme 账号'/>
-                <input type="password" value="" name="password" id="password" class='normalInput' maxlength='16' placeholder='密码'/>
-                <div class='rememberField'>
-                    <span><input name="remember" id="remember" type="checkbox" value="1"/></span>
-                    <label for="remember" tabindex="0">记住登录状态</label>
-                    <a id="forgetpwd" href="forgetpwd.jsp" class='linkABlue'>忘记密码?</a>
-                </div>
-                <a id="login" class='fullBtnBlue'>登录</a>
-                <div class='transferField'>
-                    <a name="btnArea" id="transfer" href="bbsUserToFlyme.jsp" class='linkAGray'>社区账号转换为 Flyme 账号</a>
-                </div>
-            </form> -->
-<!--         </div>
-    </div>
-    <input type="hidden" name="form_resubmit_token_key" id="form_resubmit_token_key" value="9KZSZNNLSA5ECNXJD7G35LJVYWJWM25V">
-    <ul style="display:none;" id="mail" class="bRadius2 boxShadow10"><li data-mail="@qq.com" class="item">@qq.com</li><li data-mail="@sina.com" class="item">@sina.com</li><li data-mail="@126.com" class="item">@126.com</li><li data-mail="@163.com" class="item">@163.com</li><li data-mail="@gmail.com" class="item">@gmail.com</li></ul>
-
- -->
 <div id="flymeFooter" class="footerWrap" style="top: 855px;">
     <div class="footerInner">
         <div class="footer-layer1">
@@ -1002,109 +838,5 @@ $.ajaxSetup({
         </div>
     </div>
 </div>
-<div id="wechatPic"></div>
-
-
-
-    <ul class="dropdown_menu" data-target="#questionCode1" style="display: none; position: absolute; z-index: 999;">
-
-    <li data-text="您的出生地是？" data-value="1">您的出生地是？</li>
-
-    <li data-text="您母亲的姓名是？" data-value="2">您母亲的姓名是？</li>
-
-    <li data-text="您父亲的姓名是？" data-value="3">您父亲的姓名是？</li>
-
-    <li data-text="您配偶的姓名是？" data-value="4">您配偶的姓名是？</li>
-
-    <li data-text="您的小学校名是？" data-value="5">您的小学校名是？</li>
-
-    <li data-text="您母亲的生日是？" data-value="6">您母亲的生日是？</li>
-
-    <li data-text="您父亲的生日是？" data-value="7">您父亲的生日是？</li>
-
-    <li data-text="您配偶的生日是？" data-value="8">您配偶的生日是？</li>
-
-    <li data-text="您初中班主任的名字是？" data-value="9">您初中班主任的名字是？</li>
-
-    <li data-text="您小时候的绰号是什么？" data-value="10">您小时候的绰号是什么？</li>
-
-    <li data-text="您小时候最好的朋友是？" data-value="11">您小时候最好的朋友是？</li>
-
-    </ul>
-    <ul class="dropdown_menu" data-target="#questionCode2" style="display: none; position: absolute; z-index: 999;">
-
-    <li data-text="您的出生地是？" data-value="1">您的出生地是？</li>
-
-    <li data-text="您母亲的姓名是？" data-value="2">您母亲的姓名是？</li>
-
-    <li data-text="您父亲的姓名是？" data-value="3">您父亲的姓名是？</li>
-
-    <li data-text="您配偶的姓名是？" data-value="4">您配偶的姓名是？</li>
-
-    <li data-text="您的小学校名是？" data-value="5">您的小学校名是？</li>
-
-    <li data-text="您母亲的生日是？" data-value="6">您母亲的生日是？</li>
-
-    <li data-text="您父亲的生日是？" data-value="7">您父亲的生日是？</li>
-
-    <li data-text="您配偶的生日是？" data-value="8">您配偶的生日是？</li>
-
-    <li data-text="您初中班主任的名字是？" data-value="9">您初中班主任的名字是？</li>
-
-    <li data-text="您小时候的绰号是什么？" data-value="10">您小时候的绰号是什么？</li>
-
-    <li data-text="您小时候最好的朋友是？" data-value="11">您小时候最好的朋友是？</li>
-
-    </ul>
-    <ul class="dropdown_menu" data-target="#questionCode3" style="display: none; position: absolute; z-index: 999;">
-
-    <li data-text="您的出生地是？" data-value="1">您的出生地是？</li>
-
-    <li data-text="您母亲的姓名是？" data-value="2">您母亲的姓名是？</li>
-
-    <li data-text="您父亲的姓名是？" data-value="3">您父亲的姓名是？</li>
-
-    <li data-text="您配偶的姓名是？" data-value="4">您配偶的姓名是？</li>
-
-    <li data-text="您的小学校名是？" data-value="5">您的小学校名是？</li>
-
-    <li data-text="您母亲的生日是？" data-value="6">您母亲的生日是？</li>
-
-    <li data-text="您父亲的生日是？" data-value="7">您父亲的生日是？</li>
-
-    <li data-text="您配偶的生日是？" data-value="8">您配偶的生日是？</li>
-
-    <li data-text="您初中班主任的名字是？" data-value="9">您初中班主任的名字是？</li>
-
-    <li data-text="您小时候的绰号是什么？" data-value="10">您小时候的绰号是什么？</li>
-
-    <li data-text="您小时候最好的朋友是？" data-value="11">您小时候最好的朋友是？</li>
-
-    </ul>
-    <ul class="dropdown_menu" data-target="#questionCode4" style="display: none; position: absolute; z-index: 999;">
-
-    <li data-text="您的出生地是？" data-value="1">您的出生地是？</li>
-
-    <li data-text="您母亲的姓名是？" data-value="2">您母亲的姓名是？</li>
-
-    <li data-text="您父亲的姓名是？" data-value="3">您父亲的姓名是？</li>
-
-    <li data-text="您配偶的姓名是？" data-value="4">您配偶的姓名是？</li>
-
-    <li data-text="您的小学校名是？" data-value="5">您的小学校名是？</li>
-
-    <li data-text="您母亲的生日是？" data-value="6">您母亲的生日是？</li>
-
-    <li data-text="您父亲的生日是？" data-value="7">您父亲的生日是？</li>
-
-    <li data-text="您配偶的生日是？" data-value="8">您配偶的生日是？</li>
-
-    <li data-text="您初中班主任的名字是？" data-value="9">您初中班主任的名字是？</li>
-
-    <li data-text="您小时候的绰号是什么？" data-value="10">您小时候的绰号是什么？</li>
-
-    <li data-text="您小时候最好的朋友是？" data-value="11">您小时候最好的朋友是？</li>
-
-    </ul>
 
 </body></html>
